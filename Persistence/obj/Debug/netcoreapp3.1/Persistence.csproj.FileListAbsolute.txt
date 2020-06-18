@@ -1,0 +1,17 @@
+D:\ASP.NET2\Persistence\bin\Debug\netcoreapp3.1\Persistence.deps.json
+D:\ASP.NET2\Persistence\bin\Debug\netcoreapp3.1\Persistence.dll
+D:\ASP.NET2\Persistence\obj\Debug\netcoreapp3.1\Persistence.csprojAssemblyReference.cache
+D:\ASP.NET2\Persistence\obj\Debug\netcoreapp3.1\Persistence.AssemblyInfoInputs.cache
+D:\ASP.NET2\Persistence\obj\Debug\netcoreapp3.1\Persistence.AssemblyInfo.cs
+D:\ASP.NET2\Persistence\bin\Debug\netcoreapp3.1\Persistence.runtimeconfig.json
+D:\ASP.NET2\Persistence\bin\Debug\netcoreapp3.1\Persistence.runtimeconfig.dev.json
+D:\ASP.NET2\Persistence\obj\Debug\netcoreapp3.1\Persistence.genruntimeconfig.cache
+D:\ASP.NET2\Persistence\bin\Debug\netcoreapp3.1\Application.dll
+D:\ASP.NET2\Persistence\bin\Debug\netcoreapp3.1\Domain.dll
+D:\ASP.NET2\Persistence\bin\Debug\netcoreapp3.1\Persistence.pdb
+D:\ASP.NET2\Persistence\bin\Debug\netcoreapp3.1\Application.pdb
+D:\ASP.NET2\Persistence\bin\Debug\netcoreapp3.1\Domain.pdb
+D:\ASP.NET2\Persistence\obj\Debug\netcoreapp3.1\Persistence.csproj.CoreCompileInputs.cache
+D:\ASP.NET2\Persistence\obj\Debug\netcoreapp3.1\Persistence.csproj.CopyComplete
+D:\ASP.NET2\Persistence\obj\Debug\netcoreapp3.1\Persistence.dll
+D:\ASP.NET2\Persistence\obj\Debug\netcoreapp3.1\Persistence.pdb

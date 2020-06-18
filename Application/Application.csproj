@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Cars\Commands\DeleteCar\" />
+    <Folder Include="Cars\Commands\UpsertCar\" />
+    <Folder Include="Cars\Commands\CreateCar\" />
+    <Folder Include="Cars\Queries\GetCarsList\" />
+    <Folder Include="CarTypes\Commands\" />
+    <Folder Include="CarTypes\Queries\" />
+    <Folder Include="Cities\Commands\" />
+    <Folder Include="Cities\Queries\" />
+    <Folder Include="Colors\Commands\" />
+    <Folder Include="Colors\Queries\" />
+    <Folder Include="Common\Mappings\" />
+    <Folder Include="Common\Exceptions\" />
+    <Folder Include="Common\Models\" />
+    <Folder Include="LocationsCars\Commands\" />
+    <Folder Include="LocationsCars\Queries\" />
+    <Folder Include="Locations\Commands\" />
+    <Folder Include="Locations\Queries\" />
+    <Folder Include="PhotosCar\Commands\" />
+    <Folder Include="PhotosCar\Queries\" />
+    <Folder Include="Rents\Commands\" />
+    <Folder Include="Rents\Queries\" />
+    <Folder Include="Transmissions\Commands\" />
+    <Folder Include="Transmissions\Queries\" />
+  </ItemGroup>
+
+</Project>
