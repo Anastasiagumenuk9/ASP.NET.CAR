@@ -16,6 +16,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Persistence;
 using Microsoft.Extensions.Hosting;
+using MediatR;
+using System.Reflection;
 
 namespace CAR
 {
@@ -33,6 +35,7 @@ namespace CAR
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddControllersWithViews();
             services.AddPersistence(Configuration);
         }

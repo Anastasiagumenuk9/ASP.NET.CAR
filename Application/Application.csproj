@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
   </ItemGroup>
 
@@ -15,7 +16,6 @@
   <ItemGroup>
     <Folder Include="Cars\Commands\DeleteCar\" />
     <Folder Include="Cars\Commands\UpsertCar\" />
-    <Folder Include="Cars\Commands\CreateCar\" />
     <Folder Include="Cars\Queries\GetCarsList\" />
     <Folder Include="CarTypes\Commands\" />
     <Folder Include="CarTypes\Queries\" />
