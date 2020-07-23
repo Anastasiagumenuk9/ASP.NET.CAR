@@ -11,14 +11,14 @@ namespace Application.Cars.Commands.CreateCar
 {
     public class CreateCarCommandHandler : IRequestHandler<CreateCarCommand, Guid>
     {
-        private readonly ICarDbContext _context;
+        private readonly ICarDbContext _context; 
 
         public CreateCarCommandHandler(ICarDbContext context)
         {
             _context = context;
         }
 
-        public Task<Guid> Handle(CreateCarCommand request, CancellationToken cancellationToken)
+        public async Task<Guid> Handle(CreateCarCommand request, CancellationToken cancellationToken)
         {
             var entity = new Car
             {
@@ -36,8 +36,8 @@ namespace Application.Cars.Commands.CreateCar
 
             _context.Cars.Add(entity);
 
-            _context.SaveChangesAsync(cancellationToken);
-
+            await _context.SaveChangesAsync(cancellationToken);
+            
             return entity.Id;
         }
     }

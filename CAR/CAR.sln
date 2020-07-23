@@ -5,13 +5,13 @@ VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAR", "CAR.csproj", "{09C4158D-E5E1-497F-AD6E-DC976BA7E152}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "..\Application\Application.csproj", "{3288CEC4-AC11-4F78-8EBF-2DB55E3F7F2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "..\Application\Application.csproj", "{3288CEC4-AC11-4F78-8EBF-2DB55E3F7F2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "..\Domain\Domain.csproj", "{C97D989F-744E-45B9-94D8-A3E1F5CA437A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "..\Domain\Domain.csproj", "{C97D989F-744E-45B9-94D8-A3E1F5CA437A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "..\Infrastructure\Infrastructure.csproj", "{DBF44FF3-DBDB-4D91-9721-67E5D1BACAEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "..\Infrastructure\Infrastructure.csproj", "{DBF44FF3-DBDB-4D91-9721-67E5D1BACAEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "..\Persistence\Persistence.csproj", "{631FF8F4-D253-4945-B08B-621CCB632A3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "..\Persistence\Persistence.csproj", "{631FF8F4-D253-4945-B08B-621CCB632A3E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

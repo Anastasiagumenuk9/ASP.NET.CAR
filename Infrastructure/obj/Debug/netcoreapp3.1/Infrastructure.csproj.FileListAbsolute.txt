@@ -7,3 +7,8 @@ D:\ASP.NET2\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.AssemblyInfo.c
 D:\ASP.NET2\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.csproj.CoreCompileInputs.cache
 D:\ASP.NET2\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.dll
 D:\ASP.NET2\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.pdb
+D:\ASP.NET2\Infrastructure\bin\Debug\netcoreapp3.1\Application.dll
+D:\ASP.NET2\Infrastructure\bin\Debug\netcoreapp3.1\Domain.dll
+D:\ASP.NET2\Infrastructure\bin\Debug\netcoreapp3.1\Application.pdb
+D:\ASP.NET2\Infrastructure\bin\Debug\netcoreapp3.1\Domain.pdb
+D:\ASP.NET2\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.csproj.CopyComplete

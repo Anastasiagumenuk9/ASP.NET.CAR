@@ -9,3 +9,4 @@ D:\ASP.NET2\Application\bin\Debug\netcoreapp3.1\Domain.pdb
 D:\ASP.NET2\Application\obj\Debug\netcoreapp3.1\Application.csproj.CopyComplete
 D:\ASP.NET2\Application\obj\Debug\netcoreapp3.1\Application.dll
 D:\ASP.NET2\Application\obj\Debug\netcoreapp3.1\Application.pdb
+D:\ASP.NET2\Application\obj\Debug\netcoreapp3.1\Application.csproj.CoreCompileInputs.cache

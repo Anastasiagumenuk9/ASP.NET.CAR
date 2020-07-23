@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CAR.Models;
+using MediatR;
+using Application.Cars.Queries.GetCarsList;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CAR.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private IMediator _mediator;
+        protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -21,6 +26,13 @@ namespace CAR.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public async Task<ActionResult<CarsListVm>> GetCars()
+        {
+            var model = await Mediator.Send(new GetCarsListQuery());
+
+            return View(model);
         }
 
         public IActionResult Privacy()

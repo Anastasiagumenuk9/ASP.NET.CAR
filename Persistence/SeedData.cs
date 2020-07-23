@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -53,6 +54,51 @@ namespace Persistence
             else
             {
                 return await userManager.FindByNameAsync(email);
+            }
+        }
+
+        private static async Task<Color> CreateColor(CarDbContext context, string Name)
+        {
+            if (await context.Colors.FindAsync(Name) == null)
+            {
+                var color = new Color() { Name = Name};
+                var result = await context.Colors.AddAsync(color);
+
+                return color;
+            }
+            else
+            {
+                return await context.Colors.FindAsync(Name);
+            }
+        }
+
+        private static async Task<CarType> CreateCarType(CarDbContext context, string Name)
+        {
+            if (await context.CarTypes.FindAsync(Name) == null)
+            {
+                var type = new CarType() { Name = Name };
+                var result = await context.CarTypes.AddAsync(type);
+
+                return type;
+            }
+            else
+            {
+                return await context.CarTypes.FindAsync(Name);
+            }
+        }
+
+        private static async Task<Transmission> CreateTransmission(CarDbContext context, string Name)
+        {
+            if (await context.Transmissions.FindAsync(Name) == null)
+            {
+                var type = new Transmission() { Name = Name };
+                var result = await context.Transmissions.AddAsync(type);
+
+                return type;
+            }
+            else
+            {
+                return await context.Transmissions.FindAsync(Name);
             }
         }
     }

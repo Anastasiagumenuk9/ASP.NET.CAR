@@ -28,11 +28,11 @@ namespace Domain.Entities
 
         public bool Conditioner { get; set; }
 
-        public Guid ColorId { get; set; }
+        public Guid? ColorId { get; set; }
 
-        public Guid CarTypeId { get; set; }
+        public Guid? CarTypeId { get; set; }
 
-        public Guid TransmissionId { get; set; }
+        public Guid? TransmissionId { get; set; }
 
         public Color Color { get; set; }
 

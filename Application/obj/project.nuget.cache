@@ -1,15 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "cHz4SuAKgDoSurTgKY8RwCyak0YPhhCwAjK6JHLIF3ggx2zZ0EuR4nT1L08Q/PG+MdMRBGpX4ajzQWHv8wmhfQ==",
+  "dgSpecHash": "JkdCJowkNQ9AOR3mG1epnP56WvdDU2DF5HEX4yf4EfZdVruB165xP7qSZlBVdJcMpxtgGA9W6QLnZ+q6cyaeMQ==",
   "success": true,
   "projectFilePath": "D:\\ASP.NET2\\Application\\Application.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.0.1\\automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\mediatr\\8.0.0\\mediatr.8.0.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\8.0.0\\mediatr.extensions.microsoft.dependencyinjection.8.0.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.5\\microsoft.aspnetcore.cryptography.internal.3.1.5.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.5\\microsoft.aspnetcore.cryptography.keyderivation.3.1.5.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.entityframeworkcore\\3.1.5\\microsoft.entityframeworkcore.3.1.5.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\3.1.5\\microsoft.entityframeworkcore.abstractions.3.1.5.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\3.1.5\\microsoft.entityframeworkcore.analyzers.3.1.5.nupkg.sha512",
@@ -28,7 +31,8 @@
     "C:\\Users\\User\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.5\\microsoft.extensions.primitives.3.1.5.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.collections.immutable\\1.7.1\\system.collections.immutable.1.7.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512",
-    "C:\\Users\\User\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.7.1\\system.diagnostics.diagnosticsource.4.7.1.nupkg.sha512"
+    "C:\\Users\\User\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.7.1\\system.diagnostics.diagnosticsource.4.7.1.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }

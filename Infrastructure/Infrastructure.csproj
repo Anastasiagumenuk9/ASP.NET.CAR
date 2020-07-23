@@ -9,4 +9,8 @@
     <Folder Include="Identity\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Application.csproj" />
+  </ItemGroup>
+
 </Project>
