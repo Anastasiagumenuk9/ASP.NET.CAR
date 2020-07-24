@@ -31,7 +31,7 @@ namespace Application.Cars.Queries.GetCarsList
 
         public Guid TransmissionId { get; set; }
 
-        public void Mapping(Profile profile)
+        public static void Mapping(Profile profile)
         {
             profile.CreateMap<Car, CarDto>()
                 .ForMember(d => d.Id, opt => opt.MapFrom(s => s.Id))
@@ -45,6 +45,10 @@ namespace Application.Cars.Queries.GetCarsList
                 .ForMember(d => d.ColorId, opt => opt.MapFrom(s => s.ColorId))
                 .ForMember(d => d.CarTypeId, opt => opt.MapFrom(s => s.CarTypeId))
                 .ForMember(d => d.TransmissionId, opt => opt.MapFrom(s => s.TransmissionId))
+                .ForSourceMember(x => x.Created, opt => opt.DoNotValidate())
+                .ForSourceMember(x => x.CreatedBy, opt => opt.DoNotValidate())
+                .ForSourceMember(x => x.LastModified, opt => opt.DoNotValidate())
+                .ForSourceMember(x => x.LastModifiedBy, opt => opt.DoNotValidate())
                 .ReverseMap();
         }
     }

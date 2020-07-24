@@ -1,7 +1,22 @@
-﻿
+﻿@using Application.Cars.Queries.GetCarsList
+@model CarsListVm
+
 @{
     ViewData["Title"] = "GetCars";
 }
 
 <h1>GetCars</h1>
 
+<div class="row mt-5 mb-2">
+    @{
+        foreach (var car in Model.Cars)
+        {
+            <table>
+                <tr>
+                    <td> @car.Name </td>
+                    <td> @car.Price </td>
+                </tr>
+            </table>
+        }
+    }
+</div>

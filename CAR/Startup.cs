@@ -20,11 +20,15 @@ using MediatR;
 using System.Reflection;
 using Application;
 using Application.Cars.Queries.GetCarsList;
+using AutoMapper;
+using Application.Common.Mappings;
 
 namespace CAR
 {
     public class Startup
     {
+        private IServiceCollection _services;
+
         public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
@@ -41,6 +45,10 @@ namespace CAR
             services.AddControllersWithViews();
             services.AddPersistence(Configuration);
             services.AddRazorPages();
+
+            services.AddHttpContextAccessor();
+
+            _services = services;
         }
 
 
@@ -69,6 +77,8 @@ namespace CAR
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                    endpoints.MapControllers();
+                    endpoints.MapRazorPages();
             });
         }
     }

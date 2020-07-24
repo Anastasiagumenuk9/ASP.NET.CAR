@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using Application.Cars.Queries.GetCarsList;
+using AutoMapper;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +14,7 @@ namespace Application.Common.Mappings
         public MappingProfile()
         {
             ApplyMappingsFromAssembly(Assembly.GetExecutingAssembly());
+            CarDto.Mapping(this);
         }
 
         private void ApplyMappingsFromAssembly(Assembly assembly)
