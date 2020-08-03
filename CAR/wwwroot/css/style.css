@@ -199,6 +199,10 @@ label {
     font-size: 1em;
 }
 
+li {
+    padding-left: 0.2em;
+}
+
 .login-form {
     background: linear-gradient(rgb(255, 255, 255),rgb(255, 255, 255),rgb(255, 255, 255)) ;
     color: black;

@@ -40,7 +40,8 @@ namespace Persistence
         {
             if (await userManager.FindByNameAsync(email) == null)
             {
-                var user = new ApplicationUser() { UserName = UserName, Email = email, PhoneNumber = phoneNumber, PasswordHash = password.GetHashCode().ToString() };
+                var user = new ApplicationUser() { UserName = UserName, Email = email, PhoneNumber = phoneNumber};
+                user.PasswordHash = userManager.PasswordHasher.HashPassword(user, password);
                 var result = await userManager.CreateAsync(user);
 
                 if (result.Succeeded)

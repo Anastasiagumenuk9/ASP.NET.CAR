@@ -24,20 +24,24 @@ namespace Application.Account.Command.CreateAccount
 
         public async Task<string> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            var user = new ApplicationUser
+            if (await _userManager.FindByNameAsync(request.Email) == null)
             {
-                FirstName = request.FirstName,
-                LastName = request.LastName,
-                UserName = request.UserName,
-                Email = request.Email,
-                PhoneNumber = request.PhoneNumber,
-                Street = request.Street,
-                City = request.City,
-                PostalCode = request.PostalCode,
-                SecurityStamp = new Guid().ToString(),
-            };
+                var user = new ApplicationUser
+                {
+                    FirstName = request.FirstName,
+                    LastName = request.LastName,
+                    UserName = request.UserName,
+                    Email = request.Email,
+                    PhoneNumber = request.PhoneNumber,
+                    Street = request.Street,
+                    City = request.City,
+                    PostalCode = request.PostalCode,
+                    SecurityStamp = new Guid().ToString(),
+                };
 
-            var result = await _userManager.CreateAsync(user);
+                user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, request.Password);
+
+                var result = await _userManager.CreateAsync(user);
 
                 if (result.Succeeded)
                 {
@@ -52,7 +56,11 @@ namespace Application.Account.Command.CreateAccount
                 await _context.SaveChangesAsync(cancellationToken);
 
                 return user.Id;
-            
+            }
+            else
+            {
+                throw new Exception("A user with this mail already exists!");
+            }
         }
     }
 }

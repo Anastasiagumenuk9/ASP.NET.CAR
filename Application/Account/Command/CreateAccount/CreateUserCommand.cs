@@ -25,7 +25,5 @@ namespace Application.Account.Command.CreateAccount
         public string City { get; set; }
 
         public string PostalCode { get; set; }
-
-        public string Role { get; set; }
     }
 }
