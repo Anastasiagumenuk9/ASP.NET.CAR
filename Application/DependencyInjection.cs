@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using Application.Account.Command.CreateAccount;
+using AutoMapper;
+using Cqrs.Commands;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;

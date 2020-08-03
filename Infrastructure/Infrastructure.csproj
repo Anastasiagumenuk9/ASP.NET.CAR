@@ -6,11 +6,18 @@
 
   <ItemGroup>
     <Folder Include="Files\" />
-    <Folder Include="Identity\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IdentityModel" Version="4.3.1" />
+    <PackageReference Include="IdentityServer4" Version="4.0.4" />
+    <PackageReference Include="IdentityServer4.AspNetIdentity" Version="4.0.4" />
+    <PackageReference Include="IdentityServer4.EntityFramework" Version="4.0.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\Persistence\Persistence.csproj" />
   </ItemGroup>
 
 </Project>

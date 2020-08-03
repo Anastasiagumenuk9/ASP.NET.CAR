@@ -22,6 +22,9 @@ using Application;
 using Application.Cars.Queries.GetCarsList;
 using AutoMapper;
 using Application.Common.Mappings;
+using Infrastructure;
+using Application.Common.Interfaces;
+using CAR.Services;
 
 namespace CAR
 {
@@ -41,12 +44,23 @@ namespace CAR
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddInfrastructure(Configuration,Environment);
             services.AddApplication();
             services.AddControllersWithViews();
             services.AddPersistence(Configuration);
             services.AddRazorPages();
 
             services.AddHttpContextAccessor();
+
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
+
+            services.AddControllersWithViews()
+                    .AddNewtonsoftJson(options =>
+                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                    );
+
+            services.AddControllers()
+                    .AddXmlSerializerFormatters();
 
             _services = services;
         }
@@ -70,6 +84,7 @@ namespace CAR
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

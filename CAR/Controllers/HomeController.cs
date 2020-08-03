@@ -35,6 +35,11 @@ namespace CAR.Controllers
             return View(model);
         }
 
+        public async Task<IActionResult> MyAccount()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

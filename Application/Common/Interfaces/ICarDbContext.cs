@@ -10,6 +10,10 @@ namespace Application.Common.Interfaces
 {
     public interface ICarDbContext
     {
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
+        public DbSet<ApplicationRole> ApplicationRoles { get; set; }
+
         public DbSet<Car> Cars { get; set; }
 
         public DbSet<CarType> CarTypes { get; set; }

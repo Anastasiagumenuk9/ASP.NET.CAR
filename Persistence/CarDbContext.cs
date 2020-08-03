@@ -33,6 +33,10 @@ namespace Persistence
             _dateTime = dateTime;
         }
 
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
+        public DbSet<ApplicationRole> ApplicationRoles { get; set; }
+
         public DbSet<Car> Cars { get; set; }
 
         public DbSet<CarType> CarTypes { get; set; }

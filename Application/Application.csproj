@@ -7,6 +7,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="Cqrs" Version="4.2.1724.919" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
   </ItemGroup>
@@ -16,6 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Account\Command\DeleteAccount\" />
+    <Folder Include="Account\Command\UpdateAccount\" />
+    <Folder Include="Account\Queries\GetAccountsList\" />
     <Folder Include="CarTypes\Commands\" />
     <Folder Include="CarTypes\Queries\" />
     <Folder Include="Cities\Commands\" />

@@ -57,6 +57,10 @@
               "target": "Package",
               "version": "[8.0.1, )"
             },
+            "Cqrs": {
+              "target": "Package",
+              "version": "[4.2.1724.919, )"
+            },
             "MediatR.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[8.0.0, )"
