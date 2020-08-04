@@ -9,6 +9,7 @@ using CAR.Models;
 using MediatR;
 using Application.Cars.Queries.GetCarsList;
 using Microsoft.Extensions.DependencyInjection;
+using Application.Account.Command.CreateAccount;
 
 namespace CAR.Controllers
 {
@@ -38,6 +39,12 @@ namespace CAR.Controllers
         public async Task<IActionResult> MyAccount()
         {
             return  View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<string>> MyAccount([FromForm]CreateUserCommand command)
+        {
+            return await Mediator.Send(command);
         }
 
         public IActionResult Privacy()

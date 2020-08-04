@@ -27,12 +27,30 @@ namespace CAR.Controllers
             _applicationUserService = applicationUserService;
         }
 
+        [AcceptVerbs("Get", "Post")]
+        public async Task <IActionResult> CheckEmail(string email)
+        {
+            if (await _userManager.FindByEmailAsync(email) == null)
+            {
+                return Json(true);
+            }  
+            else
+            {
+                return Json(false);
+            }
+        }
+
         public async Task<IActionResult> Login()
         {
             return View();
         }
 
+        public async Task<IActionResult> Register()
+        {
+            return View();
+        }
 
+        [HttpPost]
         public async Task<ActionResult<string>> Register([FromForm]CreateUserCommand command)
         {
             return await Mediator.Send(command);

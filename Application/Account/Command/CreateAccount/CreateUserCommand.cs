@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -15,6 +16,7 @@ namespace Application.Account.Command.CreateAccount
 
         public string UserName { get; set; }
 
+        [Remote(action: "CheckEmail", controller: "Account", ErrorMessage = "Mail is alredy registered")]
         [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "Uncorrect Address")]
         public string Email { get; set; }
 
@@ -23,13 +25,13 @@ namespace Application.Account.Command.CreateAccount
         [Compare("Password", ErrorMessage = "Different Password")]
         public string PasswordConfirm { get; set; }
 
-        //[RegularExpression(@"[+]{1}[0-9]{12}")]
         public string PhoneNumber { get; set; }
 
         public string Street { get; set; }
 
         public string City { get; set; }
 
+        [RegularExpression(@"[0-9]{5}")]
         public string PostalCode { get; set; }
     }
 }
