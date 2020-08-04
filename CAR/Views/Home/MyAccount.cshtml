@@ -15,7 +15,7 @@
         <div class="row align-items-center">
             <div class="col-md-2"></div>
             <div class="col-md-8 shadow bg-white rounded align-self-center">
-                <form class="login-form  align-middle" id="login-form" method="post">
+                <form class="login-form  align-middle" id="login-form"  asp-action="Register" asp-controller="Account" method="post">
                     <div class="form-group" id="form-group">
                         <div class="row">
                             <div class="col-6 text-left">
@@ -32,29 +32,44 @@
                                 <label asp-for="City" class="text-uppercase"><b>City</b></label>
                                 <input type="text" class="form-control input-xs" placeholder="Enter City" asp-for="City" required>
                             </div>
-                            <div class="col-6 text-left">
+                            <div class="col-3 text-left">
                                 <label asp-for="Street" class="text-uppercase"><b>Street</b></label>
                                 <input type="text" class="form-control input-xs" placeholder="Enter Street" asp-for="Street" required>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6 text-left">
-                                <label asp-for="Email" class="text-uppercase"><b>Mail</b></label>
-                                <input type="text" class="form-control input-xs" placeholder="Enter Mail" asp-for="Email" required>
-                            </div>
-                            <div class="col-6 text-left">
-                                <label asp-for="PhoneNumber" class="text-uppercase"><b>Phone</b></label>
-                                <input type="text" class="form-control input-xs" placeholder="Enter Phone" asp-for="PhoneNumber" required>
+                            <div class="col-3 text-left">
+                                <label asp-for="PostalCode" class="text-uppercase"><b>Code</b></label>
+                                <input type="text" class="form-control input-xs" placeholder="Enter Code" asp-for="PostalCode" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-6 text-left">
-                                <label asp-for="UserName" class="text-uppercase"><b>Username</b></label>
-                                <input type="text" class="form-control input-xs" placeholder="Enter Username" asp-for="UserName" required>
+                                <div class="row">
+                                    <div class="col-6 text-left">
+                                        <label asp-for="Email" class="text-uppercase"><b>Mail</b></label>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <span asp-validation-for="Email"></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 text-left">
+                                        <input type="text" class="form-control input-xs" placeholder="Enter Mail" asp-for="Email" required>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="col-6 text-left">
+                                    <label asp-for="PhoneNumber" class="text-uppercase"><b>Phone</b></label>
+                                    <input type="text" class="form-control input-xs" id="phone" placeholder="+380(00)000-00-00" asp-for="PhoneNumber" required>
+                                </div>
                             </div>
+                        <div class="row">
                             <div class="col-6 text-left">
                                 <label asp-for="Password" class="text-uppercase"><b>Password</b></label>
                                 <input type="password" class="form-control input-xs" placeholder="Enter Password" asp-for="Password" required>
+                            </div>
+                            <div class="col-6 text-left">
+                                <label asp-for="PasswordConfirm" class="text-uppercase"><b>Password Confirmed</b></label>
+                                <input type="password" class="form-control input-xs" placeholder="Enter Password" asp-for="PasswordConfirm" required>
                             </div>
                         </div>
                         <div class="row">
@@ -67,7 +82,7 @@
                             <div class="col-6"></div>
                         </div>
                         <div class="form-group">
-                            <input class="btn btn-log" type="submit" value="Create" asp-action="Create" asp-controller="Account" class="btn btn-success" />
+                            <input class="btn btn-log" type="submit" value="Sign Up" class="btn btn-success" />
                            
                         </div>
                        

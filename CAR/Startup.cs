@@ -24,6 +24,7 @@ using AutoMapper;
 using Application.Common.Mappings;
 using Infrastructure;
 using Application.Common.Interfaces;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using CAR.Services;
 
 namespace CAR
@@ -86,6 +87,7 @@ namespace CAR
 
             app.UseAuthentication();
             app.UseAuthorization();
+            //app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

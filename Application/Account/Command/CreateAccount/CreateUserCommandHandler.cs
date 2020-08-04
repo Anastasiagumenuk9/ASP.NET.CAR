@@ -2,9 +2,12 @@
 using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
+using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -24,19 +27,19 @@ namespace Application.Account.Command.CreateAccount
 
         public async Task<string> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            if (await _userManager.FindByNameAsync(request.Email) == null)
+            if (await _userManager.FindByEmailAsync(request.Email) == null)
             {
                 var user = new ApplicationUser
                 {
                     FirstName = request.FirstName,
                     LastName = request.LastName,
-                    UserName = request.UserName,
+                    UserName = request.Email.Substring(0, request.Email.IndexOf('@')),
                     Email = request.Email,
                     PhoneNumber = request.PhoneNumber,
                     Street = request.Street,
                     City = request.City,
                     PostalCode = request.PostalCode,
-                    SecurityStamp = new Guid().ToString(),
+                    SecurityStamp = new Guid().ToString(),  
                 };
 
                 user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, request.Password);
@@ -59,7 +62,7 @@ namespace Application.Account.Command.CreateAccount
             }
             else
             {
-                throw new Exception("A user with this mail already exists!");
+                return "A user with this mail are alredy exist!";
             }
         }
     }

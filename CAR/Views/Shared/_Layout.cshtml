@@ -34,7 +34,7 @@
                                     <a class="nav__link nav-link" href="#">Blog</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a  asp-controller="Home" asp-action="MyAccount" class="nav__link nav-link">My Account</a>
+                                    <a asp-controller="Home" asp-action="MyAccount" class="nav__link nav-link">My Account</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav__link nav-link" href="#">Contact</a>
@@ -47,7 +47,7 @@
         </div>
     </header>
 
-            @RenderBody()
+    @RenderBody()
 
     <!--<footer class="border-top footer text-muted">
         <div class="container">
@@ -59,6 +59,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="~/js/layout.js"></script>
+    <script src="https://unpkg.com/imask"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

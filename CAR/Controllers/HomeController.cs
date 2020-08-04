@@ -37,7 +37,7 @@ namespace CAR.Controllers
 
         public async Task<IActionResult> MyAccount()
         {
-            return View();
+            return  View();
         }
 
         public IActionResult Privacy()

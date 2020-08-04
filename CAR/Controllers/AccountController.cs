@@ -32,18 +32,10 @@ namespace CAR.Controllers
             return View();
         }
 
-        public async Task<ActionResult<string>> Create(CreateUserCommand command)
+
+        public async Task<ActionResult<string>> Register([FromForm]CreateUserCommand command)
         {
-            var result =  Mediator.Send(command);
-
-            return Ok(result);
-        }
-
-        public async Task<ActionResult<string>>  MyAccount(CreateUserCommand command)
-        {
-            var result = Mediator.Send(command);
-
-            return Ok(result);
+            return await Mediator.Send(command);
         }
     }
 }
