@@ -51,7 +51,7 @@ a:-webkit-any-link {
     background: #cccccc;
     color: white !important;
     text-transform: uppercase;
-    padding: 8px 39px;
+    padding: 6px 39px;
     width: 100%;
     margin-top: 1em;
 }
@@ -71,6 +71,10 @@ a:-webkit-any-link {
 
 button:focus {
     outline: none; 
+}
+
+.capital {
+    text-transform: capitalize;
 }
 
 .col-6 {
@@ -105,6 +109,10 @@ button:focus {
 .field-validation-valid {
     display: none;
 }
+
+.field-validation-error {
+    color: indianred;
+ }
 
 form {
     margin-top: 0em;
@@ -220,7 +228,7 @@ li {
     font-family: 'Abel', sans-serif;
     font-size: 1em;
     font-weight: 100;
-    line-height: 1.3em;
+    line-height: 1em;
     padding: 4% 5%;
     width: auto;
     height: auto;

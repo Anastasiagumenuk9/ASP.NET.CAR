@@ -28,7 +28,7 @@ namespace CAR.Controllers
         }
 
         [AcceptVerbs("Get", "Post")]
-        public async Task <IActionResult> CheckEmail(string email)
+        public async Task <IActionResult> CheckMail(string email)
         {
             if (await _userManager.FindByEmailAsync(email) == null)
             {

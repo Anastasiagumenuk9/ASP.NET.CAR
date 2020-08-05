@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.ServiceModel.Channels;
@@ -31,13 +32,13 @@ namespace Application.Account.Command.CreateAccount
             {
                 var user = new ApplicationUser
                 {
-                    FirstName = request.FirstName,
-                    LastName = request.LastName,
+                    FirstName = request.FirstName.Substring(0, 1).ToUpper() + request.FirstName.Substring(1).ToLower(),
+                    LastName = request.LastName.Substring(0, 1).ToUpper() + request.LastName.Substring(1).ToLower(),
                     UserName = request.Email.Substring(0, request.Email.IndexOf('@')),
                     Email = request.Email,
                     PhoneNumber = request.PhoneNumber,
-                    Street = request.Street,
-                    City = request.City,
+                    Street = request.Street.Substring(0, 1).ToUpper() + request.Street.Substring(1).ToLower(),
+                    City = request.City.Substring(0, 1).ToUpper() + request.City.Substring(1).ToLower(),
                     PostalCode = request.PostalCode,
                     SecurityStamp = new Guid().ToString(),  
                 };
