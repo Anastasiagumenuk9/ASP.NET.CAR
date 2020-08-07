@@ -4,6 +4,5 @@ D:\ASP.NET2\Domain\bin\Debug\netcoreapp3.1\Domain.pdb
 D:\ASP.NET2\Domain\obj\Debug\netcoreapp3.1\Domain.csprojAssemblyReference.cache
 D:\ASP.NET2\Domain\obj\Debug\netcoreapp3.1\Domain.AssemblyInfoInputs.cache
 D:\ASP.NET2\Domain\obj\Debug\netcoreapp3.1\Domain.AssemblyInfo.cs
-D:\ASP.NET2\Domain\obj\Debug\netcoreapp3.1\Domain.csproj.CoreCompileInputs.cache
 D:\ASP.NET2\Domain\obj\Debug\netcoreapp3.1\Domain.dll
 D:\ASP.NET2\Domain\obj\Debug\netcoreapp3.1\Domain.pdb
