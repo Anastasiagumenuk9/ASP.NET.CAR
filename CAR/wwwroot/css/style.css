@@ -34,7 +34,7 @@ a:-webkit-any-link {
 .btn {
     display: inline-block;
     vertical-align: top;
-    padding: 0.9em 3.5em;
+    padding: .9em 3.5em;
 
     border: 1.5px solid #fff;
 
@@ -61,6 +61,7 @@ a:-webkit-any-link {
     background: #96c0ff;
     padding: 6px 39px;
     width: 100%;
+    margin-top: .5em;
 }
 
 .btn:hover {
@@ -78,7 +79,7 @@ button:focus {
 }
 
 .col-6 {
-    margin-top: 0.2em;
+    margin-top: .2em;
     text-align: center;
 }
 
@@ -120,9 +121,9 @@ form {
 
 .form-control {
     line-height: 2;
-    padding-bottom: 0.5em;
-    margin-bottom: 0.3em;
-    font-size: 0.95em;
+    padding-bottom: .5em;
+    margin-bottom: .3em;
+    font-size: .95em;
 }
 
 .input-validation-error {
