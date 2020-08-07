@@ -14,7 +14,7 @@ namespace Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment environment)
         {
-            services.AddScoped<IUserManager, UserManagerService>();
+            services.AddScoped<IUserService, UserService>();
             services.AddTransient<IDateTime, MachineDateTime>();
 
             return services;

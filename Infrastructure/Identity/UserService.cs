@@ -10,26 +10,37 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Identity
 {
-    public class UserManagerService : IUserManager
+    public class UserService : IUserService
     {
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public UserManagerService(UserManager<ApplicationUser> userManager)
+        public UserService(UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
         }
 
-        public async Task<(Result Result, string UserId)> CreateUserAsync(string userName, string mail, string password)
+        public async Task<string> CreateUserAsync(string FirstName, string LastName, string Email,
+                                                                          string PhoneNumber, string Street, string Password,
+                                                                          string City, string PostalCode)
         {
-            if (await _userManager.FindByNameAsync(mail) == null)
+            if (await _userManager.FindByNameAsync(Email) == null)
             {
                 var user = new ApplicationUser
                 {
-                    UserName = userName,
-                    Email = mail,
+                    FirstName = FirstName.Substring(0, 1).ToUpper() + FirstName.Substring(1).ToLower(),
+                    LastName = LastName.Substring(0, 1).ToUpper() + LastName.Substring(1).ToLower(),
+                    UserName = Email.Substring(0, Email.IndexOf('@')),
+                    Email = Email,
+                    PhoneNumber = PhoneNumber,
+                    Street = Street.Substring(0, 1).ToUpper() + Street.Substring(1).ToLower(),
+                    City = City.Substring(0, 1).ToUpper() + City.Substring(1).ToLower(),
+                    PostalCode = PostalCode,
+                    SecurityStamp = new Guid().ToString(),
                 };
 
-                var result = await _userManager.CreateAsync(user, password);
+                user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, Password);
+
+                var result = await _userManager.CreateAsync(user);
 
                 if (result.Succeeded)
                 {
@@ -41,9 +52,7 @@ namespace Infrastructure.Identity
                     }
                 }
 
-                user.PasswordHash = user.PasswordHash;
-
-                return (result.ToApplicationResult(), user.Id);
+                return user.Id;
             }
             else
             {

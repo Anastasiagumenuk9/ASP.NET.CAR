@@ -8,7 +8,7 @@ D:\ASP.NET2\Application\obj\Debug\netcoreapp3.1\Application.Properties.Resources
 D:\ASP.NET2\Application\obj\Debug\netcoreapp3.1\Application.csproj.GenerateResource.cache
 D:\ASP.NET2\Application\obj\Debug\netcoreapp3.1\Application.AssemblyInfoInputs.cache
 D:\ASP.NET2\Application\obj\Debug\netcoreapp3.1\Application.AssemblyInfo.cs
+D:\ASP.NET2\Application\obj\Debug\netcoreapp3.1\Application.csproj.CoreCompileInputs.cache
 D:\ASP.NET2\Application\obj\Debug\netcoreapp3.1\Application.csproj.CopyComplete
 D:\ASP.NET2\Application\obj\Debug\netcoreapp3.1\Application.dll
 D:\ASP.NET2\Application\obj\Debug\netcoreapp3.1\Application.pdb
-D:\ASP.NET2\Application\obj\Debug\netcoreapp3.1\Application.csproj.CoreCompileInputs.cache
