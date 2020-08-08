@@ -56,9 +56,6 @@ namespace Infrastructure.Identity
                 throw new Exception("The user not found");
             }
 
-            //TODO PasswordSignInAsync don't work!
-            //var result = await _signInManager.PasswordSignInAsync(user.UserName, password, false, lockoutOnFailure: false);
-
             if (user.Email == Email && UserService.VerifyHashedPassword(user.PasswordHash, password))
             {
                 var userRoles = await _userManager.GetRolesAsync(user);

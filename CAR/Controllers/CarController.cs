@@ -12,7 +12,7 @@ namespace CAR.Controllers
     public class CarController : BaseController
     {
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize]
         public async Task<ActionResult<CarsListVm>> GetAll()
         {
             var vm = await Mediator.Send(new GetCarsListQuery());

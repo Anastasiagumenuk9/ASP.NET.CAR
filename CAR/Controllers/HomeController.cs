@@ -10,6 +10,7 @@ using MediatR;
 using Application.Cars.Queries.GetCarsList;
 using Microsoft.Extensions.DependencyInjection;
 using Application.Account.Command.CreateAccount;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CAR.Controllers
 {
@@ -29,6 +30,7 @@ namespace CAR.Controllers
             return View();
         }
 
+        [Authorize]
         public async Task<ActionResult<CarsListVm>> GetCars()
         {
             var model = await Mediator.Send(new GetCarsListQuery());

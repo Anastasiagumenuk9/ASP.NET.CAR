@@ -61,9 +61,6 @@ namespace CAR
             services.Configure<PasswordHasherOptions>(options =>
                      options.CompatibilityMode = PasswordHasherCompatibilityMode.IdentityV2);
 
-            services.Configure<TokenManagement>(Configuration.GetSection("tokenManagement"));
-            var token = Configuration.GetSection("tokenManagement").Get<TokenManagement>();
-            var secret = Encoding.ASCII.GetBytes(token.Secret);
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -74,6 +71,10 @@ namespace CAR
                 options.Password.RequireLowercase = false;
                 options.Password.RequiredUniqueChars = 6;
             });
+
+            services.Configure<TokenManagement>(Configuration.GetSection("tokenManagement"));
+            var token = Configuration.GetSection("tokenManagement").Get<TokenManagement>();
+            var secret = Encoding.ASCII.GetBytes(token.Secret);
 
             services.AddAuthentication(x =>
             {
