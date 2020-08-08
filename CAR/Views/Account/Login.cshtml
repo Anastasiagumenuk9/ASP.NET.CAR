@@ -1,4 +1,5 @@
-﻿
+﻿@using Application.Account.Command.LogIn
+@model LoginCommand
 @{
     ViewData["Title"] = "Login";
 }
@@ -13,20 +14,20 @@
         <div class="row align-items-center">
             <div class="col-md-3"></div>
             <div class="col-md-6 shadow mb-5 bg-white rounded align-self-center">
-                <form class="login-form  align-middle" id="login-form">
+                <form class="login-form  align-middle" id="login-form" asp-controller="Account" asp-action="Login">
                     <div class="form-group" id="form-group">
                         <div class="row">
                             <div class="col-6 text-left">
-                                <label for="mail" class="text-uppercase"><b>Mail</b></label>
+                                <label for="mail" asp-for="Email" class="text-uppercase"><b>Mail</b></label>
                             </div>
                             <div class="col-6 text-right">
-                                <span></span>
+                                <span asp-validation-for="Email"></span>
                             </div>
                         </div>
-                        <input type="text" class="form-control input-xs" placeholder="Enter Mail" id="mail" required>
+                        <input type="text" class="form-control input-xs" asp-for="Email" placeholder="Enter Mail" id="mail" required>
                         <div class="row">
                             <div class="col-6 text-left">
-                                <label for="psw" class="text-uppercase"><b>Password</b></label>
+                                <label for="psw" asp-for="Password" class="text-uppercase"><b>Password</b></label>
                             </div>
                             <div class="col-6 text-right">
                                 <a class="acc" href="#">
@@ -34,7 +35,7 @@
                                 </a>
                             </div>
                         </div>
-                        <input type="password" class="form-control input-xs" placeholder="Enter Password" id="psw" required>
+                        <input type="password" class="form-control input-xs" asp-for="Password" placeholder="Enter Password" id="psw" required>
                         <div class="row">
                             <div class="col-6 text-left">
                                 <div class="custom-control custom-checkbox">
@@ -44,7 +45,7 @@
                             </div>
                             <div class="col-6"></div>
                         </div>
-                        <a class="btn btn-log">Sign In</a>
+                        <input class="btn btn-log" type="submit" value="Sign In" class="btn btn-success">
                         <a class="btn btn-goog">
                             <span class="fa fa-google"></span>
                         </a>

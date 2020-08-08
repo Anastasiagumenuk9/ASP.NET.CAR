@@ -32,7 +32,6 @@ namespace Application.Cars.Commands.DeleteCar
             var hasOrders = _context.Cars.Any(od => od.Id == entity.Id);
             if (hasOrders)
             {
-                // TODO: Add functional test for this behaviour.
                 throw new DeleteFailureException(nameof(Car), request.Id, "There are existing orders associated with this car.");
             }
 

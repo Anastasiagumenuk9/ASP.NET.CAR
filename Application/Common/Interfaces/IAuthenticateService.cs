@@ -9,6 +9,6 @@ namespace Application.Common.Interfaces
     public interface IAuthenticateService
     {
         string GenerateToken(ClaimsIdentity identity);
-        Task<ClaimsIdentity> GetIdentity(string userName, string password);
+        Task<ClaimsIdentity> GetIdentity(string email, string password);
     }
 }

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,7 +19,7 @@ namespace Persistence
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, ApplicationRole>(
-                options => options.Stores.MaxLengthForKeys = 128)
+                options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<CarDbContext>()
                 .AddDefaultTokenProviders();
 

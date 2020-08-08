@@ -10,6 +10,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Http;
+using Application.Account.Command.LogIn;
+using Microsoft.AspNetCore.Razor.Language.Intermediate;
 
 namespace CAR.Controllers
 {
@@ -17,12 +21,14 @@ namespace CAR.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ICurrentUserService _applicationUserService;
+        private readonly IAuthenticateService _authenticateService;
 
         private IMediator _mediator;
         protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
 
-        public AccountController(UserManager<ApplicationUser> userManager, ICurrentUserService applicationUserService)
+        public AccountController(IAuthenticateService authenticateService, UserManager<ApplicationUser> userManager, ICurrentUserService applicationUserService)
         {
+            _authenticateService = authenticateService;
             _userManager = userManager;
             _applicationUserService = applicationUserService;
         }
@@ -40,9 +46,32 @@ namespace CAR.Controllers
             }
         }
 
+
+        [AllowAnonymous]
+        [HttpPost("GetToken")]
+        public async Task GetToken(string email, string password)
+        {
+            var identity = await _authenticateService.GetIdentity(email, password);
+
+            var token = _authenticateService.GenerateToken(identity);
+
+            await Response.WriteAsync(JsonConvert.SerializeObject("Token : " + token,
+                new JsonSerializerSettings { Formatting = Formatting.Indented }
+            ));
+        }
+
+
         public async Task<IActionResult> Login()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login([FromForm]LoginCommand command)
+        {
+            var result = GetToken(command.Email, command.Password);
+
+            return Ok(result);
         }
 
         public async Task<IActionResult> Register()

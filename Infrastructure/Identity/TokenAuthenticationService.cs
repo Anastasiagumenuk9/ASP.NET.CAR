@@ -2,6 +2,7 @@
 using Domain.Entities;
 using Domain.Token;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace Infrastructure.Identity
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public TokenAuthenticationService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager,/*IUserManagementService service, */IOptions<TokenManagement> tokenManagement)
+        public TokenAuthenticationService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IOptions<TokenManagement> tokenManagement)
         {
             _tokenManagement = tokenManagement.Value;
             _userManager = userManager;
@@ -46,18 +47,19 @@ namespace Infrastructure.Identity
             return $"Bearer {tokenjwt}";
         }
 
-        public async Task<ClaimsIdentity> GetIdentity(string userName, string password)
+        public async Task<ClaimsIdentity> GetIdentity(string Email, string password)
         {
-            var user = await _userManager.FindByNameAsync(userName);
+            var user = await _userManager.FindByEmailAsync(Email);
 
             if (user == null)
             {
                 throw new Exception("The user not found");
             }
 
-            var result = await _signInManager.PasswordSignInAsync(user.UserName, password, false, false);
+            //TODO PasswordSignInAsync don't work!
+            //var result = await _signInManager.PasswordSignInAsync(user.UserName, password, false, lockoutOnFailure: false);
 
-            if (result.Succeeded)
+            if (user.Email == Email && UserService.VerifyHashedPassword(user.PasswordHash, password))
             {
                 var userRoles = await _userManager.GetRolesAsync(user);
 
@@ -70,10 +72,10 @@ namespace Infrastructure.Identity
 
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimsIdentity.DefaultNameClaimType, user.UserName),
-                    new Claim(ClaimsIdentity.DefaultRoleClaimType,userRole),
-                    new Claim(ClaimTypes.NameIdentifier, user.Id),
-                    new Claim(ClaimTypes.Email, user.Email)
+                    new Claim("name", user.UserName),
+                    new Claim("role",userRole),
+                    new Claim(JwtRegisteredClaimNames.Sub, user.Id),
+                    new Claim(JwtRegisteredClaimNames.Email, user.Email)
                 };
 
                 var claimIdentity = new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,
