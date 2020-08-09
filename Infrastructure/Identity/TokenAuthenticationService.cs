@@ -1,6 +1,8 @@
 ﻿using Application.Common.Interfaces;
 using Domain.Entities;
 using Domain.Token;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -47,7 +49,7 @@ namespace Infrastructure.Identity
             return $"Bearer {tokenjwt}";
         }
 
-        public async Task<ClaimsIdentity> GetIdentity(string Email, string password)
+        public async Task<ClaimsIdentity> GetIdentity(string Email, string password, bool rememberMe)
         {
             var user = await _userManager.FindByEmailAsync(Email);
 
@@ -56,7 +58,9 @@ namespace Infrastructure.Identity
                 throw new Exception("The user not found");
             }
 
-            if (user.Email == Email && UserService.VerifyHashedPassword(user.PasswordHash, password))
+            var result = await _signInManager.PasswordSignInAsync(user.UserName, password, rememberMe, false);
+
+            if (result.Succeeded)
             {
                 var userRoles = await _userManager.GetRolesAsync(user);
 
@@ -77,6 +81,7 @@ namespace Infrastructure.Identity
 
                 var claimIdentity = new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,
                                                        ClaimsIdentity.DefaultRoleClaimType);
+
                 return claimIdentity;
             }
 

@@ -49,9 +49,9 @@ namespace CAR.Controllers
 
         [AllowAnonymous]
         [HttpPost("GetToken")]
-        public async Task GetToken(string email, string password)
+        public async Task GetToken(string email, string password, bool rememberMe)
         {
-            var identity = await _authenticateService.GetIdentity(email, password);
+            var identity = await _authenticateService.GetIdentity(email, password, rememberMe);
 
             var token = _authenticateService.GenerateToken(identity);
 
@@ -67,9 +67,11 @@ namespace CAR.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login([FromForm]LoginCommand command)
         {
-            var result = GetToken(command.Email, command.Password);
+            var result = GetToken(command.Email, command.Password, command.RememberMe);
 
             return Ok(result);
         }

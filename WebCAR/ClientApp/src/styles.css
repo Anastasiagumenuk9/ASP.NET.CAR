@@ -1,0 +1,385 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Provide sufficient contrast against white background */
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13.5px;
+  line-height: 1.9;
+  color: #333;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+a {
+  color: white;
+}
+
+  a:-webkit-any-link {
+    color: white;
+    text-decoration: none;
+  }
+
+.acc {
+  color: #96c0ff !important;
+}
+
+/* Button */
+.btn {
+  display: inline-block;
+  vertical-align: top;
+  padding: .9em 3.5em;
+  border: 1.5px solid #fff;
+  font-size: 1em;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background .1s linear, color .1s linear;
+}
+
+.btn-log {
+  border: 2px solid #cccccc;
+  background: #cccccc;
+  color: white !important;
+  text-transform: uppercase;
+  padding: 6px 39px;
+  width: 100%;
+  margin-top: 1em;
+}
+
+.btn-goog {
+  border: 2px solid #96c0ff;
+  background: #96c0ff;
+  padding: 6px 39px;
+  width: 100%;
+  margin-top: .5em;
+}
+
+.btn:hover {
+  background-color: #ffdcdc;
+  color: #333;
+  border: 3px solid #ffdcdc;
+}
+
+button:focus {
+  outline: none;
+}
+
+.capital {
+  text-transform: capitalize;
+}
+
+.col-6 {
+  margin-top: .2em;
+  text-align: center;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: #fff;
+  border-color: #cccccc;
+  background-color: #cccccc;
+}
+
+.custom-control-label::before {
+  top: 0;
+}
+
+.custom-control-label::after {
+  top: 0;
+}
+
+.fa {
+  color: white;
+}
+
+.field-validation-valid {
+  display: none;
+}
+
+.field-validation-error {
+  color: indianred;
+}
+
+form {
+  margin-top: 0em;
+}
+
+.form-control {
+  line-height: 2;
+  padding-bottom: .5em;
+  margin-bottom: .3em;
+  font-size: .95em;
+}
+
+.input-validation-error {
+  border: 1px solid rgb(247 173 180 / 26%);
+  box-shadow: 0 0 10px rgb(249 111 121 / 58%);
+}
+
+/* Intro */
+.intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background: url("https://i.ibb.co/98YXL4C/img.jpg") center no-repeat;
+  -webkit-background-size: cover;
+}
+
+.intro__inner {
+  width: 100%;
+  margin: 0 auto;
+  justify-content: center;
+  text-align: center;
+}
+
+.intro-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(rgb(207, 207, 207), rgb(255, 216, 206));
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.intro__title {
+  color: #fff;
+  font-size: 10vw;
+  font-weight: 700;
+  padding-top: 0.5em;
+  text-transform: uppercase;
+  line-height: 1;
+  transition: color .5s linear;
+}
+
+  .intro__title:hover {
+    color: #ffdcdc;
+    transition: color .5s linear;
+  }
+
+  .intro__title:after {
+    content: "";
+    display: block;
+    width: 90px;
+    height: 1.5px;
+    margin: 60px auto;
+    background-color: #fff;
+  }
+
+.intro__suptitle {
+  margin-bottom: 20px;
+  font-family: 'Kaushan Script', cursive;
+  font-size: 72px;
+  color: #fff;
+}
+
+
+/* Header */
+.header {
+  width: 100%;
+  padding-top: 30px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.header__logo {
+  font-size: 25px;
+  font-weight: 700;
+  color: #fff;
+}
+
+label {
+  font-size: 1em;
+}
+
+li {
+  padding-left: 0.2em;
+}
+
+.login-form {
+  background: linear-gradient(rgb(255, 255, 255),rgb(255, 255, 255),rgb(255, 255, 255));
+  color: black;
+  justify-content: center;
+  font-family: 'Abel', sans-serif;
+  font-size: 1em;
+  font-weight: 100;
+  line-height: 1em;
+  padding: 4% 5%;
+  width: auto;
+  height: auto;
+}
+
+@media (max-width: 1400px) {
+  .login-block {
+    margin-top: 5em;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-expand-md .navbar-nav .nav-link {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 765px) {
+  .navbar-header {
+    margin-left: 12px;
+  }
+
+  .navbar-nav {
+    background: black;
+  }
+}
+
+.mb-5, .my-5 {
+  margin-bottom: 0 !important;
+}
+
+.nav {
+  text-transform: uppercase;
+  padding-left: 0.6em !important;
+}
+
+.navbar-header {
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Nav */
+
+
+.navbar-brand {
+  margin-right: 2rem;
+}
+
+.navbar-toggler {
+  background: transparent;
+  padding: .25rem .75rem;
+  justify-content: right;
+}
+
+.navbar-toggler-icon {
+  background: url("../images/menu.png");
+}
+
+.nav__link {
+  vertical-align: top;
+  margin: 0 5px;
+  position: relative;
+  color: #fff;
+  text-decoration: none;
+  transition: color .1s linear;
+}
+
+  .nav__link:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1.5px;
+    background-color: #ffdcdc;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    transition: opacity .1s linear;
+  }
+
+  .nav__link:hover {
+    color: #ffdcdc;
+  }
+
+    .nav__link:hover:after,
+    .nav__link.active:after {
+      opacity: 1;
+    }
+
+  .nav__link.active {
+    color: #ffdcdc;
+  }
+
+.p-3 {
+  padding: 0 !important;
+}
+
+/* Slider */
+.slider {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.slider__inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.slider__item {
+  width: 23%;
+  padding: 20px 0;
+  position: relative;
+  border-top: 3px solid #fff;
+  opacity: .7;
+  font-size: 18px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+  .slider__item.active {
+    opacity: 1;
+  }
+
+    .slider__item.active:before {
+      content: "";
+      display: block;
+      width: 70px;
+      height: 3px;
+      background-color: #f3818100;
+      position: absolute;
+      top: -3px;
+      left: 0;
+      z-index: 1;
+    }
+
+.slider__num {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.text-uppercase {
+  padding: 0.2em;
+}
+
+.unselectable {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Chrome/Safari/Opera */
+  -khtml-user-select: none; /* Konqueror */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                    not supported by any browser */
+}
+

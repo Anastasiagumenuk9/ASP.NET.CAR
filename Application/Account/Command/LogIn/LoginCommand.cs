@@ -14,5 +14,7 @@ namespace Application.Account.Command.LogIn
 
         [Required(ErrorMessage = " ")]
         public string Password { get; set; }
+
+        public bool RememberMe { get; set; }
     }
 }

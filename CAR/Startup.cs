@@ -19,6 +19,9 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.CookiePolicy;
 
 namespace CAR
 {
@@ -38,7 +41,7 @@ namespace CAR
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddInfrastructure(Configuration,Environment);
+            services.AddInfrastructure(Configuration);
             services.AddApplication();
             services.AddControllersWithViews();
             services.AddPersistence(Configuration);
@@ -61,6 +64,15 @@ namespace CAR
             services.Configure<PasswordHasherOptions>(options =>
                      options.CompatibilityMode = PasswordHasherCompatibilityMode.IdentityV2);
 
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            })
+                     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+                     {
+                         options.LoginPath = "/Account/Login";
+                         options.LogoutPath = "/Account/Logout";
+                     });
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -119,6 +131,14 @@ namespace CAR
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseCookiePolicy(new CookiePolicyOptions
+            {
+                MinimumSameSitePolicy = SameSiteMode.Strict,
+                HttpOnly = HttpOnlyPolicy.Always,
+                Secure = CookieSecurePolicy.Always
+            });
+
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseEndpoints(endpoints =>
