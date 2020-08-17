@@ -1,24 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ASP.NET2\\Infrastructure\\Infrastructure.csproj": {}
+    "D:\\.NET\\ASP.NET.CAR\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "D:\\ASP.NET2\\Application\\Application.csproj": {
+    "D:\\.NET\\ASP.NET.CAR\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ASP.NET2\\Application\\Application.csproj",
+        "projectUniqueName": "D:\\.NET\\ASP.NET.CAR\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "D:\\ASP.NET2\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\ASP.NET2\\Application\\obj\\",
+        "projectPath": "D:\\.NET\\ASP.NET.CAR\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\anast\\.nuget\\packages\\",
+        "outputPath": "D:\\.NET\\ASP.NET.CAR\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\anast\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -27,15 +26,13 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/Anastasiagumenuk9/CarRend/_packaging/CarRend/nuget/v3/index.json": {},
-          "https://pkgs.dev.azure.com/Anastasiagumenuk9/cb8ab70c-128c-4d64-8f19-f8db05cd651f/_packaging/PartsUnlimitedShared/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\ASP.NET2\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\ASP.NET2\\Domain\\Domain.csproj"
+              "D:\\.NET\\ASP.NET.CAR\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\.NET\\ASP.NET.CAR\\Domain\\Domain.csproj"
               }
             }
           }
@@ -89,25 +86,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\ASP.NET2\\Domain\\Domain.csproj": {
+    "D:\\.NET\\ASP.NET.CAR\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ASP.NET2\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\.NET\\ASP.NET.CAR\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\ASP.NET2\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\ASP.NET2\\Domain\\obj\\",
+        "projectPath": "D:\\.NET\\ASP.NET.CAR\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\anast\\.nuget\\packages\\",
+        "outputPath": "D:\\.NET\\ASP.NET.CAR\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\anast\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -116,9 +112,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/Anastasiagumenuk9/CarRend/_packaging/CarRend/nuget/v3/index.json": {},
-          "https://pkgs.dev.azure.com/Anastasiagumenuk9/cb8ab70c-128c-4d64-8f19-f8db05cd651f/_packaging/PartsUnlimitedShared/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
@@ -158,25 +152,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\ASP.NET2\\Infrastructure\\Infrastructure.csproj": {
+    "D:\\.NET\\ASP.NET.CAR\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ASP.NET2\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "D:\\.NET\\ASP.NET.CAR\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "D:\\ASP.NET2\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\ASP.NET2\\Infrastructure\\obj\\",
+        "projectPath": "D:\\.NET\\ASP.NET.CAR\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\anast\\.nuget\\packages\\",
+        "outputPath": "D:\\.NET\\ASP.NET.CAR\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\anast\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -185,18 +178,16 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/Anastasiagumenuk9/CarRend/_packaging/CarRend/nuget/v3/index.json": {},
-          "https://pkgs.dev.azure.com/Anastasiagumenuk9/cb8ab70c-128c-4d64-8f19-f8db05cd651f/_packaging/PartsUnlimitedShared/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\ASP.NET2\\Application\\Application.csproj": {
-                "projectPath": "D:\\ASP.NET2\\Application\\Application.csproj"
+              "D:\\.NET\\ASP.NET.CAR\\Application\\Application.csproj": {
+                "projectPath": "D:\\.NET\\ASP.NET.CAR\\Application\\Application.csproj"
               },
-              "D:\\ASP.NET2\\Persistence\\Persistence.csproj": {
-                "projectPath": "D:\\ASP.NET2\\Persistence\\Persistence.csproj"
+              "D:\\.NET\\ASP.NET.CAR\\Persistence\\Persistence.csproj": {
+                "projectPath": "D:\\.NET\\ASP.NET.CAR\\Persistence\\Persistence.csproj"
               }
             }
           }
@@ -245,25 +236,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\ASP.NET2\\Persistence\\Persistence.csproj": {
+    "D:\\.NET\\ASP.NET.CAR\\Persistence\\Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ASP.NET2\\Persistence\\Persistence.csproj",
+        "projectUniqueName": "D:\\.NET\\ASP.NET.CAR\\Persistence\\Persistence.csproj",
         "projectName": "Persistence",
-        "projectPath": "D:\\ASP.NET2\\Persistence\\Persistence.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\ASP.NET2\\Persistence\\obj\\",
+        "projectPath": "D:\\.NET\\ASP.NET.CAR\\Persistence\\Persistence.csproj",
+        "packagesPath": "C:\\Users\\anast\\.nuget\\packages\\",
+        "outputPath": "D:\\.NET\\ASP.NET.CAR\\Persistence\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\anast\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -272,18 +262,16 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/Anastasiagumenuk9/CarRend/_packaging/CarRend/nuget/v3/index.json": {},
-          "https://pkgs.dev.azure.com/Anastasiagumenuk9/cb8ab70c-128c-4d64-8f19-f8db05cd651f/_packaging/PartsUnlimitedShared/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\ASP.NET2\\Application\\Application.csproj": {
-                "projectPath": "D:\\ASP.NET2\\Application\\Application.csproj"
+              "D:\\.NET\\ASP.NET.CAR\\Application\\Application.csproj": {
+                "projectPath": "D:\\.NET\\ASP.NET.CAR\\Application\\Application.csproj"
               },
-              "D:\\ASP.NET2\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\ASP.NET2\\Domain\\Domain.csproj"
+              "D:\\.NET\\ASP.NET.CAR\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\.NET\\ASP.NET.CAR\\Domain\\Domain.csproj"
               }
             }
           }
@@ -343,7 +331,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

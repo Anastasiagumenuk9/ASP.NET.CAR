@@ -31,6 +31,7 @@ namespace Persistence
         {
             _currentUserService = currentUserService;
             _dateTime = dateTime;
+            Database.EnsureCreated();
         }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }

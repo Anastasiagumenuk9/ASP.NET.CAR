@@ -46,7 +46,6 @@ namespace CAR.Controllers
             }
         }
 
-
         [AllowAnonymous]
         [HttpPost("GetToken")]
         public async Task GetToken(string email, string password, bool rememberMe)
@@ -60,7 +59,6 @@ namespace CAR.Controllers
             ));
         }
 
-
         public async Task<IActionResult> Login()
         {
             return View();
@@ -71,9 +69,15 @@ namespace CAR.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login([FromForm]LoginCommand command)
         {
-            var result = GetToken(command.Email, command.Password, command.RememberMe);
+            var identity = await _authenticateService.GetIdentity(command.Email, command.Password, command.RememberMe);
+            var token = _authenticateService.GenerateToken(identity);
 
-            return Ok(result);
+            if (token != null)
+            {
+                HttpContext.Session.SetString("JWToken", token);
+            }
+
+            return RedirectToAction("Index", "Home");
         }
 
         public async Task<IActionResult> Register()

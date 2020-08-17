@@ -22,6 +22,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.CookiePolicy;
+using Microsoft.EntityFrameworkCore;
+using System.Configuration;
+using Domain.Entities;
 
 namespace CAR
 {
@@ -41,12 +44,13 @@ namespace CAR
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddPersistence(Configuration);
             services.AddInfrastructure(Configuration);
             services.AddApplication();
             services.AddControllersWithViews();
-            services.AddPersistence(Configuration);
             services.AddRazorPages();
 
+            services.AddSession();
             services.AddHttpContextAccessor();
 
             services.AddScoped<ICurrentUserService, CurrentUserService>();
@@ -126,18 +130,25 @@ namespace CAR
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseCookiePolicy();
 
             app.UseRouting();
 
+            app.UseSession();
+
+            //Add JWToken to all incoming HTTP Request Header
+            app.Use(async (context, next) =>
+            {
+                var JWToken = context.Session.GetString("JWToken");
+                if (!string.IsNullOrEmpty(JWToken))
+                {
+                    context.Request.Headers.Add("Authorization", JWToken);
+                }
+                await next();
+            });
+
             app.UseAuthentication();
             app.UseAuthorization();
-
-            app.UseCookiePolicy(new CookiePolicyOptions
-            {
-                MinimumSameSitePolicy = SameSiteMode.Strict,
-                HttpOnly = HttpOnlyPolicy.Always,
-                Secure = CookieSecurePolicy.Always
-            });
 
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 

@@ -157,7 +157,7 @@ form {
     width: 100%;
     height: 100vh;
 
-    background: linear-gradient(rgb(207, 207, 207), rgb(255, 216, 206));
+    background: linear-gradient(rgb(207, 207, 207) 50%, rgb(255, 216, 206));
     -webkit-background-size: cover;
     background-size: cover;
 }
