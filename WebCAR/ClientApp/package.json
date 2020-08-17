@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "echo Starting... && ng serve",
+    "start": "ng serve",
     "build": "ng build",
     "build:ssr": "ng run WebCAR:server:dev",
     "test": "ng test",
