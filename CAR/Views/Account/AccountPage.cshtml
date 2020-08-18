@@ -12,7 +12,39 @@
 
         </div>
         <div class="col-10 shadow mb-5 bg-white rounded align-self-center acc-container">
-            @Model.UserName
+            <div class="row">
+                <div class="col-4">
+
+                </div>
+                <div class="col-4">
+
+                </div>
+                <div class="col-4 text-right">
+                    <img src="https://i.ibb.co/fvgdN9h/default-user.png" alt="..." class="img-thumbnail img-responsive" width="110" />
+                    <p class="text-uppercase mr-2">@Model.UserName</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+
+                </div>
+                <div class="col-4">
+
+                </div>
+                <div class="col-4 text-right">
+                    <ul class="nav navbar-nav" id="nav">
+                        <li class=" nav-item">
+                            <a class="nav-acc-link  nav-link active" asp-controller="Home" asp-action="Index">My Detail</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-acc-link nav-link  active" href="#">Make Rend</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-acc-link  nav-link  active" href="#">Settings</a>
+                        </li>
+                        </ul>
+</div>
+            </div>
         </div>
         <div class="col-1">
 

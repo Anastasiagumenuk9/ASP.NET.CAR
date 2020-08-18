@@ -88,7 +88,7 @@ namespace CAR.Controllers
                 HttpContext.Session.SetString("JWToken", result);
             }
 
-            return RedirectToAction("AccountPage", "Account");
+            return RedirectToAction("AccountPage", "Account", false);
         }
 
         public IActionResult LogOff()

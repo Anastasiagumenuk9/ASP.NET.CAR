@@ -35,7 +35,7 @@ namespace CAR.Controllers
         {
             var model = await Mediator.Send(new GetCarsListQuery());
 
-            return View(model);
+            return Ok(model);
         }
 
         public async Task<IActionResult> MyAccount()

@@ -12,3 +12,17 @@ D:\ASP.NET2\Application\obj\Debug\netcoreapp3.1\Application.csproj.CoreCompileIn
 D:\ASP.NET2\Application\obj\Debug\netcoreapp3.1\Application.csproj.CopyComplete
 D:\ASP.NET2\Application\obj\Debug\netcoreapp3.1\Application.dll
 D:\ASP.NET2\Application\obj\Debug\netcoreapp3.1\Application.pdb
+D:\.NET\ASP.NET.CAR\Application\bin\Debug\netcoreapp3.1\Application.deps.json
+D:\.NET\ASP.NET.CAR\Application\bin\Debug\netcoreapp3.1\Application.dll
+D:\.NET\ASP.NET.CAR\Application\bin\Debug\netcoreapp3.1\Application.pdb
+D:\.NET\ASP.NET.CAR\Application\bin\Debug\netcoreapp3.1\Domain.dll
+D:\.NET\ASP.NET.CAR\Application\bin\Debug\netcoreapp3.1\Domain.pdb
+D:\.NET\ASP.NET.CAR\Application\obj\Debug\netcoreapp3.1\Application.csprojAssemblyReference.cache
+D:\.NET\ASP.NET.CAR\Application\obj\Debug\netcoreapp3.1\Application.Properties.Resources.resources
+D:\.NET\ASP.NET.CAR\Application\obj\Debug\netcoreapp3.1\Application.csproj.GenerateResource.cache
+D:\.NET\ASP.NET.CAR\Application\obj\Debug\netcoreapp3.1\Application.AssemblyInfoInputs.cache
+D:\.NET\ASP.NET.CAR\Application\obj\Debug\netcoreapp3.1\Application.AssemblyInfo.cs
+D:\.NET\ASP.NET.CAR\Application\obj\Debug\netcoreapp3.1\Application.csproj.CoreCompileInputs.cache
+D:\.NET\ASP.NET.CAR\Application\obj\Debug\netcoreapp3.1\Application.csproj.CopyComplete
+D:\.NET\ASP.NET.CAR\Application\obj\Debug\netcoreapp3.1\Application.dll
+D:\.NET\ASP.NET.CAR\Application\obj\Debug\netcoreapp3.1\Application.pdb
