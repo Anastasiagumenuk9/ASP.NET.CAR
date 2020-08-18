@@ -1,6 +1,7 @@
 window.onload = function() {
     var button = document.getElementById("but");
     var div = document.getElementById("intro");
+    var logout = document.getElementById("log-out-message");
     
     button.onclick = function() {
 
@@ -23,6 +24,20 @@ window.onload = function() {
         }
     };
 };
+
+$(function () {
+    $("#log-off").click(function (e) {
+        if (confirm("Are you sure?")) {
+            console.log('Form is submitting');
+            $("#log-off").submit();
+        } else {
+            console.log('User clicked no.');
+        }
+    });
+});
+
+
+
 
 
 

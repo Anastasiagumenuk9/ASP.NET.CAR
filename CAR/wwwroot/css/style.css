@@ -30,6 +30,22 @@ a:-webkit-any-link {
     color: #96c0ff !important;
 }
 
+.acc-container {
+    background: white;
+    padding: .8em;
+    height: 400px;
+}
+
+a:not([href]) {
+    color: white;
+    text-decoration:solid;
+}
+
+a:not([href]):hover{
+    color: white;
+    text-decoration: solid;
+}
+
 /* Button */
 .btn {
     display: inline-block;

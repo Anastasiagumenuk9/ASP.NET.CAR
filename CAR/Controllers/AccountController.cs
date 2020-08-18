@@ -14,6 +14,8 @@ using Newtonsoft.Json;
 using Microsoft.AspNetCore.Http;
 using Application.Account.Command.LogIn;
 using Microsoft.AspNetCore.Razor.Language.Intermediate;
+using Application.Account.Queries.GetAccountDetails;
+using IdentityServer4.Extensions;
 
 namespace CAR.Controllers
 {
@@ -31,6 +33,16 @@ namespace CAR.Controllers
             _authenticateService = authenticateService;
             _userManager = userManager;
             _applicationUserService = applicationUserService;
+        }
+
+        [Authorize]
+        public async Task<ActionResult<AccountDetailVm>> AccountPage()
+        {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+
+            var model = await Mediator.Send(new GetAccountDetailQuery {Id = user.Id});
+
+            return View(model);
         }
 
         [AcceptVerbs("Get", "Post")]
@@ -69,15 +81,20 @@ namespace CAR.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login([FromForm]LoginCommand command)
         {
-            var identity = await _authenticateService.GetIdentity(command.Email, command.Password, command.RememberMe);
-            var token = _authenticateService.GenerateToken(identity);
+            var result = await Mediator.Send(command);
 
-            if (token != null)
+            if (result != null)
             {
-                HttpContext.Session.SetString("JWToken", token);
+                HttpContext.Session.SetString("JWToken", result);
             }
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("AccountPage", "Account");
+        }
+
+        public IActionResult LogOff()
+        {
+            HttpContext.Session.Clear();
+            return Redirect("~/Home/Index");
         }
 
         public async Task<IActionResult> Register()

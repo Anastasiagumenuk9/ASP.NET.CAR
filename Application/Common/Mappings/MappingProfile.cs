@@ -1,4 +1,5 @@
-﻿using Application.Cars.Queries.GetCarsList;
+﻿using Application.Account.Queries.GetAccountDetails;
+using Application.Cars.Queries.GetCarsList;
 using AutoMapper;
 using Domain.Entities;
 using System;
@@ -15,6 +16,7 @@ namespace Application.Common.Mappings
         {
             ApplyMappingsFromAssembly(Assembly.GetExecutingAssembly());
             CarDto.Mapping(this);
+            AccountDetailVm.Mapping(this);
         }
 
         private void ApplyMappingsFromAssembly(Assembly assembly)
