@@ -328,6 +328,15 @@ margin-right: 2rem;
     transition: opacity .1s linear;
 }
 
+.nav-acc-link:hover {
+    color: #ffdcdc;
+}
+
+.nav-acc-link:hover:after,
+.nav-acc-link.active:after {
+    opacity: 1;
+}
+
 .nav__link {
     vertical-align: top;
     margin: 0 5px;
