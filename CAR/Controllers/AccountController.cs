@@ -39,8 +39,16 @@ namespace CAR.Controllers
         public async Task<ActionResult<AccountDetailVm>> AccountPage()
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
-
             var model = await Mediator.Send(new GetAccountDetailQuery {Id = user.Id});
+
+            return View(model);
+        }
+
+        [Authorize]
+        public async Task<ActionResult<AccountDetailVm>> AccountSettings()
+        {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var model = await Mediator.Send(new GetAccountDetailQuery { Id = user.Id });
 
             return View(model);
         }
@@ -58,12 +66,20 @@ namespace CAR.Controllers
             }
         }
 
+        [Authorize]
+        public async Task<ActionResult<AccountDetailVm>> GetAccountDetail()
+        {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var model = await Mediator.Send(new GetAccountDetailQuery { Id = user.Id });
+
+            return View(model);
+        }
+
         [AllowAnonymous]
         [HttpPost("GetToken")]
         public async Task GetToken(string email, string password, bool rememberMe)
         {
             var identity = await _authenticateService.GetIdentity(email, password, rememberMe);
-
             var token = _authenticateService.GenerateToken(identity);
 
             await Response.WriteAsync(JsonConvert.SerializeObject("Token : " + token,

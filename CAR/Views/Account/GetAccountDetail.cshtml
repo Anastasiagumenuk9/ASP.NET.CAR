@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "GetAccountDetail";
+}
+<div class="intro-login">
+    <div class="container-fluid" id="intro">
+        <div class="intro__inner" id="inner"> </div>
+    </div>
+    <div class="row container-fluid align-self-center align-bottom mt-5">
+        <div class="col-1">
+
+        </div>
+        <div class="col-10 shadow mb-5 bg-white rounded align-self-center acc-container p-md-5 unselectable">
+            <div class="row">
+                <div class="col-4 text-center">
+                    <a>
+                        <svg width="5em" height="5em" viewBox="0 0 16 16" class="bi bi-person" fill="lightgrey" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M13 14s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002.002zM3.022 13h9.956a.274.274 0 0 0 .014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 0 0 .022.004zm9.974.056v-.002.002zM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                        </svg>
+                    </a>
+                    <p class="acc">@Model.Email</p>
+                </div>
+                <div class="col-4 text-left border-left">
+                    <p class="border-bottom">Name : @Model.FirstName</p>
+                    <p class="border-bottom">Surame : @Model.LastName</p>
+                    <p class="border-bottom">City : @Model.City</p>
+                </div>
+                <div class="col-4 text-left">
+                    <p class="border-bottom">Phone : @Model.PhoneNumber</p>
+                    <p class="border-bottom">Postal Code : @Model.PostalCode</p>
+                    <p class="border-bottom">Street : @Model.Street</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
