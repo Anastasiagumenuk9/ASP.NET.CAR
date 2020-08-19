@@ -32,8 +32,7 @@ a:-webkit-any-link {
 
 .acc-container {
     background: white;
-    padding: .8em;
-    height: 400px;
+    padding: 1em;
 }
 
 a:not([href]) {
@@ -251,6 +250,11 @@ li {
     height: auto;
 }
 
+.material-icons {
+    font-size: 8em;
+    color:lightgrey;
+}
+
 @media (max-width: 1400px) {
 .login-block {margin-top: 5em;}
 }
@@ -311,22 +315,20 @@ margin-right: 2rem;
     color: grey;
 }
 
-.nav-acc-link:after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 1.5px;
-
-    background-color: #ffdcdc;
-    opacity: 0;
-
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1;
-
-    transition: opacity .1s linear;
-}
+    .nav-acc-link:after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 1.5px;
+        color: grey;
+        background-color: #ffdcdc;
+        opacity: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1;
+        transition: opacity .1s linear;
+    }
 
 .nav-acc-link:hover {
     color: #ffdcdc;
@@ -334,7 +336,7 @@ margin-right: 2rem;
 
 .nav-acc-link:hover:after,
 .nav-acc-link.active:after {
-    opacity: 1;
+    opacity: 0;
 }
 
 .nav__link {
