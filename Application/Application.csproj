@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <Folder Include="Account\Command\DeleteAccount\" />
-    <Folder Include="Account\Command\UpdateAccount\" />
     <Folder Include="Account\Queries\GetAccountsList\" />
     <Folder Include="CarTypes\Commands\" />
     <Folder Include="CarTypes\Queries\" />
