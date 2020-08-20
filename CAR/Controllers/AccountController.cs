@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Razor.Language.Intermediate;
 using Application.Account.Queries.GetAccountDetails;
 using IdentityServer4.Extensions;
 using Application.Account.Command.UpdateAccount;
+using CAR.Models;
 
 namespace CAR.Controllers
 {
@@ -54,12 +55,12 @@ namespace CAR.Controllers
             return View(model);
         }
 
-        [HttpPost]
+        [HttpPut]
         [Authorize]
         public async Task<IActionResult> AccountUpdate([FromForm] UpdateUserCommand command)
         {
             var result = await Mediator.Send(command);
-            return Ok(result);
+            return NoContent();
         }
 
         [AcceptVerbs("Get", "Post")]
