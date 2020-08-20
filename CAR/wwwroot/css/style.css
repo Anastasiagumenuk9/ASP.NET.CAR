@@ -141,6 +141,16 @@ form {
     font-size: .95em;
 }
 
+.icon-input {
+    position: relative;
+    z-index: 1;
+    float: right;
+}
+
+.icon-input + input {
+    padding-right: 26px;
+}
+
 .input-validation-error {
     border: 1px solid rgb(247 173 180 / 26%);
     box-shadow: 0 0 10px rgb(249 111 121 / 58%);
@@ -157,8 +167,13 @@ form {
     color: #495057;
     background-color: #fff;
     background-clip: padding-box;
-    border-bottom: 1px solid #ced4da;
+    border-bottom: 1px solid #ced4da !important;
     transition: border-color .15s
+}
+
+.input-set:focus {
+    outline: none;
+    border-bottom: 1px solid #ffdcdc !important;
 }
 
 /* Intro */
