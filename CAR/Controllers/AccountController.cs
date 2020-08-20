@@ -46,6 +46,7 @@ namespace CAR.Controllers
             return View(model);
         }
 
+        [HttpGet]
         [Authorize]
         public async Task<ActionResult<AccountDetailVm>> AccountSettings()
         {
@@ -57,7 +58,7 @@ namespace CAR.Controllers
 
         [HttpPut]
         [Authorize]
-        public async Task<IActionResult> AccountUpdate([FromForm] UpdateUserCommand command)
+        public async Task<IActionResult> AccountSettings([FromForm] UpdateUserCommand command)
         {
             var result = await Mediator.Send(command);
             return NoContent();

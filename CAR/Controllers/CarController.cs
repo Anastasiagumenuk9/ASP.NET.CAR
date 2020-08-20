@@ -3,21 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Application.Cars.Queries.GetCarsList;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CAR.Controllers
 {
-    public class CarController : BaseController
+    public class CarController : Controller
     {
-        [HttpGet]
-        [Authorize]
-        public async Task<ActionResult<CarsListVm>> GetAll()
-        {
-            var vm = await Mediator.Send(new GetCarsListQuery());
+        private IMediator _mediator;
+        protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
 
-            return base.Ok(vm);
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public async Task<ActionResult<CarsListVm>> GetCars()
+        {
+            var model = await Mediator.Send(new GetCarsListQuery());
+
+            return View(model);
         }
     }
 }
