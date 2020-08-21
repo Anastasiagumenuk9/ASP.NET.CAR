@@ -10,6 +10,7 @@ D:\ASP.NET2\Domain\obj\Debug\netcoreapp3.1\Domain.csproj.CoreCompileInputs.cache
 D:\.NET\ASP.NET.CAR\Domain\bin\Debug\netcoreapp3.1\Domain.deps.json
 D:\.NET\ASP.NET.CAR\Domain\bin\Debug\netcoreapp3.1\Domain.dll
 D:\.NET\ASP.NET.CAR\Domain\bin\Debug\netcoreapp3.1\Domain.pdb
+D:\.NET\ASP.NET.CAR\Domain\obj\Debug\netcoreapp3.1\Domain.csprojAssemblyReference.cache
 D:\.NET\ASP.NET.CAR\Domain\obj\Debug\netcoreapp3.1\Domain.AssemblyInfoInputs.cache
 D:\.NET\ASP.NET.CAR\Domain\obj\Debug\netcoreapp3.1\Domain.AssemblyInfo.cs
 D:\.NET\ASP.NET.CAR\Domain\obj\Debug\netcoreapp3.1\Domain.csproj.CoreCompileInputs.cache

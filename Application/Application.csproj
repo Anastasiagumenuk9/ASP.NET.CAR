@@ -31,7 +31,6 @@
     <Folder Include="Locations\Commands\" />
     <Folder Include="Locations\Queries\" />
     <Folder Include="PhotosCar\Commands\" />
-    <Folder Include="PhotosCar\Queries\" />
     <Folder Include="Rents\Commands\" />
     <Folder Include="Rents\Queries\" />
     <Folder Include="Transmissions\Commands\" />

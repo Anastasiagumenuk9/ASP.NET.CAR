@@ -3,6 +3,7 @@ using AutoMapper;
 using Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Application.Cars.Queries.GetCarsList
@@ -30,6 +31,8 @@ namespace Application.Cars.Queries.GetCarsList
         public Guid CarTypeId { get; set; }
 
         public Guid TransmissionId { get; set; }
+
+        public byte []Photo { get; set; }
 
         public static void Mapping(Profile profile)
         {

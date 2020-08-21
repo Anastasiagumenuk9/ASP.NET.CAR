@@ -204,6 +204,16 @@ form {
     background-size: cover;
 }
 
+.intro-car {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    background: linear-gradient(rgb(207, 207, 207) 50%, rgb(255, 216, 206));
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
 .intro__title {
     color: #fff;
     font-size:  10vw;

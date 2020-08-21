@@ -1,4 +1,5 @@
 ﻿using Application.Common.Interfaces;
+using Application.PhotosCar.Queries.GetPhotosList;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Domain.Entities;
@@ -27,14 +28,39 @@ namespace Application.Cars.Queries.GetCarsList
 
         public async Task<CarsListVm> Handle(GetCarsListQuery request, CancellationToken cancellationToken)
         {
+            var photos = await _context.PhotosCar
+                .ProjectTo<PhotoDto>(_mapper.ConfigurationProvider)
+                .OrderBy(p => p.Name)
+                .ToListAsync(cancellationToken);
+
             var cars = await _context.Cars
                 .ProjectTo<CarDto>(_mapper.ConfigurationProvider)
                 .OrderBy(p => p.Name)
                 .ToListAsync(cancellationToken);
 
+            var result = cars.Join(photos,
+                p => p.Id,
+                t => t.CarId,
+                (p, t) => new CarDto
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    ShortDesc = p.ShortDesc,
+                    Price = p.Price,
+                    Run = p.Run,
+                    SeetsCount = p.SeetsCount,
+                    Available = p.Available,
+                    Conditioner = p.Conditioner,
+                    ColorId = p.ColorId,
+                    CarTypeId = p.CarTypeId,
+                    TransmissionId = p.TransmissionId,
+                    Photo = t.Photo
+
+                }).ToList<CarDto>();
+
             var vm = new CarsListVm
             {
-                Cars = cars,
+                Cars = result,
                 CreateEnabled = true // TODO: Set based on user permissions.
             };
 

@@ -1,9 +1,9 @@
-﻿
+﻿@model Application.Cars.Queries.GetCarsList.CarsListVm
 @{
     ViewData["Title"] = "GetCars";
 }
 
-<div class="intro-login">
+<div class="intro-car">
     <div class="container-fluid" id="intro">
         <div class="intro__inner" id="inner"> </div>
     </div>
@@ -12,7 +12,13 @@
 
         </div>
         <div class="col-10 shadow mb-5 bg-white rounded align-self-center acc-container p-md-5 unselectable">
-           
+            @foreach (var car in Model.Cars)
+            {
+                <p>@car.Name</p>
+                @Html.Raw("<img style='width:100px; height:60px;' src=\"data:image/jpeg;base64,"
+                                            + Convert.ToBase64String(car.Photo) + "\" />")
+
+            }
         </div>
     </div>
 </div>

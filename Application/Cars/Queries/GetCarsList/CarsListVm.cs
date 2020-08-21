@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Application.PhotosCar.Queries.GetPhotosList;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
