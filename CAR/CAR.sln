@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "..\Infras
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "..\Persistence\Persistence.csproj", "{631FF8F4-D253-4945-B08B-621CCB632A3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCAR", "..\WebCAR\WebCAR.csproj", "{434E4C89-7036-4936-A729-89A59FEFB493}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebCAR", "..\WebCAR\WebCAR.csproj", "{434E4C89-7036-4936-A729-89A59FEFB493}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

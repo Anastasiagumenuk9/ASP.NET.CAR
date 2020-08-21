@@ -21,11 +21,9 @@
     <Folder Include="Account\Command\DeleteAccount\" />
     <Folder Include="Account\Queries\GetAccountsList\" />
     <Folder Include="CarTypes\Commands\" />
-    <Folder Include="CarTypes\Queries\" />
     <Folder Include="Cities\Commands\" />
     <Folder Include="Cities\Queries\" />
     <Folder Include="Colors\Commands\" />
-    <Folder Include="Colors\Queries\" />
     <Folder Include="LocationsCars\Commands\" />
     <Folder Include="LocationsCars\Queries\" />
     <Folder Include="Locations\Commands\" />
@@ -34,7 +32,6 @@
     <Folder Include="Rents\Commands\" />
     <Folder Include="Rents\Queries\" />
     <Folder Include="Transmissions\Commands\" />
-    <Folder Include="Transmissions\Queries\" />
   </ItemGroup>
 
   <ItemGroup>
