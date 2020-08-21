@@ -6,6 +6,11 @@ using Application.Cars.Queries.GetCarsList;
 using Microsoft.Extensions.DependencyInjection;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Application.Common.Interfaces;
+using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Application.Common.Pagination;
+using Persistence;
 
 namespace CAR.Controllers
 {
@@ -19,9 +24,9 @@ namespace CAR.Controllers
             return View();
         }
 
-        public async Task<ActionResult<CarsListVm>> GetCars()
+        public async Task<ActionResult<CarsListVm>> GetCars(int page = 1)
         {
-            var model = await Mediator.Send(new GetCarsListQuery());
+            var model = await Mediator.Send(new GetCarsListQuery(page,3));
 
             return View(model);
         }

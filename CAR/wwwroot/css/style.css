@@ -85,8 +85,12 @@ a:not([href]):hover{
     border: 3px solid #ffdcdc;
 }
 
+.btn-width{
+    width:auto !important;
+}
+
 button:focus {
-    outline: none; 
+    outline: none;
 }
 
 .capital {

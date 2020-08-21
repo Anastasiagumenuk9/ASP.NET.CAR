@@ -1,4 +1,5 @@
 ﻿using Application.Common.Interfaces;
+using Application.Common.Pagination;
 using Application.PhotosCar.Queries.GetPhotosList;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
@@ -58,10 +59,15 @@ namespace Application.Cars.Queries.GetCarsList
 
                 }).ToList<CarDto>();
 
+            var count = result.Count();
+            var items = result.Skip((request._page - 1) * request._pageSize).Take(request._pageSize).ToList();
+
+            PageViewModel pageViewModel = new PageViewModel(count, request._page, request._pageSize);
             var vm = new CarsListVm
             {
-                Cars = result,
-                CreateEnabled = true // TODO: Set based on user permissions.
+                PageViewModel = pageViewModel,
+                Cars = (IList<CarDto>)items,
+                CreateEnabled = true
             };
 
             return vm;

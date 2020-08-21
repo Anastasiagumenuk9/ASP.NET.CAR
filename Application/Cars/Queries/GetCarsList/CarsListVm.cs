@@ -1,4 +1,5 @@
-﻿using Application.PhotosCar.Queries.GetPhotosList;
+﻿using Application.Common.Pagination;
+using Application.PhotosCar.Queries.GetPhotosList;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,5 +11,7 @@ namespace Application.Cars.Queries.GetCarsList
         public IList<CarDto> Cars { get; set; }
 
         public bool CreateEnabled { get; set; }
+
+        public PageViewModel PageViewModel { get; set; }
     }
 }
