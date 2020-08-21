@@ -1,6 +1,9 @@
-﻿using Application.Common.Interfaces;
+﻿using Application.CarTypes.Queries.GetCarTypesList;
+using Application.Colors.Queries.GetColorsList;
+using Application.Common.Interfaces;
 using Application.Common.Pagination;
 using Application.PhotosCar.Queries.GetPhotosList;
+using Application.Transmissions.Queries.GetTransmissionsList;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Domain.Entities;
@@ -29,8 +32,23 @@ namespace Application.Cars.Queries.GetCarsList
 
         public async Task<CarsListVm> Handle(GetCarsListQuery request, CancellationToken cancellationToken)
         {
+            var carTypes = await _context.CarTypes
+                .ProjectTo<CarTypeDto>(_mapper.ConfigurationProvider)
+                .OrderBy(p => p.Name)
+                .ToListAsync(cancellationToken);
+
+            var colors = await _context.Colors
+                .ProjectTo<ColorDto>(_mapper.ConfigurationProvider)
+                .OrderBy(p => p.Name)
+                .ToListAsync(cancellationToken);
+
             var photos = await _context.PhotosCar
                 .ProjectTo<PhotoDto>(_mapper.ConfigurationProvider)
+                .OrderBy(p => p.Name)
+                .ToListAsync(cancellationToken);
+
+            var transmissions = await _context.Transmissions
+                .ProjectTo<TransmissionDto>(_mapper.ConfigurationProvider)
                 .OrderBy(p => p.Name)
                 .ToListAsync(cancellationToken);
 
@@ -57,6 +75,64 @@ namespace Application.Cars.Queries.GetCarsList
                     TransmissionId = p.TransmissionId,
                     Photo = t.Photo
 
+                }).Join(colors,
+                p => p.ColorId,
+                t => t.Id,
+                (p, t) => new CarDto
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    ShortDesc = p.ShortDesc,
+                    Price = p.Price,
+                    Run = p.Run,
+                    SeetsCount = p.SeetsCount,
+                    Available = p.Available,
+                    Conditioner = p.Conditioner,
+                    ColorId = p.ColorId,
+                    CarTypeId = p.CarTypeId,
+                    TransmissionId = p.TransmissionId,
+                    Photo = p.Photo,
+                    Color = t.Name
+
+                }).Join(carTypes,
+                p => p.CarTypeId,
+                t => t.Id,
+                (p, t) => new CarDto
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    ShortDesc = p.ShortDesc,
+                    Price = p.Price,
+                    Run = p.Run,
+                    SeetsCount = p.SeetsCount,
+                    Available = p.Available,
+                    Conditioner = p.Conditioner,
+                    ColorId = p.ColorId,
+                    CarTypeId = p.CarTypeId,
+                    TransmissionId = p.TransmissionId,
+                    Photo = p.Photo,
+                    Color = p.Color,
+                    CarType = t.Name
+                }).Join(transmissions,
+                p => p.TransmissionId,
+                t => t.Id,
+                (p, t) => new CarDto
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    ShortDesc = p.ShortDesc,
+                    Price = p.Price,
+                    Run = p.Run,
+                    SeetsCount = p.SeetsCount,
+                    Available = p.Available,
+                    Conditioner = p.Conditioner,
+                    ColorId = p.ColorId,
+                    CarTypeId = p.CarTypeId,
+                    TransmissionId = p.TransmissionId,
+                    Photo = p.Photo,
+                    Color = p.Color,
+                    CarType = p.CarType,
+                    Transmission = t.Name
                 }).ToList<CarDto>();
 
             var count = result.Count();

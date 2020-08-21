@@ -34,6 +34,12 @@ namespace Application.Cars.Queries.GetCarsList
 
         public byte []Photo { get; set; }
 
+        public string CarType { get; set; }
+
+        public string Color { get; set; }
+
+        public string Transmission { get; set; }
+
         public static void Mapping(Profile profile)
         {
             profile.CreateMap<Car, CarDto>()
