@@ -29,6 +29,7 @@ namespace Application.Cars.Commands.CreateCar
                 SeetsCount = request.SeetsCount,
                 Available = request.Available,
                 Conditioner = request.Conditioner,
+                TankVolume = request.TankVolume,
                 ColorId = request.ColorId,
                 CarTypeId = request.CarTypeId,
                 TransmissionId = request.TransmissionId

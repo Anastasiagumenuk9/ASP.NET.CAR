@@ -145,6 +145,11 @@ form {
     font-size: .95em;
 }
 
+ion-icon {
+    color: grey;
+    font-size: 1.2rem;
+}
+
 .icon-input {
     position: absolute;
     z-index: 1;
@@ -487,6 +492,10 @@ margin-right: 2rem;
 .slider__num {
     font-size: 24px;
     font-weight: 700;
+}
+
+.sm-font{
+    font-size: .55em;
 }
 
 .text-uppercase {

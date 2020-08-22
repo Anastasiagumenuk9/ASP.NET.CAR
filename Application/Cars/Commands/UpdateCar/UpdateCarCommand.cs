@@ -19,6 +19,8 @@ namespace Application.Cars.Commands.UpdateCar
 
         public ushort SeetsCount { get; set; }
 
+        public double TankVolume { get; set; }
+
         public bool Conditioner { get; set; }
 
         public Guid ColorId { get; set; }

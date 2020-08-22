@@ -17,6 +17,7 @@ namespace Persistence
         {
             services.AddDbContext<CarDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+               
 
             services.AddIdentity<ApplicationUser, ApplicationRole>(
                 options => options.SignIn.RequireConfirmedAccount = false)

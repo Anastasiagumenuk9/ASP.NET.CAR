@@ -12,12 +12,12 @@ namespace WebCAR.Controllers
     [ApiController]
     public class CarController : BaseController
     {
-        [HttpGet]
-        public async Task<ActionResult<CarsListVm>> GetAll()
-        {
-            var vm = await Mediator.Send(new GetCarsListQuery());
+        //[HttpGet]
+        //public async Task<ActionResult<CarsListVm>> GetAll()
+        //{
+        //    var vm = await Mediator.Send(new GetCarsListQuery());
 
-            return base.Ok(vm);
-        }
+        //    return base.Ok(vm);
+        //}
     }
 }

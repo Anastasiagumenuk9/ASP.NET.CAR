@@ -24,6 +24,8 @@ namespace Domain.Entities
 
         public ushort SeetsCount { get; set; }
 
+        public double TankVolume { get; set; }
+
         public bool Available { get; set; }
 
         public bool Conditioner { get; set; }

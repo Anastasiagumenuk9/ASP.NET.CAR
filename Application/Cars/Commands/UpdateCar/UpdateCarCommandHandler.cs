@@ -34,6 +34,7 @@ namespace Application.Cars.Commands.UpdateCar
             entity.Run = request.Run;
             entity.SeetsCount = request.SeetsCount;
             entity.Conditioner = request.Conditioner;
+            entity.TankVolume = request.TankVolume;
             entity.ColorId = request.ColorId;
             entity.CarTypeId = request.CarTypeId;
             entity.TransmissionId = request.TransmissionId;

@@ -13,20 +13,74 @@
         </div>
         <div class="col-10 shadow mt-5 bg-white rounded align-self-center acc-container p-md-5 unselectable">
             @foreach (var car in Model.Cars)
-             {
-                <div class="row">
-                    <div class="col-md-4 col-sm-12 col-xs-12 text-center">
-                        <p>@car.Name</p>
-                        @Html.Raw("<img style='width:200px; height:120px;' src=\"data:image/jpeg;base64,"
-                                                    + Convert.ToBase64String(car.Photo) + "\" />")
+            {
+                if (@car.Available == true)
+                {
+                    <div class="row">
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <p class="text-uppercase font-weight-bold">@car.Name</p>
+                            @Html.Raw("<img style='width:200px; height:120px;' src=\"data:image/jpeg;base64,"
+                                                        + Convert.ToBase64String(car.Photo) + "\" />")
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="row">
+                                <div class="col-2">
+                                    <div class="row">
+                                        <ion-icon name="speedometer"></ion-icon>
+                                    </div>
+                                    <div class="row">
+                                        <p class="sm-font">@car.Run</p>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="row">
+                                        <ion-icon name="color-fill"></ion-icon>
+                                    </div>
+                                    <div class="row">
+                                        <p class="sm-font">@car.TankVolume L/100km</p>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="row">
+                                        @if (@car.Conditioner == true)
+                                        {
+                                            <ion-icon name="snow"></ion-icon>
+                                        }
+                                    </div>
+                                    <div class="row"></div>
+                                </div>                            
+                            </div>  
+                            <div class="row">
+                                <p>Color</p>
+                                <div> : @car.Color</div>
+                            </div>
+                            <div class="row">
+                                <p>Car Type</p>
+                                <div> : @car.CarType</div>
+                            </div>
+                            <div class="row">
+                                <p>Transmission</p>
+                                <div> : @car.Transmission</div>
+                            </div>                     
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="row">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <td>@car.Price</td>
+                                            <td>@car.Price</td>
+                                            <td>@car.Price</td>
+                                            <td>@car.Price</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-8 col-sm-12 col-xs-12">
-                       <p>@car.Color</p>
-                       <p>@car.CarType</p>
-                       <p>@car.Transmission</p>
-                    </div>
-                </div>
-             }
+                    <hr />
+                }
+            }
             <div class="row text-right">
                 <div class="col-md-4"></div>
                 <div class="col-md-4"></div>
@@ -48,7 +102,7 @@
                             Next
                             <i class=""></i>
                         </a>
-                      }
+                    }
                 </div>
             </div>
         </div>

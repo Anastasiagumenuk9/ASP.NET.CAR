@@ -22,6 +22,8 @@ namespace Application.Cars.Queries.GetCarsList
 
         public ushort SeetsCount { get; set; }
 
+        public double TankVolume { get; set; }
+
         public bool Available { get; set; }
 
         public bool Conditioner { get; set; }
@@ -51,6 +53,7 @@ namespace Application.Cars.Queries.GetCarsList
                 .ForMember(d => d.SeetsCount, opt => opt.MapFrom(s => s.SeetsCount))
                 .ForMember(d => d.Available, opt => opt.MapFrom(s => s.Available))
                 .ForMember(d => d.Conditioner, opt => opt.MapFrom(s => s.Conditioner))
+                .ForMember(d => d.TankVolume, opt => opt.MapFrom(s => s.TankVolume))
                 .ForMember(d => d.ColorId, opt => opt.MapFrom(s => s.ColorId))
                 .ForMember(d => d.CarTypeId, opt => opt.MapFrom(s => s.CarTypeId))
                 .ForMember(d => d.TransmissionId, opt => opt.MapFrom(s => s.TransmissionId))
