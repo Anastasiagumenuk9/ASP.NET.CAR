@@ -18,6 +18,12 @@ namespace Application.Cars.Queries.GetCarsList
 
         public ushort Price { get; set; }
 
+        public ushort PriceSecond { get; set; }
+
+        public ushort PriceThird { get; set; }
+
+        public ushort PriceFourth { get; set; }
+
         public ushort? Run { get; set; }
 
         public ushort SeetsCount { get; set; }
@@ -49,6 +55,9 @@ namespace Application.Cars.Queries.GetCarsList
                 .ForMember(d => d.Name, opt => opt.MapFrom(s => s.Name))
                 .ForMember(d => d.ShortDesc, opt => opt.MapFrom(s => s.ShortDesc))
                 .ForMember(d => d.Price, opt => opt.MapFrom(s => s.Price))
+                .ForMember(d => d.PriceSecond, opt => opt.MapFrom(s => s.PriceSecond))
+                .ForMember(d => d.PriceThird, opt => opt.MapFrom(s => s.PriceThird))
+                .ForMember(d => d.PriceFourth, opt => opt.MapFrom(s => s.PriceFourth))
                 .ForMember(d => d.Run, opt => opt.MapFrom(s => s.Run))
                 .ForMember(d => d.SeetsCount, opt => opt.MapFrom(s => s.SeetsCount))
                 .ForMember(d => d.Available, opt => opt.MapFrom(s => s.Available))

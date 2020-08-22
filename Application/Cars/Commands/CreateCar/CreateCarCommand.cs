@@ -14,6 +14,12 @@ namespace Application.Cars.Commands.CreateCar
 
         public ushort Price { get; set; }
 
+        public ushort PriceSecond { get; set; }
+
+        public ushort PriceThird { get; set; }
+
+        public ushort PriceFourth { get; set; }
+
         public ushort? Run { get; set; }
 
         public ushort SeetsCount { get; set; }

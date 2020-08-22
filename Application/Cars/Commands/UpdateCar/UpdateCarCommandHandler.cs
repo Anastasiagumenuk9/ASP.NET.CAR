@@ -31,6 +31,9 @@ namespace Application.Cars.Commands.UpdateCar
             entity.Name = request.Name;
             entity.ShortDesc = request.ShortDesc;
             entity.Price = request.Price;
+            entity.PriceSecond = request.PriceSecond;
+            entity.PriceThird = request.PriceThird;
+            entity.PriceFourth = request.PriceFourth;
             entity.Run = request.Run;
             entity.SeetsCount = request.SeetsCount;
             entity.Conditioner = request.Conditioner;
