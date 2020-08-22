@@ -498,8 +498,16 @@ margin-right: 2rem;
     font-size: .55em;
 }
 
+.table-bordered th {
+    border: none;
+}
+
 .text-uppercase {
     padding: 0.2em;
+}
+
+th {
+    font-weight: 100;
 }
 
 .vtop {
