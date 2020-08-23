@@ -13,10 +13,6 @@ namespace Application.Cities.Queries.GetCitiesList
 
         public string Name { get; set; }
 
-        public Guid LocationId { get; set; }
-
-        public string LocationName { get; set; }
-
         public static void Mapping(Profile profile)
         {
             profile.CreateMap<City, CityDto>()

@@ -31,22 +31,6 @@ namespace Application.Cities.Queries.GetCitiesList
                 .OrderBy(p => p.Name)
                 .ToListAsync(cancellationToken);
 
-            var locations = await _context.Locations
-                .ProjectTo<LocationDto>(_mapper.ConfigurationProvider)
-                .OrderBy(p => p.Name)
-                .ToListAsync(cancellationToken);
-
-            var result = cities.Join(locations,
-               p => p.Id,
-               t => t.CityId,
-               (p, t) => new CityDto
-               {
-                   Id = p.Id,
-                   Name = p.Name,
-                   LocationId = t.Id,
-                   LocationName = t.Name
-               });
-
             var vm = new CitiesListVm
                 {
                     Cities = cities,

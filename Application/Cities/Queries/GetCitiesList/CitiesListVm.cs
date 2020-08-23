@@ -9,8 +9,6 @@ namespace Application.Cities.Queries.GetCitiesList
     {
         public IList<CityDto> Cities { get; set; }
 
-        public IList<LocationDto> Locations { get; set; }
-
         public bool CreateEnabled { get; set; }
     }
 }
