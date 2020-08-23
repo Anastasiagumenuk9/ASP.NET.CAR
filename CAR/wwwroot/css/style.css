@@ -122,6 +122,11 @@ button:focus {
     top: 0;
 }
 
+.dropdown-menu {
+    font-size: .8rem;
+    border: none;
+}
+
 .fa {
     color: white;
 }

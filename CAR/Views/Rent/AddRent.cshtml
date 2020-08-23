@@ -14,14 +14,31 @@
         <div class="col-10 shadow mb-5 bg-white rounded align-self-center acc-container p-md-5 unselectable">
             <div class="row">
                 <div class="col-4">
-                    <div class="btn-group">
-                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Small button
-                        </button>
-                        <div class="dropdown-menu">
-                           
-                        </div>
-                    </div>
+                    @*<div class="dropdown">
+            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
+                Choose City
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                @foreach (var city in Model.Cities)
+                {
+                    <p class="dropdown-item">@city.Name</p>
+                }
+            </div>
+        </div>*@
+                    <select class="selectpicker" data-style="btn-primary" multiple data-max-options="2">
+                        @foreach (var city in Model.Cities)
+                        {
+                            <option>@city.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-4">
+                    <select class="selectpicker" data-style="btn-primary" multiple data-max-options="2">
+                        @foreach (var city in Model.Cities)
+                        {
+                            <option>@city.LocationName</option>
+                        }
+                    </select>
                 </div>
             </div>
         </div>

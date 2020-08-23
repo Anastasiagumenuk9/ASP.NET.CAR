@@ -6,6 +6,8 @@ using Application.Rents.Commands.CreateRent;
 using Microsoft.Extensions.DependencyInjection;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Application.Cities.Queries.GetCitiesList;
+using Application.Locations.Queries.GetLocationsListById;
 
 namespace CAR.Controllers
 {
@@ -19,9 +21,12 @@ namespace CAR.Controllers
             return View();
         }
 
-        public async Task<IActionResult> AddRent()
+        [HttpGet]
+        public async Task<ActionResult<CitiesListVm>> AddRent()
         {
-            return View();
+            var model = await Mediator.Send(new GetCitiesListQuery());
+
+            return View(model);
         }
 
         [HttpPost]

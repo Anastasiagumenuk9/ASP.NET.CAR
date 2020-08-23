@@ -1,7 +1,9 @@
 ﻿using Application.Account.Queries.GetAccountDetails;
 using Application.Cars.Queries.GetCarsList;
 using Application.CarTypes.Queries.GetCarTypesList;
+using Application.Cities.Queries.GetCitiesList;
 using Application.Colors.Queries.GetColorsList;
+using Application.Locations.Queries.GetLocationsListById;
 using Application.PhotosCar.Queries.GetPhotosList;
 using Application.Transmissions.Queries.GetTransmissionsList;
 using AutoMapper;
@@ -25,6 +27,8 @@ namespace Application.Common.Mappings
             TransmissionDto.Mapping(this);
             CarTypeDto.Mapping(this);
             ColorDto.Mapping(this);
+            CityDto.Mapping(this);
+            LocationDto.Mapping(this);
         }
 
         private void ApplyMappingsFromAssembly(Assembly assembly)
