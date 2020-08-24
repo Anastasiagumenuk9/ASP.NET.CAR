@@ -15,30 +15,42 @@
             <div class="row">
                 <div class="col-4">
                     @*<div class="dropdown">
-            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
-                Choose City
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                @foreach (var city in Model.Cities)
-                {
-                    <p class="dropdown-item">@city.Name</p>
-                }
-            </div>
-        </div>*@
-                    <select class="selectpicker" data-style="btn-primary" multiple data-max-options="2">
-                        @foreach (var city in Model.Cities)
-                        {
-                            <option>@city.Name</option>
-                        }
-                    </select>
+                            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
+                                Choose City
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                @foreach (var city in Model.Cities)
+                                {
+                                    <p class="dropdown-item">@city.Name</p>
+                                }
+                            </div>
+                        </div>*@
+                    <div class="form-group col-md-4">
+                        <label class="control-lable"></label>
+                        <form asp-controller="Location" asp-action="GetLocations" id="myForm">
+                            <select class="custom-select" id="city-list">
+                                @foreach (var city in Model.Cities)
+                                {
+                                    <option asp-for="Name" value="@city.Name" class="dropdown-item">@city.Name</option>
+                                }
+                            </select>
+                        </form>
+                    </div>
                 </div>
                 <div class="col-4">
-                    <select asp-for="Name" asp-items="Html.GetEnumSelectList<CityDto>()"></select>
+                    <input type="text" class="custom-select" name="city" list="cityname">
+                    <datalist id="cityname">
+                        @foreach (var location in Model.Locations)
+                        {
+                            <option class="dropdown-item" value="@location.Name"></option>
+                        }
+                    </datalist>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 
 

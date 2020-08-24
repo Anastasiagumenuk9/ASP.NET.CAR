@@ -111,6 +111,19 @@
         $(document).ready(function () {
             $("#code").mask("99999");
         });
+
+        $("#city-list").change(function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: '/Location/GetLocations',
+                type: 'get',
+                data: $('#myForm').serialize(),
+                success: function () {
+
+                    alert($("#city-list").val());
+                }
+            });
+        });
     </script>
 </body>
 </html>

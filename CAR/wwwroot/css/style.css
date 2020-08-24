@@ -448,8 +448,17 @@ margin-right: 2rem;
     padding: 0 !important;
 }
 
+.custom-select {
+    width: auto;
+    font-size: .9rem;
+}
+
+select {
+ 
+}
+
 /* Slider */
-.slider {
+    .slider {
     width: 100%;
 
     position: absolute;
