@@ -13,6 +13,7 @@ namespace Application.Account.Command.UpdateAccount
 
         public string FirstName { get; set; }
 
+        [Required(ErrorMessage = " ")]
         public string LastName { get; set; }
 
         public string UserName { get; set; }

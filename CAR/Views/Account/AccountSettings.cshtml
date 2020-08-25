@@ -38,7 +38,7 @@
                             </div>
                             <div class="col-8">
                                 <label class="label-in">
-                                    <input type="text" asp-for="LastName" class="input-set text-capitalize border-0" value="@Model.LastName" required id="ln">
+                                    <input type="text" asp-for="LastName" class="input-set text-capitalize border-0" value="@Model.LastName"  id="ln" required>
                                 </label>
                             </div>
                         </div>
@@ -104,7 +104,7 @@
                                 Delete Account
                             </a>
                         </p>
-                        <input class="btn btn-log" type="submit" value="Update" class="btn btn-success" id="up"/>
+                        <input class="btn btn-log sendButton" type="submit"  value="Update" id="up" disabled />
                     </div>
                 </div>
             </form>
@@ -115,23 +115,69 @@
 @section Scripts {
     <script type="text/jscript">
 
-        $("#up").click(function (e) {
-            e.preventDefault();
-            $.ajax({
-                url: '/Account/AccountSettings',
-                type: 'put',
-                data: {
-                    FirstName: $("#fn").val(), LastName: $("#ln").val(),
-                    Email: $("#mail").val(), City: $("#city").val(),
-                    Street: $("#street").val(), PhoneNumber: $("#phone").val(), 
-                    PostalCode: $("#pc").val()
-                },
-                dataType: "json",
-                success: function () {
+            $("#up").click(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: '/Account/AccountSettings',
+                    type: 'put',
+                    data: {
+                        FirstName: $("#fn").val(), LastName: $("#ln").val(),
+                        Email: $("#mail").val(), City: $("#city").val(),
+                        Street: $("#street").val(), PhoneNumber: $("#phone").val(),
+                        PostalCode: $("#pc").val()
+                    },
+                    dataType: "json",
+                    success: function () {
 
-                    alert("User is Updated!");
-                }
+                        alert("User is Updated!");
+                    }
+                });
             });
-        });
+
+            $("#fn").keyup(function (event) {
+                validateInputs();
+            });
+
+            $("#ln").keyup(function (event) {
+                validateInputs();
+            });
+
+            $("#mail").keyup(function (event) {
+                validateInputs();
+            });
+
+            $("#pc").keyup(function (event) {
+                validateInputs();
+            });
+
+            $("#phone").keyup(function (event) {
+                validateInputs();
+            });
+
+            $("#city").keyup(function (event) {
+                validateInputs();
+            });
+
+            $("#street").keyup(function (event) {
+                validateInputs();
+            });
+
+            function validateInputs() {
+                var disableButton = false;
+
+                var fn = jQuery.trim($("#fn").val());
+                var ln = jQuery.trim($("#ln").val());
+                var mail = jQuery.trim($("#mail").val());
+                var pc = jQuery.trim($("#pc").val());
+                var phone = jQuery.trim($("#phone").val());
+                var city = jQuery.trim($("#city").val());
+                var street = jQuery.trim($("#street").val());
+
+                if (fn.length == 0 || ln.length == 0 || mail.length == 0 || pc.length == 0 || phone.length == 0 || city.length == 0 || street.length == 0)
+                    disableButton = true;
+
+                $('.sendButton').attr('disabled', disableButton);
+            }
+
     </script>
 }

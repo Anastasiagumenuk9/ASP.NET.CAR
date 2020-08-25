@@ -5,6 +5,7 @@ using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -31,13 +32,13 @@ namespace Application.Account.Command.UpdateAccount
                 throw new NotFoundException(nameof(ApplicationUser), request.Id);
             }
 
-            entity.FirstName = request.FirstName;
-            entity.LastName = request.LastName;
-            entity.Email = request.Email;
-            entity.City = request.City;
-            entity.Street = request.Street;
-            entity.PostalCode = request.PostalCode;
-            entity.PhoneNumber = request.PhoneNumber;
+                entity.FirstName = request.FirstName;
+                entity.LastName = request.LastName;
+                entity.Email = request.Email;
+                entity.City = request.City;
+                entity.Street = request.Street;
+                entity.PostalCode = request.PostalCode;
+                entity.PhoneNumber = request.PhoneNumber;
 
             await _context.SaveChangesAsync(cancellationToken);
 

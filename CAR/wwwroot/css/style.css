@@ -51,7 +51,7 @@ a:not([href]):hover{
     vertical-align: top;
     padding: .9em 3.5em;
 
-    border: 1.5px solid #fff;
+    border: 2px solid #fff;
 
     font-size: 1em;
     color: #fff;
@@ -61,8 +61,16 @@ a:not([href]):hover{
     transition: background .1s linear, color .1s linear;
 }
 
+.btn.disabled, .btn:disabled {
+    opacity: 0;
+}
+
+.btn:hover {
+    border: 2px solid #ffdcdc !important;
+}
+
 .btn-log {
-    border: 2px solid #cccccc;
+    border: 2px solid #cccccc !important;
     background: #cccccc;
     color: white !important;
     text-transform: uppercase;

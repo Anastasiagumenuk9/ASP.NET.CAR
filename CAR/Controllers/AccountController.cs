@@ -61,7 +61,8 @@ namespace CAR.Controllers
         public async Task<IActionResult> AccountSettings([FromForm] UpdateUserCommand command)
         {
             var result = await Mediator.Send(command);
-            return Ok(result);
+
+            return RedirectToAction("AccountSettings", "Account");
         }
 
         [AcceptVerbs("Get", "Post")]
