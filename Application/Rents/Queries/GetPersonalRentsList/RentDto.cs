@@ -27,6 +27,10 @@ namespace Application.Rents.Queries.GetPersonalRentsList
 
         public string ApplicationUserId { get; set; }
 
+        public string Car { get; set; }
+
+        public string Location { get; set; }
+
         public static void Mapping(Profile profile)
         {
             profile.CreateMap<Rent, RentDto>()

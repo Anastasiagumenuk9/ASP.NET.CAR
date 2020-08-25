@@ -532,6 +532,11 @@ th {
     font-weight: 100;
 }
 
+.tr-color{
+    background: lightgray;
+    border : solid 1px white !important;
+}
+
 .vtop {
     top: 0;
     left: 0;
