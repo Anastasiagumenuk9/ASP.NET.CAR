@@ -62,7 +62,7 @@ namespace CAR.Controllers
         {
             var result = await Mediator.Send(command);
 
-            return RedirectToAction("AccountSettings", "Account");
+            return Ok();
         }
 
         [AcceptVerbs("Get", "Post")]
