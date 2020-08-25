@@ -61,7 +61,7 @@ namespace CAR.Controllers
         public async Task<IActionResult> AccountSettings([FromForm] UpdateUserCommand command)
         {
             var result = await Mediator.Send(command);
-            return NoContent();
+            return Ok(result);
         }
 
         [AcceptVerbs("Get", "Post")]

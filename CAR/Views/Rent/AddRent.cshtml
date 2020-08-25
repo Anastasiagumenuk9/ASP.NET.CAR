@@ -1,4 +1,5 @@
-﻿@using Application.Cities.Queries.GetCitiesList
+﻿@using Application.Cities.Queries
+@using Domain.Entities
 @{
     ViewData["Title"] = "AddRent";
 }
@@ -38,13 +39,22 @@
                     </div>
                 </div>
                 <div class="col-4">
-                    <input type="text" class="custom-select" name="city" list="cityname">
-                    <datalist id="cityname">
-                        @foreach (var location in Model.Locations)
-                        {
-                            <option class="dropdown-item" value="@location.Name"></option>
-                        }
-                    </datalist>
+                    <p id="rData">
+                    </p>
+                    @section Scripts {
+                        <script type="text/jscript">
+                            $('#city-list').click(function () {
+                                $.getJSON('/Location/GetLocations' + $('#city-list').val(), function (data) {
+                                    var items = '<table><tr><th>Name</th><th>Address</th></tr>';
+                                    $.each(data, function (i, country) {
+                                        items += "<tr><td>" + country.ContactName + "</td><td>" + country.Address + "</td></tr>";
+                                    });
+                                    items += "</table>";
+                                    $('#rData').html(items);
+                                });
+                            })
+                        </script>
+                    }
                 </div>
             </div>
         </div>

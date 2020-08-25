@@ -101,6 +101,7 @@
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.maskedinput.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"></script>
     @RenderSection("Scripts", required: false)
     <script>
@@ -110,19 +111,6 @@
 
         $(document).ready(function () {
             $("#code").mask("99999");
-        });
-
-        $("#city-list").change(function (e) {
-            e.preventDefault();
-            $.ajax({
-                url: '/Location/GetLocations',
-                type: 'get',
-                data: $('#myForm').serialize(),
-                success: function () {
-
-                    alert($("#city-list").val());
-                }
-            });
         });
     </script>
 </body>

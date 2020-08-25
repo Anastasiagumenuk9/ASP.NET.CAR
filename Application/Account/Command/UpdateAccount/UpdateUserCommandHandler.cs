@@ -16,9 +16,10 @@ namespace Application.Account.Command.UpdateAccount
         private readonly ICarDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public UpdateUserCommandHandler(ICarDbContext context)
+        public UpdateUserCommandHandler(ICarDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public async Task<Unit> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
@@ -32,7 +33,6 @@ namespace Application.Account.Command.UpdateAccount
 
             entity.FirstName = request.FirstName;
             entity.LastName = request.LastName;
-            entity.UserName = request.UserName;
             entity.Email = request.Email;
             entity.City = request.City;
             entity.Street = request.Street;

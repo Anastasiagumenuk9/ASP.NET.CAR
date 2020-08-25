@@ -1,4 +1,4 @@
-﻿@model Tuple<Application.Account.Queries.GetAccountDetails.AccountDetailVm, Application.Account.Command.UpdateAccount.UpdateUserCommand>
+﻿@model Application.Account.Queries.GetAccountDetails.AccountDetailVm
 @{
     ViewData["Title"] = "AccountSettings";
 }
@@ -12,7 +12,7 @@
 
         </div>
         <div class="col-10 shadow mb-5 bg-white rounded align-self-center acc-container p-md-5 unselectable">
-            <form class="" id="login-form" asp-action="AcccountSettings" asp-controller="Account" method="post">
+            <form class="" id="login-form"  method="post">
                 <div class="row">
                     <div class="col-md-3 text-center">
                         <svg width="5em" height="5em" viewBox="0 0 16 16" class="bi bi-gear" fill="lightgrey" xmlns="http://www.w3.org/2000/svg">
@@ -28,7 +28,7 @@
                             </div>
                             <div class="col-8">
                                 <label class="label-in">
-                                    <input type="text" asp-for="Item2.FirstName" class="input-set text-capitalize border-0" value="@Model.Item1.FirstName" required>
+                                    <input type="text" asp-for="FirstName" class="input-set text-capitalize border-0" value="@Model.FirstName" required id="fn">
                                 </label>
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                             </div>
                             <div class="col-8">
                                 <label class="label-in">
-                                    <input type="text" asp-for="Item2.LastName" class="input-set text-capitalize border-0" value="@Model.Item1.LastName" required>
+                                    <input type="text" asp-for="LastName" class="input-set text-capitalize border-0" value="@Model.LastName" required id="ln">
                                 </label>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                             </div>
                             <div class="col-8">
                                 <label class="label-in">
-                                    <input type="text" asp-for="Item2.Email" class="input-set border-0" value="@Model.Item1.Email" required>
+                                    <input type="text" asp-for="Email" class="input-set border-0" value="@Model.Email" required id="mail">
                                 </label>
                             </div>
                         </div>
@@ -58,7 +58,7 @@
                             </div>
                             <div class="col-8">
                                 <label class="label-in">
-                                    <input type="text" asp-for="Item2.City" class="input-set text-capitalize border-0" value="@Model.Item1.City" required>
+                                    <input type="text" asp-for="City" class="input-set text-capitalize border-0" value="@Model.City" required id="city">
                                 </label>
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                             </div>
                             <div class="col-8">
                                 <label class="label-in">
-                                    <input type="text" asp-for="Item2.PhoneNumber" class="input-set text-capitalize border-0" value="@Model.Item1.PhoneNumber" required>
+                                    <input type="text" asp-for="PhoneNumber"   id="phone" placeholder="0(00)000-00-00" class="input-set text-capitalize border-0" value="@Model.PhoneNumber" required>
                                 </label>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                             </div>
                             <div class="col-8">
                                 <label class="label-in">
-                                    <input type="text" asp-for="Item2.PostalCode" class="input-set text-capitalize border-0" value="@Model.Item1.PostalCode" required>
+                                    <input type="text" asp-for="PostalCode" class="input-set text-capitalize border-0" value="@Model.PostalCode" required id="pc">
                                 </label>
                             </div>
                         </div>
@@ -90,7 +90,7 @@
                             </div>
                             <div class="col-8">
                                 <label class="label-in">
-                                    <input type="text" asp-for="Item2.Street" class="input-set text-capitalize border-0" value="@Model.Item1.Street" required>
+                                    <input type="text" asp-for="Street" class="input-set text-capitalize border-0" value="@Model.Street" required id="street">
                                 </label>
                             </div>
                         </div>
@@ -104,7 +104,7 @@
                                 Delete Account
                             </a>
                         </p>
-                        <input class="btn btn-log" type="submit" value="Uupdate" class="btn btn-success" />
+                        <input class="btn btn-log" type="submit" value="Update" class="btn btn-success" id="up"/>
                     </div>
                 </div>
             </form>
@@ -112,3 +112,26 @@
     </div>
 </div>
 
+@section Scripts {
+    <script type="text/jscript">
+
+        $("#up").click(function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: '/Account/AccountSettings',
+                type: 'put',
+                data: {
+                    FirstName: $("#fn").val(), LastName: $("#ln").val(),
+                    Email: $("#mail").val(), City: $("#city").val(),
+                    Street: $("#street").val(), PhoneNumber: $("#phone").val(), 
+                    PostalCode: $("#pc").val()
+                },
+                dataType: "json",
+                success: function () {
+
+                    alert("User is Updated!");
+                }
+            });
+        });
+    </script>
+}

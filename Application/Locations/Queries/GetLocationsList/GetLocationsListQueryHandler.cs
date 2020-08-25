@@ -1,6 +1,8 @@
-﻿using Application.Common.Interfaces;
+﻿using Application.Cities.Queries.GetCitiesList;
+using Application.Common.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
