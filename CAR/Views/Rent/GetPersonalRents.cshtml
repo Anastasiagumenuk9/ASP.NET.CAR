@@ -1,0 +1,49 @@
+﻿@model Application.Rents.Queries.GetPersonalRentsList.PersonalRentsListVm
+@{
+    ViewData["Title"] = "GetPersonalRents";
+}
+
+<div class="intro-login">
+    <div class="container-fluid" id="intro">
+        <div class="intro__inner" id="inner"> </div>
+    </div>
+    <div class="row container-fluid align-self-center align-bottom mt-5">
+        <div class="col-1">
+
+        </div>
+        <div class="col-10 shadow mt-5 bg-white rounded align-self-center acc-container p-md-5 unselectable">
+        <div class="row">
+            <table class="table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">Is Confirmed</th>
+                        <th scope="col">Start Date Rent</th>
+                        <th scope="col">Finish Date Rent</th>
+                        <th scope="col">Date Confirmed</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Car</th>
+                        <th scope="col">Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var rent in Model.Rents)
+                    {
+                        <tr>
+                            <td>@rent.IsConfirmed</td>
+                            <td>@rent.StartDataRend</td>
+                            <td>@rent.FinishDataRend</td>
+                            <td>@rent.DataConfirmed</td>
+                            <td>@rent.Price $</td>
+                            <td>@rent.CarId</td>
+                            <td>@rent.LocationId</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+        </div>
+    </div>
+</div>
+
+

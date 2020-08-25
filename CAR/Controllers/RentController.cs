@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Application.Cities.Queries.GetCitiesList;
 using Application.Locations.Queries.GetLocationsListById;
 using Application.CitiesLocations.Queries;
+using Application.Rents.Queries.GetPersonalRentsList;
 
 namespace CAR.Controllers
 {
@@ -34,6 +35,13 @@ namespace CAR.Controllers
         public async Task<ActionResult<Guid>> AddRent([FromForm] CreateRentCommand command)
         {
             return await Mediator.Send(command);
+        }
+
+        public async Task<ActionResult<PersonalRentsListVm>> GetPersonalRents()
+        {
+            var model = await Mediator.Send(new GetPersonalRentsListQuery());
+
+            return View(model);
         }
     }
 }

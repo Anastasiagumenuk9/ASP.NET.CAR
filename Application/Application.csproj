@@ -27,7 +27,6 @@
     <Folder Include="LocationsCars\Queries\" />
     <Folder Include="Locations\Commands\" />
     <Folder Include="PhotosCar\Commands\" />
-    <Folder Include="Rents\Queries\" />
     <Folder Include="Transmissions\Commands\" />
   </ItemGroup>
 
