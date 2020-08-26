@@ -30,14 +30,6 @@ namespace CAR.Controllers
             return View();
         }
 
-        //[Authorize]
-        //public async Task<ActionResult<CarsListVm>> GetCars()
-        //{
-        //    var model = await Mediator.Send(new GetCarsListQuery());
-
-        //    return Ok(model);
-        //}
-
         public async Task<IActionResult> MyAccount()
         {
             return  View();

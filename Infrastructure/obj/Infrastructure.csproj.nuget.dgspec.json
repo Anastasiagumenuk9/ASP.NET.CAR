@@ -216,6 +216,10 @@
             "IdentityServer4.EntityFramework": {
               "target": "Package",
               "version": "[4.0.4, )"
+            },
+            "Microsoft.AspNetCore.Authentication.Google": {
+              "target": "Package",
+              "version": "[3.1.7, )"
             }
           },
           "imports": [

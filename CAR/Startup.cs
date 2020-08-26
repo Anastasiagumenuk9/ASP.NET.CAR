@@ -76,6 +76,7 @@ namespace CAR
                      {
                          options.LoginPath = "/Account/Login";
                          options.LogoutPath = "/Account/Logout";
+
                      });
 
             services.Configure<IdentityOptions>(options =>
@@ -108,7 +109,12 @@ namespace CAR
                     ValidateIssuer = false,
                     ValidateAudience = false
                 };
+            }).AddGoogle(options =>
+            {
+                options.ClientId = Configuration["App:GoogleClientId"];
+                options.ClientSecret = Configuration["App:GoogleClientSecret"];
             });
+
 
             _services = services;
         }

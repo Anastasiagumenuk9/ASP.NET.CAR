@@ -15,6 +15,7 @@ namespace Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IGoogleAuthenticateService, GoogleAuthenticateService>();
             services.AddTransient<IAuthenticateService, TokenAuthenticationService>();
             services.AddTransient<IDateTime, MachineDateTime>();
 

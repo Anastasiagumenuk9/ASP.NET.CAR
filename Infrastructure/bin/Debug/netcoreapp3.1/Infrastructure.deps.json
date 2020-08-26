@@ -13,6 +13,7 @@
           "IdentityServer4": "4.0.4",
           "IdentityServer4.AspNetIdentity": "4.0.4",
           "IdentityServer4.EntityFramework": "4.0.4",
+          "Microsoft.AspNetCore.Authentication.Google": "3.1.7",
           "Persistence": "1.0.0"
         },
         "runtime": {
@@ -249,6 +250,14 @@
           "Microsoft.AspNetCore.Authentication.Abstractions": "2.2.0",
           "Microsoft.AspNetCore.Http": "2.2.0",
           "Microsoft.AspNetCore.Http.Extensions": "2.2.0"
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Google/3.1.7": {
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "assemblyVersion": "3.1.7.0",
+            "fileVersion": "3.100.720.37213"
+          }
         }
       },
       "Microsoft.AspNetCore.Authentication.OpenIdConnect/3.1.0": {
@@ -2375,6 +2384,13 @@
       "sha512": "sha512-XlVJzJ5wPOYW+Y0J6Q/LVTEyfS4ssLXmt60T0SPP+D8abVhBTl+cgw2gDHlyKYIkcJg7btMVh383NDkMVqD/fg==",
       "path": "microsoft.aspnetcore.authentication.core/2.2.0",
       "hashPath": "microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.Google/3.1.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6Y4oKM4f8QPOKLiiznna2HIQzMObrkWFHns8TWRcUOQWadUK+4ki7qP2mtU763HZZSWZ1riY5kpzlvQUXgZ/GA==",
+      "path": "microsoft.aspnetcore.authentication.google/3.1.7",
+      "hashPath": "microsoft.aspnetcore.authentication.google.3.1.7.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.OpenIdConnect/3.1.0": {
       "type": "package",

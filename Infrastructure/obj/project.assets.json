@@ -291,6 +291,18 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.Core.dll": {}
         }
       },
+      "Microsoft.AspNetCore.Authentication.Google/3.1.7": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Google.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Google.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Microsoft.AspNetCore.Authentication.OpenIdConnect/3.1.0": {
         "type": "package",
         "dependencies": {
@@ -3841,6 +3853,21 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.Core.xml",
         "microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
         "microsoft.aspnetcore.authentication.core.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Authentication.Google/3.1.7": {
+      "sha512": "6Y4oKM4f8QPOKLiiznna2HIQzMObrkWFHns8TWRcUOQWadUK+4ki7qP2mtU763HZZSWZ1riY5kpzlvQUXgZ/GA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.authentication.google/3.1.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Google.dll",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Google.xml",
+        "microsoft.aspnetcore.authentication.google.3.1.7.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.google.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Authentication.OpenIdConnect/3.1.0": {
@@ -10521,6 +10548,7 @@
       "IdentityServer4 >= 4.0.4",
       "IdentityServer4.AspNetIdentity >= 4.0.4",
       "IdentityServer4.EntityFramework >= 4.0.4",
+      "Microsoft.AspNetCore.Authentication.Google >= 3.1.7",
       "Persistence >= 1.0.0"
     ]
   },
@@ -10588,6 +10616,10 @@
           "IdentityServer4.EntityFramework": {
             "target": "Package",
             "version": "[4.0.4, )"
+          },
+          "Microsoft.AspNetCore.Authentication.Google": {
+            "target": "Package",
+            "version": "[3.1.7, )"
           }
         },
         "imports": [

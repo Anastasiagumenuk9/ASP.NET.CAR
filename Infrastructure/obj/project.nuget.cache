@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8oCup7WIR5VaZciY69XIievREEo2WanixR6GO1E28gxoISO6giub6iZ4kua6Kb+lGuSUZrL3MEw2CH62xIRsjw==",
+  "dgSpecHash": "vNVCNhNepgmd1EKwR6NZ1xgLIMC3/zuyGEoU+hlr4kbeRBcmvMHApLPjgfYHJ6B/pskHPT8T4xOeT0Vq4WW4AQ==",
   "success": true,
   "projectFilePath": "D:\\.NET\\ASP.NET.CAR\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -25,6 +25,7 @@
     "C:\\Users\\anast\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\anast\\.nuget\\packages\\microsoft.aspnetcore.authentication.cookies\\2.2.0\\microsoft.aspnetcore.authentication.cookies.2.2.0.nupkg.sha512",
     "C:\\Users\\anast\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
+    "C:\\Users\\anast\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\3.1.7\\microsoft.aspnetcore.authentication.google.3.1.7.nupkg.sha512",
     "C:\\Users\\anast\\.nuget\\packages\\microsoft.aspnetcore.authentication.openidconnect\\3.1.0\\microsoft.aspnetcore.authentication.openidconnect.3.1.0.nupkg.sha512",
     "C:\\Users\\anast\\.nuget\\packages\\microsoft.aspnetcore.authorization\\2.2.0\\microsoft.aspnetcore.authorization.2.2.0.nupkg.sha512",
     "C:\\Users\\anast\\.nuget\\packages\\microsoft.aspnetcore.authorization.policy\\2.2.0\\microsoft.aspnetcore.authorization.policy.2.2.0.nupkg.sha512",

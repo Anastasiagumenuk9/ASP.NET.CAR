@@ -18,6 +18,11 @@ using Application.Account.Queries.GetAccountDetails;
 using IdentityServer4.Extensions;
 using Application.Account.Command.UpdateAccount;
 using CAR.Models;
+using System.Security.Claims;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace CAR.Controllers
 {
@@ -26,15 +31,26 @@ namespace CAR.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ICurrentUserService _applicationUserService;
         private readonly IAuthenticateService _authenticateService;
+        private readonly IGoogleAuthenticateService _googleAuthenticateService;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly ILogger _logger;
+        private readonly ICarDbContext _carDbContext;
 
         private IMediator _mediator;
         protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
 
-        public AccountController(IAuthenticateService authenticateService, UserManager<ApplicationUser> userManager, ICurrentUserService applicationUserService)
+        [TempData]
+        public string ErrorMessage { get; set; }
+
+        public AccountController(IAuthenticateService authenticateService, UserManager<ApplicationUser> userManager, ICurrentUserService applicationUserService, IGoogleAuthenticateService googleAuthenticateService, SignInManager<ApplicationUser> signInManager, ILogger<AccountController> logger, ICarDbContext carDbContext)
         {
             _authenticateService = authenticateService;
             _userManager = userManager;
             _applicationUserService = applicationUserService;
+            _googleAuthenticateService = googleAuthenticateService;
+            _signInManager = signInManager;
+            _logger = logger;
+            _carDbContext = carDbContext;
         }
 
         [Authorize]
@@ -97,6 +113,21 @@ namespace CAR.Controllers
             await Response.WriteAsync(JsonConvert.SerializeObject("Token : " + token,
                 new JsonSerializerSettings { Formatting = Formatting.Indented }
             ));
+        }
+
+        [Route("google-login")]
+        public IActionResult GoogleLogin()
+        {
+            var properties = new AuthenticationProperties { RedirectUri = Url.Action("GoogleResponse") };
+            return Challenge(properties, GoogleDefaults.AuthenticationScheme);
+        }
+
+        [Route("google-response")]
+        public async Task<IActionResult> GoogleResponse()
+        {
+            var result = await HttpContext.AuthenticateAsync(IdentityConstants.ExternalScheme);
+            await _googleAuthenticateService.SignInGoogle(result);
+            return RedirectToAction("AccountPage", "Account");
         }
 
         public async Task<IActionResult> Login()
