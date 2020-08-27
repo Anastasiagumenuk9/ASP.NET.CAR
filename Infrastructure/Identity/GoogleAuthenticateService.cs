@@ -1,5 +1,6 @@
 ﻿using Application.Common.Interfaces;
 using Domain.Entities;
+using IdentityServer4.Endpoints.Results;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -16,11 +17,11 @@ namespace Infrastructure.Identity
     public class GoogleAuthenticateService : IGoogleAuthenticateService
     {
         private readonly IAuthenticateService _authenticateService;
-        private readonly TokenAuthenticationService _tokenAuthenticationService;
+        private readonly IAuthenticateService _tokenAuthenticationService;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public GoogleAuthenticateService(TokenAuthenticationService tokenAuthenticationService, UserManager<ApplicationUser> userManager, IAuthenticateService authenticateService, SignInManager<ApplicationUser> signInManager)
+        public GoogleAuthenticateService(IAuthenticateService tokenAuthenticationService, UserManager<ApplicationUser> userManager, IAuthenticateService authenticateService, SignInManager<ApplicationUser> signInManager)
         {
             _tokenAuthenticationService = tokenAuthenticationService;
             _userManager = userManager;
@@ -51,7 +52,7 @@ namespace Infrastructure.Identity
 
             var result = _signInManager.SignInAsync(user, false);
 
-            if (result.IsCompletedSuccessfully)
+            if (result != null)
             {
                 var userRoles = await _userManager.GetRolesAsync(user);
 

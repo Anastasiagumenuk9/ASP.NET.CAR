@@ -8,6 +8,6 @@ namespace Application.Common.Interfaces
 {
     public interface IGoogleAuthenticateService
     {
-        Task <string> SignInGoogle(AuthenticateResult authResult);
+        Task<string> SignInGoogle(AuthenticateResult authResult);
     }
 }

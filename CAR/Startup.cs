@@ -25,6 +25,7 @@ using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 using Domain.Entities;
+using Infrastructure.Identity;
 
 namespace CAR
 {

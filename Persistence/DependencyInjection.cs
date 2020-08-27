@@ -20,7 +20,7 @@ namespace Persistence
                
 
             services.AddIdentity<ApplicationUser, ApplicationRole>(
-                options => options.SignIn.RequireConfirmedAccount = false)
+                options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<CarDbContext>()
                 .AddDefaultTokenProviders();
 

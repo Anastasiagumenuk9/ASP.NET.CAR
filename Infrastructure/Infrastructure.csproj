@@ -13,12 +13,23 @@
     <PackageReference Include="IdentityServer4" Version="4.0.4" />
     <PackageReference Include="IdentityServer4.AspNetIdentity" Version="4.0.4" />
     <PackageReference Include="IdentityServer4.EntityFramework" Version="4.0.4" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="4.0.20710" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="3.1.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Routing" Version="2.2.2" />
+    <PackageReference Include="Microsoft.Net.Http.Server" Version="1.1.4" />
+    <PackageReference Include="System.Text.Encodings.Web" Version="4.7.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Persistence\Persistence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio\Shared\Packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

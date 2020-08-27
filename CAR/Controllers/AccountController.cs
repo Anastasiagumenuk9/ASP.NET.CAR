@@ -94,6 +94,13 @@ namespace CAR.Controllers
             }
         }
 
+        public IActionResult EmailVerification() => View();
+
+        public async Task<IActionResult> VerifyEmail(string userId, string token)
+        {
+            return View();
+        }
+
         [Authorize]
         public async Task<ActionResult<AccountDetailVm>> GetAccountDetail()
         {
@@ -126,11 +133,15 @@ namespace CAR.Controllers
         public async Task<IActionResult> GoogleResponse()
         {
             var result = await HttpContext.AuthenticateAsync(IdentityConstants.ExternalScheme);
-            await _googleAuthenticateService.SignInGoogle(result);
+            var token = await  _googleAuthenticateService.SignInGoogle(result);
+            if (result != null)
+            {
+                HttpContext.Session.SetString("JWToken", token);
+            }
             return RedirectToAction("AccountPage", "Account");
         }
 
-        public async Task<IActionResult> Login()
+        public IActionResult Login()
         {
             return View();
         }
@@ -156,7 +167,7 @@ namespace CAR.Controllers
             return Redirect("~/Home/Index");
         }
 
-        public async Task<IActionResult> Register()
+        public  IActionResult Register()
         {
             return View();
         }

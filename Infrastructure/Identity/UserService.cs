@@ -8,6 +8,11 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Net.Http;
+using System.Web;
+using Microsoft.Net.Http.Server;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.AspNetCore.Http;
 
 namespace Infrastructure.Identity
 {
@@ -78,6 +83,10 @@ namespace Infrastructure.Identity
                     {
                         throw new Exception("Exception added roles!");
                     }
+
+                    var confirmationToken =  await _userManager.GenerateEmailConfirmationTokenAsync(user);
+
+                    //var link = Url.Action();
                 }
 
                 return user.Id;
