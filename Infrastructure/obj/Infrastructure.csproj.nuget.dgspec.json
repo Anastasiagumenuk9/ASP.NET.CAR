@@ -217,17 +217,21 @@
               "target": "Package",
               "version": "[4.0.4, )"
             },
-            "Microsoft.AspNet.Mvc": {
-              "target": "Package",
-              "version": "[4.0.20710, )"
-            },
             "Microsoft.AspNetCore.Authentication.Google": {
               "target": "Package",
               "version": "[3.1.7, )"
             },
+            "Microsoft.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.AspNetCore.Mvc.Abstractions": {
               "target": "Package",
               "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
             },
             "Microsoft.AspNetCore.Routing": {
               "target": "Package",

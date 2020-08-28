@@ -31,3 +31,4 @@ D:\.NET\ASP.NET.CAR\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.dll
 D:\.NET\ASP.NET.CAR\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.pdb
 D:\.NET\ASP.NET.CAR\Infrastructure\bin\Debug\netcoreapp3.1\System.Web.Mvc.dll
 D:\.NET\ASP.NET.CAR\Infrastructure\bin\Debug\netcoreapp3.1\System.Web.Mvc.xml
+D:\.NET\ASP.NET.CAR\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.csproj.CoreCompileInputs.cache

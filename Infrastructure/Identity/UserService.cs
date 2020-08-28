@@ -86,7 +86,7 @@ namespace Infrastructure.Identity
 
                     var confirmationToken =  await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
-                    //var link = Url.Action();
+                    var link = Url.Action();
                 }
 
                 return user.Id;
