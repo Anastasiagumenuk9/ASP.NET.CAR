@@ -7,11 +7,6 @@ namespace Application.Locations.Queries.GetLocationsListById
 {
     public class GetLocationsListQuery : IRequest<LocationsListVm>
     {
-        public string _cityName { get; set; }
 
-        public GetLocationsListQuery(string cityName)
-        {
-            _cityName = cityName;
-        }
     }
 }

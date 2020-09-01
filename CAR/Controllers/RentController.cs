@@ -20,18 +20,11 @@ namespace CAR.Controllers
     public class RentController : Controller
     {
         private IMediator _mediator;
-        private ICarDbContext db;
-
         protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
 
         public IActionResult Index()
         {
             return View();
-        }
-
-        public RentController(ICarDbContext _db)
-        {
-            db = _db;
         }
 
         [HttpGet]
@@ -48,25 +41,11 @@ namespace CAR.Controllers
             return await Mediator.Send(command);
         }
 
-        public JsonResult GetMembers(string id)
+        public async Task<JsonResult> GetLocationsViaCities(Guid id)
         {
-            var locations = db.Locations.ToList();
-            var cities = db.Cities.ToList();
+            var model = await Mediator.Send(new GetLocationsListQuery());
 
-            var result = locations.Join(cities,
-                t => t.CityId,
-                p => p.Id,
-                (t, p) => new LocationDto
-                {
-                    Id = t.Id,
-                    Name = t.Name,
-                    CityId = t.CityId,
-                    CityName = p.Name,
-
-                });
-
-            return Json(new SelectList(result.Where(c => c.CityName == id), "Id", "Name"));
-
+            return Json(new SelectList(model.Locations.Where(c => c.CityId == id), "Id", "Name"));
         }
 
         public async Task<ActionResult<PersonalRentsListVm>> GetPersonalRents()

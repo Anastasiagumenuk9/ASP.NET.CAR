@@ -20,9 +20,9 @@ namespace CAR.Controllers
         }
 
         [HttpGet]
-        public async Task <LocationsListVm> GetLocations(string s)
+        public async Task <LocationsListVm> GetLocations()
         {
-            var model = await Mediator.Send(new GetLocationsListQuery(s));
+            var model = await Mediator.Send(new GetLocationsListQuery());
 
             return model;
         }

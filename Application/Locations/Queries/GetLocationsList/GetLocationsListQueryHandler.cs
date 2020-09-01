@@ -27,14 +27,24 @@ namespace Application.Locations.Queries.GetLocationsListById
 
         public async Task<LocationsListVm> Handle(GetLocationsListQuery request, CancellationToken cancellationToken)
         {
-            var locations = await _context.Locations
-               .ProjectTo<LocationDto>(_mapper.ConfigurationProvider)
-               .OrderBy(p => p.Name)
-               .ToListAsync(cancellationToken);
+            var locations = _context.Locations.ToList();
+            var cities = _context.Cities.ToList();
+
+            var result = locations.Join(cities,
+                t => t.CityId,
+                p => p.Id,
+                (t, p) => new LocationDto
+                {
+                    Id = t.Id,
+                    Name = t.Name,
+                    CityId = t.CityId,
+                    CityName = p.Name,
+
+                }).ToList<LocationDto>();
 
             var vm = new LocationsListVm
             {
-                Locations = locations,
+                Locations = result,
                 CreateEnabled = true
             };
 

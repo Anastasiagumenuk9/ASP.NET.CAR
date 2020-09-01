@@ -15,57 +15,31 @@
         </div>
         <div class="col-10 shadow mb-5 bg-white rounded align-self-center acc-container p-md-5 unselectable">
             <div class="row">
-                <div class="col-4">
-                    @*<div class="dropdown">
-                            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
-                                Choose City
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                @foreach (var city in Model.Cities)
-                                {
-                                    <p class="dropdown-item">@city.Name</p>
-                                }
-                            </div>
-                        </div>*@
-                    <div class="form-group col-md-4">
-                        <label class="control-lable"></label>
+                    <div class="form-group col-md-4  col-sm-12">
                         <form asp-controller="Location" asp-action="GetLocations" id="myForm">
                             <select class="custom-select" id="city-list">
                                 @foreach (var city in Model.Cities)
                                 {
-                                    <option asp-for="Name" value="@city.Name" class="dropdown-item">@city.Name</option>
+                                    <option asp-for="Name" value="@city.Id" class="dropdown-item">@city.Name</option>
                                 }
                             </select>
                         </form>
                     </div>
-                </div>
-                <div class="col-4">
-                    <select class="custom-select" id="location-list" name="location-list">
+                <div class="col-md-4  col-sm-12">
+                    <select class="custom-select form-control" id="location-list" name="location-list">
 
                     </select>
                     <p id="rData">
                     </p>
                     @section Scripts {
                         <script type="text/jscript">
-                            //$('#city-list').click(function () {
-                            //    $.getJSON('/Location/GetLocations' + $('#city-list').val(), function (data) {
-                            //        var items = '<table><tr><th>Name</th><th>Address</th></tr>';
-                            //        $.each(data, function (i, country) {
-                            //            items += "<tr><td>" + country.ContactName + "</td><td>" + country.Address + "</td></tr>";
-                            //        });
-                            //        items += "</table>";
-                            //        $('#rData').html(items);
-                            //    });
-                            //})
-
                             $(document).ready(function () {
-                            //Dropdownlist Selectedchange event
                                 $("#city-list").change(function () {
                                     console.log("city change");
                                     $("#location-list").empty();
                                     $.ajax({
                                         type: 'POST',
-                                        url: '@Url.Action("GetMembers")',
+                                        url: '@Url.Action("GetLocationsViaCities")',
                                         dataType: 'json',
                                         data: { id: $("#city-list").val() },
                                         success: function (mems) {
