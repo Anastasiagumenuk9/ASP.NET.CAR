@@ -1,5 +1,6 @@
 ﻿@using Application.Cities.Queries
 @using Domain.Entities
+
 @{
     ViewData["Title"] = "AddRent";
 }
@@ -39,20 +40,48 @@
                     </div>
                 </div>
                 <div class="col-4">
+                    <select class="custom-select" id="location-list" name="location-list">
+
+                    </select>
                     <p id="rData">
                     </p>
                     @section Scripts {
                         <script type="text/jscript">
-                            $('#city-list').click(function () {
-                                $.getJSON('/Location/GetLocations' + $('#city-list').val(), function (data) {
-                                    var items = '<table><tr><th>Name</th><th>Address</th></tr>';
-                                    $.each(data, function (i, country) {
-                                        items += "<tr><td>" + country.ContactName + "</td><td>" + country.Address + "</td></tr>";
-                                    });
-                                    items += "</table>";
-                                    $('#rData').html(items);
+                            //$('#city-list').click(function () {
+                            //    $.getJSON('/Location/GetLocations' + $('#city-list').val(), function (data) {
+                            //        var items = '<table><tr><th>Name</th><th>Address</th></tr>';
+                            //        $.each(data, function (i, country) {
+                            //            items += "<tr><td>" + country.ContactName + "</td><td>" + country.Address + "</td></tr>";
+                            //        });
+                            //        items += "</table>";
+                            //        $('#rData').html(items);
+                            //    });
+                            //})
+
+                            $(document).ready(function () {
+                            //Dropdownlist Selectedchange event
+                                $("#city-list").change(function () {
+                                    console.log("city change");
+                                    $("#location-list").empty();
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: '@Url.Action("GetMembers")',
+                                        dataType: 'json',
+                                        data: { id: $("#city-list").val() },
+                                        success: function (mems) {
+                                            console.log("function work");
+                                            var response = JSON.parse(JSON.stringify(mems));
+                                            var markup;
+                                            for (var x = 0; x < response.length; x++) { markup += "<option value=" + response[x].value + ">" + response[x].text + "</option>"; }
+                                            $("#location-list").html(markup).show();
+                                    },
+                                    error: function (ex) {
+                                        alert('Failed to retrieve states.' + ex);
+                                    }
                                 });
+                                return false;
                             })
+                        });
                         </script>
                     }
                 </div>

@@ -9,10 +9,11 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Net.Http;
+using System.Web.Mvc;
 using System.Web;
 using Microsoft.Net.Http.Server;
-using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Infrastructure.Identity
 {
@@ -85,8 +86,7 @@ namespace Infrastructure.Identity
                     }
 
                     var confirmationToken =  await _userManager.GenerateEmailConfirmationTokenAsync(user);
-
-                    var link = Url.Action();
+                    //var list = UrlHelper.GenerateUrl()
                 }
 
                 return user.Id;

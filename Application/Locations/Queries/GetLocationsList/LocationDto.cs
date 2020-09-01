@@ -13,6 +13,8 @@ namespace Application.Locations.Queries.GetLocationsListById
 
         public string Name { get; set; }
 
+        public string CityName { get; set; }
+
         public Guid CityId { get; set; }
 
         public static void Mapping(Profile profile)
