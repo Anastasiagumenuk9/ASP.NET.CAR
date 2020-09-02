@@ -11,6 +11,8 @@ using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Application.Common.Pagination;
 using Persistence;
+using Microsoft.AspNetCore.Authorization;
+using Application.Cars.Queries.GetCarDetail;
 
 namespace CAR.Controllers
 {
@@ -29,6 +31,14 @@ namespace CAR.Controllers
             var model = await Mediator.Send(new GetCarsListQuery(page,3));
 
             return View(model);
+        }
+
+        [AllowAnonymous]
+        public async Task<ActionResult<CarDetailVm>> GetCarById(Guid id)
+        {
+            var vm = await Mediator.Send(new GetCarDetailQuery { Id = id });
+
+            return base.Ok(vm);
         }
     }
 }

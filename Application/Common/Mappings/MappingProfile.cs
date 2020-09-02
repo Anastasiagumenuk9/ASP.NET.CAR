@@ -1,4 +1,5 @@
 ﻿using Application.Account.Queries.GetAccountDetails;
+using Application.Cars.Queries.GetCarDetail;
 using Application.Cars.Queries.GetCarsList;
 using Application.CarTypes.Queries.GetCarTypesList;
 using Application.Cities.Queries.GetCitiesList;
@@ -23,6 +24,7 @@ namespace Application.Common.Mappings
         {
             ApplyMappingsFromAssembly(Assembly.GetExecutingAssembly());
             CarDto.Mapping(this);
+            CarDetailVm.Mapping(this);
             AccountDetailVm.Mapping(this);
             PhotoDto.Mapping(this);
             TransmissionDto.Mapping(this);

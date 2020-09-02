@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-12 text-center">
-                     <p class="text-uppercase font-weight-bold">@Model.Car.Name</p>
+                     <p class="text-uppercase font-weight-bold" id="car-val">@Model.Car.Name</p>
                      @Html.Raw("<img style='width:200px; height:120px;' class='' src=\"data:image/jpeg;base64,"
                                                     + Convert.ToBase64String(@Model.Car.Photo) + "\" />")
                 </div>
@@ -167,10 +167,38 @@
             }
 
             $('#meeting-timee').on('change', function () {
-            var date1 = new Date($("#meeting-time").val());
-            var date2 = new Date($("#meeting-timee").val());
-            var daysLag = Math.ceil(Math.abs(date2.getTime() - date1.getTime()) / (1000 * 3600 * 24));
-            alert(daysLag);
+                var date1 = new Date($("#meeting-time").val());
+                var date2 = new Date($("#meeting-timee").val());
+                if (!isNaN(date1)) {
+                    var daysLag = Math.ceil(Math.abs(date2.getTime() - date1.getTime()) / (1000 * 3600 * 24));
+                    $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCarById", "Car")',
+                    dataType: 'json',
+                    data: { id: '@Model.Car.Id' },
+                    success: function (mems) {
+                        console.log("car found");
+                        console.log(mems);
+                        if (daysLag > 0 && daysLag < 4) {
+                            $("#sum").val("Price : " + mems.priceThird + " $");
+                        }
+                        else if (daysLag > 3 && daysLag < 10) {
+                            $("#sum").val("Price : " + mems.priceSecond + " $");
+                        }
+                        else if (daysLag > 9 && daysLag < 26) {
+                            $("#sum").val("Price : " + mems.priceFourth + " $");
+                        }
+                        else if (daysLag > 26) {
+                            $("#sum").val("Price : " + mems.price + " $");
+                        }
+                    },
+                    error: function (ex) {
+                        lert('Failed to retrieve states.' + ex);
+                    }
+                });
+            return false;
+                }
+
             });
         });
 
