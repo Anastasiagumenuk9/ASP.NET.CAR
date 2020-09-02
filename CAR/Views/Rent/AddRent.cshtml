@@ -16,9 +16,7 @@
         <div class="col-10 shadow mb-5 bg-white rounded align-self-center acc-container p-md-5 unselectable">
             <div class="row">
                 <div class="col-md-4 col-sm-12 col-xs-12">
-                    <p class="text-uppercase font-weight-bold">@Model.Car.Name</p>
-                    @Html.Raw("<img style='width:200px; height:120px;' src=\"data:image/jpeg;base64,"
-                                                + Convert.ToBase64String(@Model.Car.Photo) + "\" />")
+                   
                 </div>
             </div>
             <div class="row">
@@ -38,7 +36,11 @@
                     <p id="rData">
                     </p>
                 </div>
-                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                     <p class="text-uppercase font-weight-bold">@Model.Car.Name</p>
+                    @Html.Raw("<img style='width:200px; height:120px;' class='' src=\"data:image/jpeg;base64,"
+                                                + Convert.ToBase64String(@Model.Car.Photo) + "\" />")
+                </div>
             </div>
             <div class="row">
                 <div class="col-12">
