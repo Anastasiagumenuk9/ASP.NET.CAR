@@ -1,4 +1,5 @@
-﻿using Application.Common.Interfaces;
+﻿using Application.Cars.Queries.GetCarsList;
+using Application.Common.Interfaces;
 using Application.Locations.Queries.GetLocationsListById;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
@@ -31,9 +32,34 @@ namespace Application.Cities.Queries.GetCitiesList
                 .OrderBy(p => p.Name)
                 .ToListAsync(cancellationToken);
 
+            var car = _context.Cars.Where(c => c.Id == request._id).ProjectTo<CarDto>(_mapper.ConfigurationProvider)
+                .OrderBy(p => p.Name).Join(_context.PhotosCar,
+                t => t.Id,
+                p => p.CarId,
+                (p, t) => new CarDto
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    ShortDesc = p.ShortDesc,
+                    Price = p.Price,
+                    PriceSecond = p.PriceSecond,
+                    PriceThird = p.PriceThird,
+                    PriceFourth = p.PriceFourth,
+                    Run = p.Run,
+                    SeetsCount = p.SeetsCount,
+                    Available = p.Available,
+                    Conditioner = p.Conditioner,
+                    TankVolume = p.TankVolume,
+                    ColorId = p.ColorId,
+                    CarTypeId = p.CarTypeId,
+                    TransmissionId = p.TransmissionId,
+                    Photo = t.Photo
+                }).FirstOrDefault();
+
             var vm = new CitiesListVm
                 {
                     Cities = cities,
+                    Car = car,
                     CreateEnabled = true
                 };
 

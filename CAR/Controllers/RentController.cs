@@ -28,9 +28,9 @@ namespace CAR.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<CitiesLocationsListVm>> AddRent()
+        public async Task<ActionResult<CitiesListVm>> AddRent(Guid id)
         {
-            var model = await Mediator.Send(new GetCitiesLocationsListQuery());
+            var model = await Mediator.Send(new GetCitiesListQuery(id));
 
             return View(model);
         }
