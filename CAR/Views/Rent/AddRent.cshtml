@@ -15,24 +15,59 @@
         </div>
         <div class="col-10 shadow mb-5 bg-white rounded align-self-center acc-container p-md-5 unselectable">
             <div class="row">
-                    <div class="form-group col-md-4  col-sm-12">
-                        <form asp-controller="Location" asp-action="GetLocations" id="myForm">
-                            <select class="custom-select" id="city-list">
-                                @foreach (var city in Model.Cities)
-                                {
-                                    <option asp-for="Name" value="@city.Id" class="dropdown-item">@city.Name</option>
-                                }
-                            </select>
-                        </form>
-                    </div>
+                <div class="form-group col-md-4  col-sm-12">
+                    <form asp-controller="Location" asp-action="GetLocations" id="myForm">
+                        <select class="custom-select form-control" id="city-list">
+                            @foreach (var city in Model.Cities)
+                            {
+                                <option asp-for="Name" value="@city.Id" class="dropdown-item">@city.Name</option>
+                            }
+                        </select>
+                    </form>
+                </div>
                 <div class="col-md-4  col-sm-12">
                     <select class="custom-select form-control" id="location-list" name="location-list">
-
                     </select>
                     <p id="rData">
                     </p>
-                    @section Scripts {
-                        <script type="text/jscript">
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label for="meeting-time">Choose a start date and time for your rent:</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-sm-12 col-xs-12">
+                    <input type="date" id="meeting-time"
+                           name="meeting-time" class="form-control">
+                </div>
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    <input type="time" id="time"
+                           name="time" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label for="meeting-time">Choose a finish date and time for your rent:</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class='col-md-8 col-sm-12 col-xs-12'>
+                    <input type="date" id="meeting-timee"
+                           name="meeting-time" class="form-control">
+                </div>
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    <input type="time" id="time2"
+                           name="time2" class="form-control">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/jscript">
                             $(document).ready(function () {
                                 $("#city-list").change(function () {
                                     console.log("city change");
@@ -54,24 +89,57 @@
                                     }
                                 });
                                 return false;
-                            })
-                        });
-                        </script>
-                    }
-                </div>
-                <div class="col-md-4">
-                    <label for="start">Start date:</label>
+                                })
 
-                    <input type="date" id="start" name="trip-start"
-                           value="2018-07-22"
-                           min="2018-01-01" max="2018-12-31">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                                $("#meeting-time").on("click", date_Click);
 
+                                $("#meeting-timee").on("click", function () {
+                                    var dateFor = new Date();
+                                    var date = new Date($("#meeting-time").val());
+                                    var day = date.getDate() + 1;
+                                    var month = date.getMonth() + 1;
+                                    var year = date.getFullYear();
 
+                                    if (day < 10 && month < 10) {
+
+                                        dateFor = year + '-0' + month + '-0' + day;
+                                    }
+                                    else if (day < 10 && month > 9) {
+
+                                        dateFor = year + '-' + month + '-0' + day;
+                                    }
+                                    else if (day > 9 && month < 10) {
+
+                                        dateFor = year + '-0' + month + '-' + day;
+                                    }
+                                    else {
+                                        dateFor = year + '-' + month + '-' + day;
+                                    }
+
+                                    document.getElementById("meeting-timee").setAttribute("min", dateFor);
+                                });
+
+                                function date_Click(e) {
+
+                                    var today = new Date();
+                                    var dd = today.getDate();
+                                    var mm = today.getMonth() + 1; //January is 0!
+                                    var yyyy = today.getFullYear();
+                                    if (dd < 10) {
+                                        dd = '0' + dd
+                                    }
+                                    if (mm < 10) {
+                                        mm = '0' + mm
+                                    }
+
+                                    today = yyyy + '-' + mm + '-' + dd;
+                                    document.getElementById("meeting-time").setAttribute("min", today);
+                                }
+                            });
+       
+
+    </script>
+}
 
 
 

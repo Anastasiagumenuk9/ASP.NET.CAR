@@ -457,9 +457,8 @@ margin-right: 2rem;
 }
 
 .custom-select {
-    width: auto;
-    font-size: .9rem;
     min-width: 186px;
+    line-height: 1!important;
 }
 
 select {
