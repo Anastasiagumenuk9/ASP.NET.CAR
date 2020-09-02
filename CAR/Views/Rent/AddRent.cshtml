@@ -30,7 +30,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <label for="meeting-time">Choose a start date and time for your rent:</label>
+                            <label for="meeting-time">Choose a start date for your rent:</label>
                         </div>
                     </div>
                     <div class="row">
@@ -41,7 +41,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <label for="meeting-time">Choose a finish date and time for your rent:</label>
+                            <label for="meeting-time">Choose a finish date for your rent:</label>
                         </div>                
                     </div>
                     <div class="row">
@@ -81,10 +81,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-12">
+                <div class="col-md-4 col-sm-12 text-center">
                      <p class="text-uppercase font-weight-bold">@Model.Car.Name</p>
                      @Html.Raw("<img style='width:200px; height:120px;' class='' src=\"data:image/jpeg;base64,"
                                                     + Convert.ToBase64String(@Model.Car.Photo) + "\" />")
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-sm-12 col-xs-12 mt-3">
+                    <input type="text" id="sum"
+                           name="sum" class="form-control" readonly>
+                </div>
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    <a class="btn btn-log">Rent</a>
                 </div>
             </div>
         </div>
@@ -92,77 +101,78 @@
 </div>
 @section Scripts {
     <script type="text/jscript">
-                            $(document).ready(function () {
-                                $("#city-list").change(function () {
-                                    console.log("city change");
-                                    $("#location-list").empty();
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: '@Url.Action("GetLocationsViaCities")',
-                                        dataType: 'json',
-                                        data: { id: $("#city-list").val() },
-                                        success: function (mems) {
-                                            console.log("function work");
-                                            var response = JSON.parse(JSON.stringify(mems));
-                                            var markup;
-                                            for (var x = 0; x < response.length; x++) { markup += "<option value=" + response[x].value + ">" + response[x].text + "</option>"; }
-                                            $("#location-list").html(markup).show();
-                                    },
-                                    error: function (ex) {
-                                        alert('Failed to retrieve states.' + ex);
-                                    }
-                                });
-                                return false;
-                                })
+        $(document).ready(function () {
+            $("#city-list").change(function () {
+                console.log("city change");
+                $("#location-list").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetLocationsViaCities")',
+                    dataType: 'json',
+                    data: { id: $("#city-list").val() },
+                    success: function (mems) {
+                        console.log("function work");
+                        var response = JSON.parse(JSON.stringify(mems));
+                        var markup;
+                        for (var x = 0; x < response.length; x++) { markup += "<option value=" + response[x].value + ">" + response[x].text + "</option>"; }
+                        $("#location-list").html(markup).show();
+                    },
+                    error: function (ex) {
+                        lert('Failed to retrieve states.' + ex);
+                    }
+                });
+            return false;
+            })
 
-                                $("#meeting-time").on("click", date_Click);
+            $("#meeting-time").on("click", date_Click);
+            $("#meeting-timee").on("click", function () {
+                var dateFor = new Date();
+                var date = new Date($("#meeting-time").val());
+                var day = date.getDate() + 1;
+                var month = date.getMonth() + 1;
+                var year = date.getFullYear();
 
-                                $("#meeting-timee").on("click", function () {
-                                    var dateFor = new Date();
-                                    var date = new Date($("#meeting-time").val());
-                                    var day = date.getDate() + 1;
-                                    var month = date.getMonth() + 1;
-                                    var year = date.getFullYear();
+                if (day < 10 && month < 10) {
+                     dateFor = year + '-0' + month + '-0' + day;
+                }
+                else if (day < 10 && month > 9) {
+                    dateFor = year + '-' + month + '-0' + day;
+                }
+                else if (day > 9 && month < 10) {
+                    dateFor = year + '-0' + month + '-' + day;
+                }
+                else {
+                    dateFor = year + '-' + month + '-' + day;
+                }
 
-                                    if (day < 10 && month < 10) {
+                document.getElementById("meeting-timee").setAttribute("min", dateFor);
+            });
 
-                                        dateFor = year + '-0' + month + '-0' + day;
-                                    }
-                                    else if (day < 10 && month > 9) {
+            function date_Click(e) {
 
-                                        dateFor = year + '-' + month + '-0' + day;
-                                    }
-                                    else if (day > 9 && month < 10) {
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0!
+            var yyyy = today.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd
+            }
+            if (mm < 10) {
+                mm = '0' + mm
+            }
 
-                                        dateFor = year + '-0' + month + '-' + day;
-                                    }
-                                    else {
-                                        dateFor = year + '-' + month + '-' + day;
-                                    }
+            today = yyyy + '-' + mm + '-' + dd;
+            document.getElementById("meeting-time").setAttribute("min", today);
+            $("#meeting-timee").val('').attr('type', 'text').attr('type', 'date');
+            }
 
-                                    document.getElementById("meeting-timee").setAttribute("min", dateFor);
-                                });
-
-                                function date_Click(e) {
-
-                                    var today = new Date();
-                                    var dd = today.getDate();
-                                    var mm = today.getMonth() + 1; //January is 0!
-                                    var yyyy = today.getFullYear();
-                                    if (dd < 10) {
-                                        dd = '0' + dd
-                                    }
-                                    if (mm < 10) {
-                                        mm = '0' + mm
-                                    }
-
-                                    today = yyyy + '-' + mm + '-' + dd;
-                                    document.getElementById("meeting-time").setAttribute("min", today);
-                                    $("#meeting-timee").val('').attr('type', 'text')
-                                        .attr('type', 'date');
-                                }
-                            });
-       
+            $('#meeting-timee').on('change', function () {
+            var date1 = new Date($("#meeting-time").val());
+            var date2 = new Date($("#meeting-timee").val());
+            var daysLag = Math.ceil(Math.abs(date2.getTime() - date1.getTime()) / (1000 * 3600 * 24));
+            alert(daysLag);
+            });
+        });
 
     </script>
 }
