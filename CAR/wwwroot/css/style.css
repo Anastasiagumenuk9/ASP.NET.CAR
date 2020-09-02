@@ -158,6 +158,10 @@ form {
     font-size: .95em;
 }
 
+.form-control:disabled, .form-control[readonly] {
+    background-color: white;
+}
+
 ion-icon {
     color: grey;
     font-size: 1.2rem;

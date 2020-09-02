@@ -163,7 +163,8 @@
 
             today = yyyy + '-' + mm + '-' + dd;
             document.getElementById("meeting-time").setAttribute("min", today);
-            $("#meeting-timee").val('').attr('type', 'text').attr('type', 'date');
+                $("#meeting-timee").val('').attr('type', 'text').attr('type', 'date');
+                $("#sum").val("");
             }
 
             $('#meeting-timee').on('change', function () {
@@ -180,16 +181,16 @@
                         console.log("car found");
                         console.log(mems);
                         if (daysLag > 0 && daysLag < 4) {
-                            $("#sum").val("Price : " + mems.priceThird + " $");
+                            $("#sum").val("Price : " + mems.priceThird * daysLag + " $");
                         }
                         else if (daysLag > 3 && daysLag < 10) {
-                            $("#sum").val("Price : " + mems.priceSecond + " $");
+                            $("#sum").val("Price : " + mems.priceSecond * daysLag + " $");
                         }
                         else if (daysLag > 9 && daysLag < 26) {
-                            $("#sum").val("Price : " + mems.priceFourth + " $");
+                            $("#sum").val("Price : " + mems.priceFourth * daysLag + " $");
                         }
                         else if (daysLag > 26) {
-                            $("#sum").val("Price : " + mems.price + " $");
+                            $("#sum").val("Price : " + mems.price * daysLag + " $");
                         }
                     },
                     error: function (ex) {
