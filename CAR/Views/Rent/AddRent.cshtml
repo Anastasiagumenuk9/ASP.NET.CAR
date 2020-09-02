@@ -15,61 +15,76 @@
         </div>
         <div class="col-10 shadow mb-5 bg-white rounded align-self-center acc-container p-md-5 unselectable">
             <div class="row">
-                <div class="col-md-4 col-sm-12 col-xs-12">
-                   
+                <div class="col-md-4 col-sm-12">
+                    <div class="row">
+                        <div class="col-12">
+                            <form asp-controller="Location" asp-action="GetLocations" id="myForm">
+                                <select class="custom-select form-control" id="city-list">
+                                    @foreach (var city in Model.Cities)
+                                    {
+                                        <option asp-for="Name" value="@city.Id" class="dropdown-item">@city.Name</option>
+                                    }
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="meeting-time">Choose a start date and time for your rent:</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="date" id="meeting-time"
+                                   name="meeting-time" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="meeting-time">Choose a finish date and time for your rent:</label>
+                        </div>                
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                                <input type="date" id="meeting-timee"
+                                       name="meeting-time" class="form-control">
+                        </div>             
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-4  col-sm-12">
-                    <form asp-controller="Location" asp-action="GetLocations" id="myForm">
-                        <select class="custom-select form-control" id="city-list">
-                            @foreach (var city in Model.Cities)
-                            {
-                                <option asp-for="Name" value="@city.Id" class="dropdown-item">@city.Name</option>
-                            }
-                        </select>
-                    </form>
+                <div class="col-md-4 col-sm-12">
+                    <div class="row">
+                        <div class="col-12">
+                            <select class="custom-select form-control" id="location-list" name="location-list">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="meeting-time">Choose a start time:</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="time" id="time"
+                                   name="time" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="meeting-time">Choose a finish time:</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                                <input type="time" id="time2"
+                                       name="time2" class="form-control">
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-4  col-sm-12">
-                    <select class="custom-select form-control" id="location-list" name="location-list">
-                    </select>
-                    <p id="rData">
-                    </p>
-                </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-12">
                      <p class="text-uppercase font-weight-bold">@Model.Car.Name</p>
-                    @Html.Raw("<img style='width:200px; height:120px;' class='' src=\"data:image/jpeg;base64,"
-                                                + Convert.ToBase64String(@Model.Car.Photo) + "\" />")
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <label for="meeting-time">Choose a start date and time for your rent:</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8 col-sm-12 col-xs-12">
-                    <input type="date" id="meeting-time"
-                           name="meeting-time" class="form-control">
-                </div>
-                <div class="col-md-4 col-sm-12 col-xs-12">
-                    <input type="time" id="time"
-                           name="time" class="form-control">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <label for="meeting-time">Choose a finish date and time for your rent:</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class='col-md-8 col-sm-12 col-xs-12'>
-                    <input type="date" id="meeting-timee"
-                           name="meeting-time" class="form-control">
-                </div>
-                <div class="col-md-4 col-sm-12 col-xs-12">
-                    <input type="time" id="time2"
-                           name="time2" class="form-control">
+                     @Html.Raw("<img style='width:200px; height:120px;' class='' src=\"data:image/jpeg;base64,"
+                                                    + Convert.ToBase64String(@Model.Car.Photo) + "\" />")
                 </div>
             </div>
         </div>
