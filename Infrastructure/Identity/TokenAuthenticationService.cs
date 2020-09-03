@@ -58,6 +58,7 @@ namespace Infrastructure.Identity
                 throw new Exception("The user not found");
             }
 
+            var pass = await _userManager.CheckPasswordAsync(user, password);
             var result = await _signInManager.PasswordSignInAsync(user.UserName, password, rememberMe, false);
 
             if (result.Succeeded)

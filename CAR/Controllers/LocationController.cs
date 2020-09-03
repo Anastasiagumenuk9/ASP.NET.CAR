@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Application.Locations.Queries.GetLocationsListById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CAR.Controllers
@@ -24,6 +25,13 @@ namespace CAR.Controllers
             var model = await Mediator.Send(new GetLocationsListQuery());
 
             return model;
+        }
+
+        public async Task<JsonResult> GetLocationsViaCities(Guid id)
+        {
+            var model = await Mediator.Send(new GetLocationsListQuery());
+
+            return Json(new SelectList(model.Locations.Where(c => c.CityId == id), "Id", "Name"));
         }
     }
 }

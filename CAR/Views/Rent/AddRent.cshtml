@@ -1,5 +1,7 @@
 ﻿@using Application.Cities.Queries
 @using Domain.Entities
+@using Microsoft.AspNetCore.Http
+@using System.Security.Claims;
 
 @{
     ViewData["Title"] = "AddRent";
@@ -18,14 +20,12 @@
                 <div class="col-md-4 col-sm-12">
                     <div class="row">
                         <div class="col-12">
-                            <form asp-controller="Location" asp-action="GetLocations" id="myForm">
                                 <select class="custom-select form-control" id="city-list">
                                     @foreach (var city in Model.Cities)
                                     {
-                                        <option asp-for="Name" value="@city.Id" class="dropdown-item">@city.Name</option>
+                                        <option value="@city.Id" class="dropdown-item">@city.Name</option>
                                     }
                                 </select>
-                            </form>
                         </div>
                     </div>
                     <div class="row">
@@ -93,7 +93,7 @@
                            name="sum" class="form-control" readonly>
                 </div>
                 <div class="col-md-4 col-sm-12 col-xs-12">
-                    <a class="btn btn-log">Rent</a>
+                    <a class="btn btn-log" id="rent">Rent</a>
                 </div>
             </div>
         </div>
@@ -102,12 +102,14 @@
 @section Scripts {
     <script type="text/jscript">
         $(document).ready(function () {
+            let sum = 0;
+
             $("#city-list").change(function () {
                 console.log("city change");
                 $("#location-list").empty();
                 $.ajax({
                     type: 'POST',
-                    url: '@Url.Action("GetLocationsViaCities")',
+                    url: '@Url.Action("GetLocationsViaCities", "Location")',
                     dataType: 'json',
                     data: { id: $("#city-list").val() },
                     success: function (mems) {
@@ -182,15 +184,19 @@
                         console.log(mems);
                         if (daysLag > 0 && daysLag < 4) {
                             $("#sum").val("Price : " + mems.priceThird * daysLag + " $");
+                            sum = mems.priceThird * daysLag;
                         }
                         else if (daysLag > 3 && daysLag < 10) {
                             $("#sum").val("Price : " + mems.priceSecond * daysLag + " $");
+                            sum = mems.priceSecond * daysLag;
                         }
                         else if (daysLag > 9 && daysLag < 26) {
                             $("#sum").val("Price : " + mems.priceFourth * daysLag + " $");
+                            sum = mems.priceFourth * daysLag;
                         }
                         else if (daysLag > 26) {
                             $("#sum").val("Price : " + mems.price * daysLag + " $");
+                            sum = mems.price * daysLag;
                         }
                     },
                     error: function (ex) {
@@ -201,6 +207,42 @@
                 }
 
             });
+
+            $("#rent").click(function () {
+                var city = $("#city-list option:selected").text();
+                var location = $("#location-list option:selected").text();
+                var date1 = new Date($("#meeting-time").val());
+                var date2 = new Date($("#meeting-timee").val());
+                
+                var time1 = $("#time").val();
+                date1.setHours(time1.split(':')[0], time1.split(':')[1] , 0);
+
+                var time2 = $("#time2").val();
+                date2.setHours(time2.split(':')[0], time2.split(':')[1], 0);
+
+                var loggedUser = '@User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)?.Value';
+
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("AddRent", "Rent")',
+                    dataType: 'json',
+                    data: {
+                        StartDataRend: date1.toLocaleDateString(),
+                        FinishDataRend: date2.toLocaleDateString(),
+                        CarId: '@Model.Car.Id',
+                        LocationId: $("#location-list option:selected").val(),
+                        ApplicationUserId: loggedUser.toString(),
+                        Price: sum
+                    },
+                    success: function (mems) {
+
+                    },
+                    error: function (ex) {
+                        lert('Failed to retrieve states.' + ex);
+                    }
+                });
+            });
+
         });
 
     </script>
