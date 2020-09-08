@@ -1,7 +1,9 @@
 ﻿using Application.Common.Interfaces;
 using Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
@@ -29,8 +31,9 @@ namespace Application.Account.Command.CreateAccount
         public async Task<string> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             return await _userService.CreateUserAsync(request.FirstName, request.LastName, request.Email,
-                                                request.PhoneNumber, request.Street, request.Password,
-                                                request.City, request.PostalCode);
+                                                      request.PhoneNumber, request.Street, request.Password,
+                                                      request.City, request.PostalCode);
+
         }
     }
 }

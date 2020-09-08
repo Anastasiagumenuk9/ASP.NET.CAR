@@ -213,7 +213,7 @@
                 var location = $("#location-list option:selected").text();
                 var date1 = new Date($("#meeting-time").val());
                 var date2 = new Date($("#meeting-timee").val());
-                
+
                 var time1 = $("#time").val();
                 date1.setHours(time1.split(':')[0], time1.split(':')[1] , 0);
 
@@ -235,7 +235,7 @@
                         Price: sum
                     },
                     success: function (mems) {
-
+                        window.location.href = '@Url.Action("AccountPage", "Account")';
                     },
                     error: function (ex) {
                         lert('Failed to retrieve states.' + ex);

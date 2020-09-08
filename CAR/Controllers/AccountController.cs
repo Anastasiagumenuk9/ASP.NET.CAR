@@ -94,11 +94,20 @@ namespace CAR.Controllers
             }
         }
 
-        public IActionResult EmailVerification() => View();
-
-        public async Task<IActionResult> VerifyEmail(string userId, string token)
+        [HttpGet]
+        public async Task<IActionResult> ConfirmEmail(string userid, string token)
         {
-            return View();
+            var user = _userManager.FindByIdAsync(userid).Result;
+            IdentityResult result =  _userManager.
+                        ConfirmEmailAsync(user, token).Result;
+            if (result.Succeeded)
+            {
+                return View("SuccessEmailConfirmation");
+            }
+            else
+            {
+                return View("Error");
+            }
         }
 
         [Authorize]
@@ -175,7 +184,9 @@ namespace CAR.Controllers
         [HttpPost]
         public async Task<ActionResult<string>> Register([FromForm]CreateUserCommand command)
         {
-            return await Mediator.Send(command);
+           var result = await Mediator.Send(command);
+
+            return RedirectToAction("Index", "Home", false);
         }
     }
 }

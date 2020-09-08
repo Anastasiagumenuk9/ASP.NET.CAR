@@ -41,7 +41,7 @@ namespace CAR.Controllers
         [HttpPost]
         public async Task<ActionResult<Guid>> AddRent(CreateRentCommand command)
         {
-            return await Mediator.Send(command);
+            return await Mediator.Send(command);        
         }
 
         public async Task<ActionResult<PersonalRentsListVm>> GetPersonalRents()

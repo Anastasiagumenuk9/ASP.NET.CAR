@@ -14,16 +14,30 @@ using System.Web;
 using Microsoft.Net.Http.Server;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using System.Net.Mail;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.AspNetCore.Routing;
+using MailKit;
 
 namespace Infrastructure.Identity
 {
     public class UserService : IUserService
     {
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IHttpContextAccessor _accessor;
+        private readonly IUrlHelperFactory _urlHelperFactory;
+        private readonly IActionContextAccessor _actionContextAccessor;
+        private readonly LinkGenerator _generator;
 
-        public UserService(UserManager<ApplicationUser> userManager)
+        public UserService(UserManager<ApplicationUser> userManager, IHttpContextAccessor accessor, IUrlHelperFactory urlHelperFactory, LinkGenerator generator, IActionContextAccessor actionContextAccessor)
         {
             _userManager = userManager;
+            _accessor = accessor;
+            _urlHelperFactory = urlHelperFactory;
+            _generator = generator;
+            _actionContextAccessor = actionContextAccessor;
         }
 
         private static bool ByteArraysEqual(byte[] b0, byte[] b1)
@@ -55,8 +69,8 @@ namespace Infrastructure.Identity
         }
 
         public async Task<string> CreateUserAsync(string FirstName, string LastName, string Email,
-                                                                          string PhoneNumber, string Street, string Password,
-                                                                          string City, string PostalCode)
+                                                  string PhoneNumber, string Street, string Password,
+                                                  string City, string PostalCode)
         {
             if (await _userManager.FindByNameAsync(Email) == null)
             {
@@ -85,8 +99,21 @@ namespace Infrastructure.Identity
                         throw new Exception("Exception added roles!");
                     }
 
-                    var confirmationToken =  await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //var list = UrlHelper.GenerateUrl()
+                    string confirmationToken = _userManager.GenerateEmailConfirmationTokenAsync(user).Result;
+
+                    var urlHelper = _urlHelperFactory.GetUrlHelper(_actionContextAccessor.ActionContext);
+
+                    string confirmationLink = urlHelper.Action("ConfirmEmail",
+                    "Account", new
+                    {
+                        userid = user.Id,
+                        token = confirmationToken
+                    },
+                    protocol: _accessor.HttpContext.Request.Scheme);
+
+                    EmailService emailService = new EmailService();
+                    await emailService.SendEmailAsync(user.Email, "Confirm your account",
+                        $"Confirm registration, following the <a href='{confirmationLink}'>link</a>");
                 }
 
                 return user.Id;
