@@ -125,21 +125,6 @@
             });
         });
 
-        @*$("#reset-password").click(function (e) {
-            e.preventDefault();
-            $.ajax({
-                url: '@Url.Action("CreateResetPasswordLink", "Account")',
-                type: 'post',
-                data: {
-                    Email: '@Model.Email',
-                },
-                dataType: "json",
-                success: function () {
-
-                }
-            });
-        });*@
-
         $("#fn").keyup(function (event) {
             validateInputs();
         });

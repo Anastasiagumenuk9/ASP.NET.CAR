@@ -122,11 +122,11 @@ namespace CAR.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateResetPasswordLink([FromForm] CreateResetPasswordLinkCommand command)
+        public async Task<IActionResult> CreateResetPasswordLink([FromForm]CreateResetPasswordLinkCommand command)
         {
             await Mediator.Send(command);
 
-            return RedirectToAction("AccountPage", "Account");
+            return RedirectToAction("Index", "Home");
         }
 
         [Authorize]
@@ -210,7 +210,7 @@ namespace CAR.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult ResetPassword(string Code, string Email)
+        public IActionResult ResetPassword(string Code)
         {
             return View();
         }
@@ -220,9 +220,16 @@ namespace CAR.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ResetPassword([FromForm]ResetPasswordCommand command)
         {
-            var result = await Mediator.Send(command);
+            await Mediator.Send(command);
 
-            return RedirectToAction("Login", "Account");
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("AccountPage", "Account");
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
     }
 }
