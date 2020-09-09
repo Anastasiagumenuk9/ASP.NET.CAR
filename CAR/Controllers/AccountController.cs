@@ -23,6 +23,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Application.Account.Command.ResetPassword;
+using Application.Account.Command.CreateResetPasswordLink;
 
 namespace CAR.Controllers
 {
@@ -57,7 +59,7 @@ namespace CAR.Controllers
         public async Task<ActionResult<AccountDetailVm>> AccountPage()
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
-            var model = await Mediator.Send(new GetAccountDetailQuery {Id = user.Id});
+            var model = await Mediator.Send(new GetAccountDetailQuery { Id = user.Id });
 
             return View(model);
         }
@@ -82,12 +84,12 @@ namespace CAR.Controllers
         }
 
         [AcceptVerbs("Get", "Post")]
-        public async Task <IActionResult> CheckMail(string email)
+        public async Task<IActionResult> CheckMail(string email)
         {
             if (await _userManager.FindByEmailAsync(email) == null)
             {
                 return Json(true);
-            }  
+            }
             else
             {
                 return Json(false);
@@ -98,7 +100,7 @@ namespace CAR.Controllers
         public async Task<IActionResult> ConfirmEmail(string userid, string token)
         {
             var user = _userManager.FindByIdAsync(userid).Result;
-            IdentityResult result =  _userManager.
+            IdentityResult result = _userManager.
                         ConfirmEmailAsync(user, token).Result;
             if (result.Succeeded)
             {
@@ -108,6 +110,23 @@ namespace CAR.Controllers
             {
                 return View("Error");
             }
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult CreateResetPasswordLink()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateResetPasswordLink([FromForm] CreateResetPasswordLinkCommand command)
+        {
+            await Mediator.Send(command);
+
+            return RedirectToAction("AccountPage", "Account");
         }
 
         [Authorize]
@@ -142,7 +161,7 @@ namespace CAR.Controllers
         public async Task<IActionResult> GoogleResponse()
         {
             var result = await HttpContext.AuthenticateAsync(IdentityConstants.ExternalScheme);
-            var token = await  _googleAuthenticateService.SignInGoogle(result);
+            var token = await _googleAuthenticateService.SignInGoogle(result);
             if (result != null)
             {
                 HttpContext.Session.SetString("JWToken", token);
@@ -158,7 +177,7 @@ namespace CAR.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login([FromForm]LoginCommand command)
+        public async Task<IActionResult> Login([FromForm] LoginCommand command)
         {
             var result = await Mediator.Send(command);
 
@@ -176,17 +195,34 @@ namespace CAR.Controllers
             return Redirect("~/Home/Index");
         }
 
-        public  IActionResult Register()
+        public IActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<ActionResult<string>> Register([FromForm]CreateUserCommand command)
+        public async Task<ActionResult<string>> Register([FromForm] CreateUserCommand command)
         {
-           var result = await Mediator.Send(command);
+            var result = await Mediator.Send(command);
 
             return RedirectToAction("Index", "Home", false);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ResetPassword(string Code, string Email)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPassword([FromForm]ResetPasswordCommand command)
+        {
+            var result = await Mediator.Send(command);
+
+            return RedirectToAction("Login", "Account");
         }
     }
 }

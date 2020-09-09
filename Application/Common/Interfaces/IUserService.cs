@@ -15,5 +15,8 @@ namespace Application.Common.Interfaces
                                      string City, string PostalCode);
 
         Task<Result> DeleteUserAsync(string userId);
+
+        Task ResetPassword(string email, string code, string password);
+        Task ResetPasswordLinkSender(string email);
     }
 }
