@@ -23,6 +23,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Application.Account.Command.ResetPassword;
 
 namespace CAR.Controllers
 {
@@ -187,6 +188,28 @@ namespace CAR.Controllers
            var result = await Mediator.Send(command);
 
             return RedirectToAction("Index", "Home", false);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ResetPassword(string code = null)
+        {
+            return code == null ? View("Error") : View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPassword([FromForm]ResetPasswordCommand command)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(command);
+            }
+
+            var result = await Mediator.Send(command);
+
+            return Ok();
         }
     }
 }
