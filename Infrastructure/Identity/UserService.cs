@@ -163,6 +163,20 @@ namespace Infrastructure.Identity
             return  Convert.ToBase64String(dst);
         }
 
+        public async Task<ActionResult> ResetPassword(string email, string code, string password)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+
+            if (user == null)
+            {
+                throw new Exception("The user not found");
+            }
+
+            var result = await _userManager.ResetPasswordAsync(user, code, password);
+
+            return result;
+        }
+
         public static bool VerifyHashedPassword(string hashedPassword, string password)
         {
             byte[] buffer4;
