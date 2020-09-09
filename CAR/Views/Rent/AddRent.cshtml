@@ -93,7 +93,7 @@
                            name="sum" class="form-control" readonly>
                 </div>
                 <div class="col-md-4 col-sm-12 col-xs-12">
-                    <a class="btn btn-log" id="rent">Rent</a>
+                    <input class="btn btn-log" id="rent" disabled value="Rent" />
                 </div>
             </div>
         </div>
@@ -103,6 +103,46 @@
     <script type="text/jscript">
         $(document).ready(function () {
             let sum = 0;
+
+            $("#city-list").change(function (event) {
+                validateInputs();
+            });
+
+            $("#location-list").change(function (event) {
+                validateInputs();
+            });
+
+            $("#meeting-time").change(function (event) {
+                validateInputs();
+            });
+
+            $("#meeting-timee").change(function (event) {
+                validateInputs();
+            });
+
+            $("#time").change(function (event) {
+                validateInputs();
+            });
+
+            $("#time2").change(function (event) {
+                validateInputs();
+            });
+
+            function validateInputs() {
+                var disableButton = false;
+
+                var city = jQuery.trim($("#city-list").val());
+                var location = jQuery.trim($("#location-list").val());
+                var date1 = jQuery.trim($("#meeting-time").val());
+                var date2 = jQuery.trim($("#meeting-timee").val());
+                var time1 = jQuery.trim($("#time").val());
+                var time2 = jQuery.trim($("#time2").val());
+
+                if (city.length == 0 || location == 0 || date1.length == 0 || date2.length == 0 || time1.length == 0 || time2.length == 0)
+                    disableButton = true;
+
+                $("#rent").attr('disabled', disableButton);
+            }
 
             $("#city-list").change(function () {
                 console.log("city change");
@@ -167,6 +207,8 @@
             document.getElementById("meeting-time").setAttribute("min", today);
                 $("#meeting-timee").val('').attr('type', 'text').attr('type', 'date');
                 $("#sum").val("");
+                $("#rent").attr('disabled', true);
+
             }
 
             $('#meeting-timee').on('change', function () {
