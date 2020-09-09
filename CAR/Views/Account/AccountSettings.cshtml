@@ -85,7 +85,7 @@
                             </div>
                         </div>
                         <p class="text-right">
-                            <a class="acc" asp-controller="Account" asp-action="Register">
+                            <a class="acc" id="reset-password" asp-controller="Account" asp-action="CreateResetPasswordLink">
                                 Password Reset
                             </a>
                         </p>
@@ -105,64 +105,79 @@
 @section Scripts {
     <script type="text/jscript">
 
-            $("#up").click(function (e) {
-                e.preventDefault();
-                $.ajax({
-                    url: '/Account/AccountSettings',
-                    type: 'put',
-                    data: {
-                        FirstName: $("#fn").val(), LastName: $("#ln").val(),
-                        City: $("#city").val(), Street: $("#street").val(),
-                        Email: $("#mail").text(),
-                        PhoneNumber: $("#phone").val(),
-                        PostalCode: $("#pc").val()
-                    },
-                    dataType: "json",
-                    success: function () {
+        $("#up").click(function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: '/Account/AccountSettings',
+                type: 'put',
+                data: {
+                    FirstName: $("#fn").val(), LastName: $("#ln").val(),
+                    City: $("#city").val(), Street: $("#street").val(),
+                    Email: $("#mail").text(),
+                    PhoneNumber: $("#phone").val(),
+                    PostalCode: $("#pc").val()
+                },
+                dataType: "json",
+                success: function () {
 
-                        alert("User is Updated!");
-                    }
-                });
+                    alert("User is Updated!");
+                }
             });
+        });
 
-            $("#fn").keyup(function (event) {
-                validateInputs();
+        @*$("#reset-password").click(function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: '@Url.Action("CreateResetPasswordLink", "Account")',
+                type: 'post',
+                data: {
+                    Email: '@Model.Email',
+                },
+                dataType: "json",
+                success: function () {
+
+                }
             });
+        });*@
 
-            $("#ln").keyup(function (event) {
-                validateInputs();
-            });
+        $("#fn").keyup(function (event) {
+            validateInputs();
+        });
 
-            $("#pc").keyup(function (event) {
-                validateInputs();
-            });
+        $("#ln").keyup(function (event) {
+            validateInputs();
+        });
 
-            $("#phone").keyup(function (event) {
-                validateInputs();
-            });
+        $("#pc").keyup(function (event) {
+            validateInputs();
+        });
 
-            $("#city").keyup(function (event) {
-                validateInputs();
-            });
+        $("#phone").keyup(function (event) {
+            validateInputs();
+        });
 
-            $("#street").keyup(function (event) {
-                validateInputs();
-            });
+        $("#city").keyup(function (event) {
+            validateInputs();
+        });
 
-            function validateInputs() {
-                var disableButton = false;
+        $("#street").keyup(function (event) {
+            validateInputs();
+        });
 
-                var fn = jQuery.trim($("#fn").val());
-                var ln = jQuery.trim($("#ln").val());
-                var pc = jQuery.trim($("#pc").val());
-                var phone = jQuery.trim($("#phone").val());
-                var city = jQuery.trim($("#city").val());
-                var street = jQuery.trim($("#street").val());
+        function validateInputs() {
+            var disableButton = false;
 
-                if (fn.length == 0 || ln.length == 0 || pc.length == 0 || phone.length == 0 || city.length == 0 || street.length == 0)
+            var fn = jQuery.trim($("#fn").val());
+            var ln = jQuery.trim($("#ln").val());
+            var pc = jQuery.trim($("#pc").val());
+            var phone = jQuery.trim($("#phone").val());
+            var city = jQuery.trim($("#city").val());
+            var street = jQuery.trim($("#street").val());
+
+            if (fn.length == 0 || ln.length == 0 || pc.length == 0 || phone.length == 0 || city.length == 0 || street.length == 0)
                     disableButton = true;
 
-                $('.sendButton').attr('disabled', disableButton);
+            $('.sendButton').attr('disabled', disableButton);
             }
 
     </script>

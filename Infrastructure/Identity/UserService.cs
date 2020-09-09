@@ -175,6 +175,30 @@ namespace Infrastructure.Identity
             await _userManager.ResetPasswordAsync(user, code, password);
         }
 
+        public async Task ResetPasswordLinkSender(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
+            {
+                throw new Exception("User not found");
+            }
+            var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+            var urlHelper = _urlHelperFactory.GetUrlHelper(_actionContextAccessor.ActionContext);
+            
+            string confirmationLink = urlHelper.Action("ResetPassword",
+                    "Account", new
+                    {
+                        Email = user.Email,
+                        Code = code
+                    },
+                    protocol: _accessor.HttpContext.Request.Scheme);
+
+            EmailService emailService = new EmailService();
+            await emailService.SendEmailAsync(email, "Reset Password",
+                $"Follow the <a href='{confirmationLink }'>link</a> to reset password.");
+        }
+
         public static bool VerifyHashedPassword(string hashedPassword, string password)
         {
             byte[] buffer4;
