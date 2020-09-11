@@ -4,6 +4,7 @@ using IdentityServer4.Endpoints.Results;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -40,8 +41,8 @@ namespace Infrastructure.Identity
                    claim.Value
                });
 
-            var mail = claimsGoogle.Where(c => c.Type == ClaimTypes.Email)
-                   .Select(c => c.Value).SingleOrDefault();
+            var mail =  claimsGoogle.Where(c => c.Type == ClaimTypes.Email)
+                   .Select(c => c.Value).FirstOrDefault();
 
             var user = await _userManager.FindByEmailAsync(mail);
 
@@ -50,7 +51,7 @@ namespace Infrastructure.Identity
                 throw new Exception("The user not found");
             }
 
-            var result = _signInManager.SignInAsync(user, false);
+            var result =  _signInManager.SignInAsync(user, false);
 
             if (result != null)
             {
@@ -66,7 +67,7 @@ namespace Infrastructure.Identity
                 var claims = new List<Claim>
                 {
                     new Claim("name", user.UserName),
-                    new Claim("role",userRole),
+                    new Claim("role", userRole),
                     new Claim(JwtRegisteredClaimNames.Sub, user.Id),
                     new Claim(JwtRegisteredClaimNames.Email, user.Email)
                 };
@@ -81,6 +82,7 @@ namespace Infrastructure.Identity
             }
 
             throw new Exception("Error");
+
         }
     }
 }

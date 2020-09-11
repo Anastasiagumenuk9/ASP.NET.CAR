@@ -20,8 +20,8 @@ namespace Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddTransient<IUserService, UserService>();
-            services.AddTransient<IGoogleAuthenticateService, GoogleAuthenticateService>();
-            services.AddTransient<IAuthenticateService, TokenAuthenticationService>();
+            services.AddScoped<IGoogleAuthenticateService, GoogleAuthenticateService>();
+            services.AddScoped<IAuthenticateService, TokenAuthenticationService>();
             services.AddTransient<IDateTime, MachineDateTime>();
 
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();

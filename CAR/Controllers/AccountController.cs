@@ -151,7 +151,7 @@ namespace CAR.Controllers
         }
 
         [Route("google-login")]
-        public IActionResult GoogleLogin()
+        public async Task<IActionResult> GoogleLogin()
         {
             var properties = new AuthenticationProperties { RedirectUri = Url.Action("GoogleResponse") };
             return Challenge(properties, GoogleDefaults.AuthenticationScheme);
@@ -162,7 +162,7 @@ namespace CAR.Controllers
         {
             var result = await HttpContext.AuthenticateAsync(IdentityConstants.ExternalScheme);
             var token = await _googleAuthenticateService.SignInGoogle(result);
-            if (result != null)
+            if (result.Succeeded)
             {
                 HttpContext.Session.SetString("JWToken", token);
             }
