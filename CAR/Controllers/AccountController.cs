@@ -122,11 +122,11 @@ namespace CAR.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateResetPasswordLink([FromForm] CreateResetPasswordLinkCommand command)
+        public async Task<IActionResult> CreateResetPasswordLink([FromForm]CreateResetPasswordLinkCommand command)
         {
             await Mediator.Send(command);
 
-            return RedirectToAction("AccountPage", "Account");
+            return RedirectToAction("Index", "Home");
         }
 
         [Authorize]
@@ -151,7 +151,7 @@ namespace CAR.Controllers
         }
 
         [Route("google-login")]
-        public IActionResult GoogleLogin()
+        public async Task<IActionResult> GoogleLogin()
         {
             var properties = new AuthenticationProperties { RedirectUri = Url.Action("GoogleResponse") };
             return Challenge(properties, GoogleDefaults.AuthenticationScheme);
@@ -162,7 +162,7 @@ namespace CAR.Controllers
         {
             var result = await HttpContext.AuthenticateAsync(IdentityConstants.ExternalScheme);
             var token = await _googleAuthenticateService.SignInGoogle(result);
-            if (result != null)
+            if (result.Succeeded)
             {
                 HttpContext.Session.SetString("JWToken", token);
             }
@@ -210,7 +210,7 @@ namespace CAR.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult ResetPassword(string Code, string Email)
+        public IActionResult ResetPassword(string Code)
         {
             return View();
         }
@@ -220,9 +220,16 @@ namespace CAR.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ResetPassword([FromForm]ResetPasswordCommand command)
         {
-            var result = await Mediator.Send(command);
+            await Mediator.Send(command);
 
-            return RedirectToAction("Login", "Account");
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("AccountPage", "Account");
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
     }
 }

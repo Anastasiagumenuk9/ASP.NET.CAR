@@ -30,7 +30,7 @@
                                 <label for="psw" asp-for="Password" class="text-uppercase"><b>Password</b></label>
                             </div>
                             <div class="col-6 text-right">
-                                <a class="acc" href="#">
+                                <a class="acc" asp-controller="Account" asp-action="CreateResetPasswordLink">
                                     Forgot password?
                                 </a>
                             </div>
