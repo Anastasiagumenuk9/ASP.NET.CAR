@@ -20,6 +20,8 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Routing;
 using MailKit;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
 
 namespace Infrastructure.Identity
 {
@@ -66,6 +68,33 @@ namespace Infrastructure.Identity
             }
 
             return true;
+        }
+
+        public async Task<string> CreateGoogleUserAsync(AuthenticateResult authResult)
+        {
+            var claimsGoogle = authResult.Principal.Identities
+               .FirstOrDefault().Claims.Select(claim => new
+               {
+                   claim.Issuer,
+                   claim.OriginalIssuer,
+                   claim.Type,
+                   claim.Value
+               });
+
+            var Email = claimsGoogle.Where(c => c.Type == ClaimTypes.Email)
+                   .Select(c => c.Value).FirstOrDefault();
+
+            var UserName = Email.Substring(0, Email.IndexOf('@'));
+            var FirstName = claimsGoogle.Where(c => c.Type == ClaimTypes.Name)
+                   .Select(c => c.Value).FirstOrDefault();
+            var LastName = claimsGoogle.Where(c => c.Type == ClaimTypes.Surname)
+                   .Select(c => c.Value).FirstOrDefault();
+            var PhoneNumber = claimsGoogle.Where(c => c.Type == ClaimTypes.MobilePhone)
+                   .Select(c => c.Value).FirstOrDefault();
+            var PaswordHash = claimsGoogle.Where(c => c.Type == ClaimTypes.Hash)
+                   .Select(c => c.Value).FirstOrDefault();
+
+            return await CreateUserAsync(FirstName, LastName, Email, PhoneNumber, "", "", "", "");
         }
 
         public async Task<string> CreateUserAsync(string FirstName, string LastName, string Email,
