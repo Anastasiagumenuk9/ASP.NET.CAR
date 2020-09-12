@@ -1,4 +1,5 @@
 ﻿using Application.Common.Models;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,6 +14,8 @@ namespace Application.Common.Interfaces
         Task<string> CreateUserAsync(string FirstName, string LastName, string Email,
                                      string PhoneNumber, string Street, string Password,
                                      string City, string PostalCode);
+
+        Task<string> CreateGoogleUserAsync(AuthenticateResult authResult);
 
         Task<Result> DeleteUserAsync(string userId);
 
