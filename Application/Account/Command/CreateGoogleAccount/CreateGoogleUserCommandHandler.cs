@@ -1,6 +1,7 @@
 ﻿using Application.Common.Interfaces;
 using Application.Common.Models;
 using MediatR;
+using Microsoft.AspNetCore.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Application.Account.Command.CreateGoogleAccount
 {
-    public class CreateGoogleUserCommandHandler : IRequestHandler<CreateGoogleUserCommand, string>
+    public class CreateGoogleUserCommandHandler// : IRequestHandler<CreateGoogleUserCommand, string>
     {
         private readonly ICarDbContext _context;
         private readonly IUserService _userService;
@@ -20,9 +21,9 @@ namespace Application.Account.Command.CreateGoogleAccount
             _userService = userService;
         }
 
-        public async Task<string> Handle(CreateGoogleUserCommand request, CancellationToken cancellationToken)
-        {
-            return await _userService.CreateGoogleUserAsync(Result);
-        }
+        //public async Task<string> Handle(CreateGoogleUserCommand request, CancellationToken cancellationToken)
+        //{
+            
+        //}
     }
 }

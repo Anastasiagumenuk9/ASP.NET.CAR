@@ -31,7 +31,7 @@ namespace CAR.Controllers
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly ICurrentUserService _applicationUserService;
+        private readonly IUserService _applicationUserService;
         private readonly IAuthenticateService _authenticateService;
         private readonly IGoogleAuthenticateService _googleAuthenticateService;
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -44,7 +44,7 @@ namespace CAR.Controllers
         [TempData]
         public string ErrorMessage { get; set; }
 
-        public AccountController(IAuthenticateService authenticateService, UserManager<ApplicationUser> userManager, ICurrentUserService applicationUserService, IGoogleAuthenticateService googleAuthenticateService, SignInManager<ApplicationUser> signInManager, ILogger<AccountController> logger, ICarDbContext carDbContext)
+        public AccountController(IAuthenticateService authenticateService, UserManager<ApplicationUser> userManager, IUserService applicationUserService, IGoogleAuthenticateService googleAuthenticateService, SignInManager<ApplicationUser> signInManager, ILogger<AccountController> logger, ICarDbContext carDbContext)
         {
             _authenticateService = authenticateService;
             _userManager = userManager;
@@ -153,12 +153,12 @@ namespace CAR.Controllers
         [Route("google-login")]
         public async Task<IActionResult> GoogleLogin()
         {
-            var properties = new AuthenticationProperties { RedirectUri = Url.Action("GoogleResponse") };
+            var properties = new AuthenticationProperties { RedirectUri = Url.Action("GoogleLoginResponse") };
             return Challenge(properties, GoogleDefaults.AuthenticationScheme);
         }
 
-        [Route("google-response")]
-        public async Task<IActionResult> GoogleResponse()
+        [Route("google-login-response")]
+        public async Task<IActionResult> GoogleLoginResponse()
         {
             var result = await HttpContext.AuthenticateAsync(IdentityConstants.ExternalScheme);
             var token = await _googleAuthenticateService.SignInGoogle(result);
@@ -167,6 +167,21 @@ namespace CAR.Controllers
                 HttpContext.Session.SetString("JWToken", token);
             }
             return RedirectToAction("AccountPage", "Account");
+        }
+
+        [Route("google-register")]
+        public async Task<IActionResult> GoogleRegister()
+        {
+            var properties = new AuthenticationProperties { RedirectUri = Url.Action("GoogleRegisterResponse") };
+            return Challenge(properties, GoogleDefaults.AuthenticationScheme);
+        }
+
+        [Route("google-register-response")]
+        public async Task<IActionResult> GoogleRegisterResponse()
+        {
+            var result = await HttpContext.AuthenticateAsync(IdentityConstants.ExternalScheme);
+            await _applicationUserService.CreateGoogleUserAsync(result);
+            return RedirectToAction("Login", "Account");
         }
 
         public IActionResult Login()
