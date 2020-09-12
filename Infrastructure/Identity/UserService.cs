@@ -84,17 +84,16 @@ namespace Infrastructure.Identity
             var Email = claimsGoogle.Where(c => c.Type == ClaimTypes.Email)
                    .Select(c => c.Value).FirstOrDefault();
 
-            var UserName = Email.Substring(0, Email.IndexOf('@'));
-            var FirstName = claimsGoogle.Where(c => c.Type == ClaimTypes.Name)
-                   .Select(c => c.Value).FirstOrDefault();
+            var FirstName = claimsGoogle.Where(c => c.Type == ClaimTypes.GivenName)
+                   .Select(c => c.Value).FirstOrDefault().Split(' ').First();
+
             var LastName = claimsGoogle.Where(c => c.Type == ClaimTypes.Surname)
                    .Select(c => c.Value).FirstOrDefault();
+
             var PhoneNumber = claimsGoogle.Where(c => c.Type == ClaimTypes.MobilePhone)
                    .Select(c => c.Value).FirstOrDefault();
-            var PaswordHash = claimsGoogle.Where(c => c.Type == ClaimTypes.Hash)
-                   .Select(c => c.Value).FirstOrDefault();
 
-            return await CreateUserAsync(FirstName, LastName, Email, PhoneNumber, "", "", "", "");
+            return await CreateUserAsync(FirstName, LastName, Email, PhoneNumber, " ", "123456", " ", " ");
         }
 
         public async Task<string> CreateUserAsync(string FirstName, string LastName, string Email,
