@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Application.Common.Interfaces;
+using Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace Persistence
     {
         public static async Task Initialize(CarDbContext context,
                                           UserManager<ApplicationUser> userManager,
-                                          RoleManager<ApplicationRole> roleManager)
+                                          RoleManager<ApplicationRole> roleManager, IUserService userService)
         {
             context.Database.EnsureCreated();
 
@@ -41,8 +42,10 @@ namespace Persistence
             if (await userManager.FindByNameAsync(email) == null)
             {
                 var user = new ApplicationUser() { UserName = UserName, Email = email, PhoneNumber = phoneNumber};
-                user.PasswordHash = userManager.PasswordHasher.HashPassword(user, password);
-                var result = await userManager.CreateAsync(user);
+                //user.PasswordHash = userManager.PasswordHasher.HashPassword(user, password);
+                //var result = await userManager.CreateAsync(user);
+                user.PasswordHash = userService.HashPassword(Password);
+                var result = await userManager.CreateAsync(user, Password);
 
                 if (result.Succeeded)
                 {
