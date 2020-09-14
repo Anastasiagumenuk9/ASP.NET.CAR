@@ -172,7 +172,7 @@ namespace Infrastructure.Identity
             return result.ToApplicationResult();
         }
 
-        public static string HashPassword(string password)
+        public string HashPassword(string password)
         {
             byte[] salt;
             byte[] buffer2;

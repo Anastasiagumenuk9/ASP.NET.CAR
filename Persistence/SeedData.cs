@@ -20,7 +20,7 @@ namespace Persistence
             ApplicationRole Admin = await CreateApplicationRole(roleManager, "Admin", "Has access to data", DateTime.Now);
             ApplicationRole Moderator = await CreateApplicationRole(roleManager, "Moderator", "Has access to data", DateTime.Now);
             ApplicationRole User = await CreateApplicationRole(roleManager, "User", "Has oportunity to rent car", DateTime.Now);
-            ApplicationUser MainAdmin = await CreateApplicationUser(userManager, "Admin1", "Admin@gmail.com", "0967322916", "11111", "Admin");
+            ApplicationUser MainAdmin = await CreateApplicationUser(userManager, userService, "Admin1", "Admin@gmail.com", "0967322916", "11111", "Admin");
         }
 
         private static async Task<ApplicationRole> CreateApplicationRole(RoleManager<ApplicationRole> roleManager, string role, string desc, DateTime date)
@@ -37,15 +37,14 @@ namespace Persistence
             }
         }
 
-        private static async Task<ApplicationUser> CreateApplicationUser(UserManager<ApplicationUser> userManager, string UserName, string email, string phoneNumber, string password, string role)
+        private static async Task<ApplicationUser> CreateApplicationUser(UserManager<ApplicationUser> userManager, IUserService userService, string UserName, string email, string phoneNumber, string password, string role)
         {
             if (await userManager.FindByNameAsync(email) == null)
             {
                 var user = new ApplicationUser() { UserName = UserName, Email = email, PhoneNumber = phoneNumber};
-                //user.PasswordHash = userManager.PasswordHasher.HashPassword(user, password);
-                //var result = await userManager.CreateAsync(user);
-                user.PasswordHash = userService.HashPassword(Password);
-                var result = await userManager.CreateAsync(user, Password);
+                user.PasswordHash = userService.HashPassword(password);
+                user.EmailConfirmed = true;
+                var result = await userManager.CreateAsync(user, password);
 
                 if (result.Succeeded)
                 {

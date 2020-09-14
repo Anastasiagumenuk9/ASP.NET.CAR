@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Cars.Queries.GetCarsList;
+using Application.Common.Interfaces;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
@@ -34,8 +35,9 @@ namespace CAR
                     context.Database.Migrate();
                     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
                     var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
+                    var userService = services.GetRequiredService<IUserService>();
 
-                    SeedData.Initialize(context, userManager, roleManager).Wait();
+                    SeedData.Initialize(context, userManager, roleManager, userService).Wait();
                 }
                 catch (Exception ex)
                 {

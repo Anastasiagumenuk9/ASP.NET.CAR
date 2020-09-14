@@ -19,6 +19,8 @@ namespace Application.Common.Interfaces
 
         Task<Result> DeleteUserAsync(string userId);
 
+        string HashPassword(string password);
+
         Task ResetPassword(string email, string code, string password);
         Task ResetPasswordLinkSender(string email);
     }
