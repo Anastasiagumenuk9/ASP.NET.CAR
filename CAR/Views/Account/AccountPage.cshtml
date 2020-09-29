@@ -13,16 +13,16 @@
         </div>
         <div class="col-10 shadow mb-5 bg-white rounded align-self-center acc-container p-md-5 unselectable">
             <div class="row mb-4">
-                <div class="col-4 text-center">
-                    <a asp-action="GetAccountDetail" asp-controller="Account">
-                        <svg width="5em" height="5em" viewBox="0 0 16 16" class="bi bi-person" fill="lightgrey" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M13 14s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002.002zM3.022 13h9.956a.274.274 0 0 0 .014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 0 0 .022.004zm9.974.056v-.002.002zM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                        </svg>
-                    </a>
-                    <a class="nav-acc-link  nav-link active">@Model.UserName</a>
-                </div>
                 @if (User.IsInRole("User"))
                 {
+                    <div class="col-4 text-center">
+                        <a asp-action="GetAccountDetail" asp-controller="Account">
+                            <svg width="5em" height="5em" viewBox="0 0 16 16" class="bi bi-person" fill="lightgrey" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M13 14s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002.002zM3.022 13h9.956a.274.274 0 0 0 .014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 0 0 .022.004zm9.974.056v-.002.002zM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                            </svg>
+                        </a>
+                        <a class="nav-acc-link  nav-link active">@Model.UserName</a>
+                    </div>
                     <div class="col-4 text-center">
                         <a asp-action="GetPersonalRents" asp-controller="Rent">
                             <svg width="5em" height="5em" viewBox="0 0 16 16" class="bi bi-card-checklist" fill="lightgrey" xmlns="http://www.w3.org/2000/svg">
@@ -62,6 +62,14 @@
                         </a>
                         <a class="nav-acc-link  nav-link active">Settings</a>
                     </div>
+                    <div class="col-4 text-center">
+                        <a asp-action="AccountSettings" asp-controller="Account">
+                            <svg width="5em" height="5em" viewBox="0 0 16 16" class="bi bi-gear" fill="lightgrey" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M6 1H1v3h5V1zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H1zm14 12h-5v3h5v-3zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5zM6 8H1v7h5V8zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H1zm14-6h-5v7h5V1zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1h-5z" />
+                            </svg>
+                        </a>
+                        <a class="nav-acc-link  nav-link active">Table Management</a>
+                    </div>
                 }
             </div>
             <div class="row">
@@ -94,6 +102,10 @@
                         </a>
                         <a class="nav-acc-link  nav-link active">Settings</a>
                     </div>
+                }
+                else if (User.IsInRole("Admin"))
+                {
+                    
                 }
             </div>
         </div>
