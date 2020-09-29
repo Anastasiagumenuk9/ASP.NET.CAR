@@ -42,9 +42,6 @@
                                     <a class="nav__link nav-link" asp-action="GetCars" asp-controller="Car">Service</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav__link nav-link" href="#">Blog</a>
-                                </li>
-                                <li class="nav-item">
                                     @if (User.Identity.IsAuthenticated)
                                     {
                                         <a asp-controller="Account" asp-action="AccountPage" class="nav__link nav-link">My Account</a>
@@ -57,6 +54,12 @@
                                 <li class="nav-item">
                                     <a class="nav__link nav-link" href="#">Contact</a>
                                 </li>
+                                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav__link nav-link" href="#">Manage</a>
+                                    </li>
+                                }
                                 @if (User.Identity.IsAuthenticated)
                                 {
                                     <li class="nav-item">

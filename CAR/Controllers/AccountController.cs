@@ -64,6 +64,15 @@ namespace CAR.Controllers
             return View(model);
         }
 
+        [Authorize]
+        public async Task<ActionResult<AccountDetailVm>> AdminPage()
+        {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var model = await Mediator.Send(new GetAccountDetailQuery { Id = user.Id });
+
+            return View(model);
+        }
+
         [HttpGet]
         [Authorize]
         public async Task<ActionResult<AccountDetailVm>> AccountSettings()

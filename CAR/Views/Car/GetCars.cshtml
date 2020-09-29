@@ -83,7 +83,14 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <a class="btn btn-log" value ="@car.Id" asp-action="AddRent/@car.Id" asp-controller="Rent">Go</a>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a class="btn btn-log" value="@car.Id" asp-action="AddRent/@car.Id" asp-controller="Rent">Go</a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-log" asp-action="Login" asp-controller="Account">Go</a>
+                                }
                             </div>
                         </div>
                     </div>
